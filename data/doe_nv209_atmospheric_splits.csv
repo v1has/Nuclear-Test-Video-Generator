@@ -1,207 +1,221 @@
-test_number,operation,shot_name,date,time_gmt,sponsor,location,raw_type,burst_type,yield_raw,yield_kt,yield_tier,setting,latitude,longitude,elevation_ft,burst_height_ft,purpose,split
-2,Crossroads,Able,1946-06-30,22:00:00.00,LANL/DoD,Bikini Atoll,Airdrop,air-burst,21 kt,21.0,intermediate-yield,tropical-ocean,11.59,165.5167,0,523,Weapons Effects,train
-3,Crossroads,Baker,1946-07-24,21:35:00.00,LANL/DoD,Bikini Atoll,Underwater,underwater,21 kt,21.0,intermediate-yield,tropical-ocean,11.5892,165.5182,0,-90,Weapons Effects,train
-4,Sandstone,X-Ray,1948-04-14,18:17:00.00,LANL,Enewetak Atoll,Tower,surface-tower,37 kt,37.0,intermediate-yield,tropical-dawn,11.6653,162.234,0,200,Weapons Related,train
-5,Sandstone,Yoke,1948-04-30,18:09:00.00,LANL,Enewetak Atoll,Tower,surface-tower,49 kt,49.0,intermediate-yield,tropical-dawn,11.61941,162.313825,0,200,Weapons Related,train
-6,Sandstone,Zebra,1948-05-14,18:04:00.00,LANL,Enewetak Atoll,Tower,surface-tower,18 kt,18.0,tactical-yield,tropical-dawn,11.55145,162.3481,10,200,Weapons Related,train
-7,Ranger,Able,1951-01-27,13:45:00.00,LANL,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-night,36.8051,-115.9502,3140,"1,060",Weapons Related,train
-8,Ranger,Baker,1951-01-28,13:52:00.00,LANL,NNSS Area 5,Airdrop,air-burst,8 kt,8.0,tactical-yield,desert-night,36.8051,-115.9502,3140,"1,080",Weapons Related,train
-9,Ranger,Easy,1951-02-01,13:47:00.00,LANL,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-night,36.8051,-115.9502,3140,"1,080",Weapons Related,train
-10,Ranger,Baker-2,1951-02-02,13:49:00.00,LANL,NNSS Area 5,Airdrop,air-burst,8 kt,8.0,tactical-yield,desert-night,36.8051,-115.9502,3140,"1,100",Weapons Related,test
-11,Ranger,Fox,1951-02-06,13:47:00.00,LANL,NNSS Area 5,Airdrop,air-burst,22 kt,22.0,intermediate-yield,desert-night,36.8051,-115.9502,3140,"1,435",Weapons Related,train
-12,Greenhouse,Dog,1951-04-07,18:34:00.00,LANL,Enewetak Atoll,Tower,surface-tower,81 kt,81.0,intermediate-yield,tropical-dawn,11.551866,162.347893,10,300,Weapons Related,train
-13,Greenhouse,Easy,1951-04-20,18:27:00.00,LANL,Enewetak Atoll,Tower,surface-tower,47 kt,47.0,intermediate-yield,tropical-dawn,11.6654,162.2338,10,300,Weapons Related,train
-14,Greenhouse,GeorgeFirst,1951-05-08,21:30:00.00,LANL,Enewetak Atoll,Tower,surface-tower,225 kt,225.0,intermediate-yield,tropical-ocean,11.6243,162.3039,10,200,Weapons Related,train
-15,Greenhouse,ItemFirst,1951-05-24,18:17:00.00,LANL,Enewetak Atoll,Tower,surface-tower,45.5 kt,45.5,intermediate-yield,tropical-dawn,11.6693,162.2415,10,200,Weapons Related,train
-16,Buster,AbleRadioactivity,1951-10-22,14:00:00.00,LANL,NNSS Area 7,Tower,surface-tower,Less than 0.1 kt,0.05,sub-kiloton,desert-day,37.08325,-116.0247,4169,100,Weapons Related,train
-17,Buster,Baker,1951-10-28,15:20:00.00,LANL,NNSS Area 7,Airdrop,air-burst,3.5 kt,3.5,tactical-yield,desert-day,37.08495,-116.021125,4193,"1,118",Weapons Related,train
-18,Buster,Charlie,1951-10-30,15:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,14 kt,14.0,tactical-yield,desert-day,37.08495,-116.02125,4193,"1,132",Weapons Related,train
-19,Buster,Dog,1951-11-01,15:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,21 kt,21.0,intermediate-yield,desert-day,37.08455,-116.02085,4193,"1,417",Weapons Related,train
-20,Buster,Easy,1951-11-05,16:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,31 kt,31.0,intermediate-yield,desert-day,37.0919,-116.0253,4224,"1,314",Weapons Related,train
-21,Jangle,Sugar,1951-11-19,17:00:00.00,LANL/DoD,NNSS Area 9,Surface,surface-tower,1.2 kt,1.2,tactical-yield,desert-day,37.131467,-116.039417,4215,4,Weapons Effects,train
-22,Jangle,UncleFirst,1951-11-29,20:00:00.00,LANL/DoD,NNSS U10 Uncle,Crater,surface-tower,1.2 kt,1.2,tactical-yield,desert-day,37.169792,-116.043312,4299,-17,Weapons Effects,train
-23,Tumbler-Snapper,Able,1952-04-01,17:00:00.00,LANL/DoD,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-day,36.797966,-115.936418,3077,793,Weapons Effects,train
-25,Tumbler-Snapper,Charlie,1952-04-22,17:30:00.00,LANL/DoD,NNSS Area 7,Airdrop,air-burst,31 kt,31.0,intermediate-yield,desert-day,37.0844,-116.021143,4193,"3,447",Weapons Related,train
-26,Tumbler-Snapper,Dog,1952-05-01,16:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,19 kt,19.0,tactical-yield,desert-day,37.08412,-116.02114,4193,"1,040",Weapons Related,train
-27,Tumbler-Snapper,Easy,1952-05-07,12:15:00.00,LANL,NNSS Area 1,Tower,surface-tower,12 kt,12.0,tactical-yield,desert-night,37.05304,-116.103504,4329,300,Weapons Related,train
-28,Tumbler-Snapper,Fox,1952-05-25,12:00:00.00,LANL,NNSS Area 4,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-night,37.095488,-116.103616,4309,300,Weapons Related,train
-29,Tumbler-Snapper,George,1952-06-01,11:55:00.00,LANL,NNSS Area 3,Tower,surface-tower,15 kt,15.0,tactical-yield,desert-night,37.095488,-116.103616,4028,300,Weapons Related,train
-30,Tumbler-Snapper,How,1952-06-05,11:55:00.00,LANL,NNSS Area 2,Tower,surface-tower,14 kt,14.0,tactical-yield,desert-night,37.138372,-116.118258,4,492 300,Weapons Related,val
-31,Ivy,MikeExperimental,1952-10-31,19:15:00.00,LANL,Enewetak Atoll,Surface,surface-tower,10.4 Mt,10400.0,megaton-class,tropical-ocean,11.667,162.1899,10,7,Weapons Related,train
-32,Ivy,KingLargest,1952-11-15,23:30:00.00,LANL,Enewetak Atoll,Airdrop,air-burst,500 kt,500.0,intermediate-yield,tropical-ocean,11.5588,162.3454,0,"1,480",Weapons Related,train
-33,Upshot-Knothole,Annie,1953-03-17,13:20:00.00,LANL,NNSS Area 3,Tower,surface-tower,16 kt,16.0,tactical-yield,desert-night,37.095488,-116.103616,4026,300,Weapons Related,train
-34,Upshot-Knothole,Nancy,1953-03-24,13:10:00.00,LANL,NNSS Area 4,Tower,surface-tower,24 kt,24.0,intermediate-yield,desert-night,37.095488,-116.103616,4309,300,Weapons Related,train
-35,Upshot-Knothole,Ruth,1953-03-31,13:00:00.00,LLNL,NNSS Area 7,Tower,surface-tower,200 tons,200.0,intermediate-yield,desert-night,37.085291,-116.022137,4000,305,Weapons Related,test
-36,Upshot-Knothole,Dixie,1953-04-06,15:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,11 kt,11.0,tactical-yield,desert-day,37.084604,-116.020654,4025,"6,022",Weapons Related,test
-37,Upshot-Knothole,Ray,1953-04-11,12:45:00.00,LLNL,NNSS Area 4,Tower,surface-tower,200 tons,200.0,intermediate-yield,desert-night,37.098891,-116.093345,4026,100,Weapons Related,train
-38,Upshot-Knothole,Badger,1953-04-18,12:35:00.00,LANL,NNSS Area 2,Tower,surface-tower,23 kt,23.0,intermediate-yield,desert-night,37.138372,-116.118258,4491,300,Weapons Related,train
-39,Upshot-Knothole,Simon,1953-04-25,12:30:00.00,LANL,NNSS Area 1,Tower,surface-tower,43 kt,43.0,intermediate-yield,desert-night,37.05304,-116.103504,4239,300,Weapons Related,train
-40,Upshot-Knothole,Encore,1953-05-08,15:30:00.00,LANL/DoD,NNSS Area 5,Airdrop,air-burst,27 kt,27.0,intermediate-yield,desert-day,36.797923,-115.929776,3077,"2,423",Weapons Effects,train
-41,Upshot-Knothole,Harry,1953-05-19,12:05:00.00,LANL,NNSS Area 3,Tower,surface-tower,32 kt,32.0,intermediate-yield,desert-night,37.040342,-116.026241,4006,300,Weapons Related,train
-42,Upshot-Knothole,Grable,1953-05-25,15:30:00.00,LANL,NNSS Area 5,Airburst,air-burst,15 kt,15.0,tactical-yield,desert-day,36.797923,-115.929776,3077,524,Weapons Related,train
-43,Upshot-Knothole,Climax,1953-06-04,11:15:00.00,LANL,NNSS Area 7,Airdrop,air-burst,61 kt,61.0,intermediate-yield,desert-night,37.087549,-116.019208,4025,"1,334",Weapons Related,val
-44,Castle,Bravo,1954-02-28,18:45:00.00,LANL,Bikini Atoll,Surface,surface-tower,15 Mt,15000.0,megaton-class,tropical-dawn,11.69713,165.2742,10,7,Weapons Related,train
-45,Castle,Romeo,1954-03-26,18:30:00.00,LANL,Bikini Atoll,Barge,surface-tower,11 Mt,11000.0,megaton-class,tropical-dawn,11.69713,165.2742,0,7,Weapons Related,val
-46,Castle,Koon,1954-04-06,18:20:00.00,LLNL,Bikini Atoll,Surface,surface-tower,110 kt,110.0,intermediate-yield,tropical-dawn,11.503166,165.36945,10,14,Weapons Related,train
-47,Castle,Union,1954-04-25,18:05:00.00,LANL,Bikini Atoll,Barge,surface-tower,6.9 Mt,6900.0,megaton-class,tropical-dawn,11.679,165.3915,0,7,Weapons Related,train
-48,Castle,Yankee,1954-05-04,18:10:00.00,LANL,Bikini Atoll,Barge,surface-tower,13.5 Mt,13500.0,megaton-class,tropical-dawn,11.679,165.3915,0,7,Weapons Related,val
-49,Castle,Nectar,1954-05-13,18:20:00.00,LANL,Enewetak Atoll,Barge,surface-tower,1.69 Mt,1690.0,megaton-class,tropical-dawn,11.6666,162.19,0,7,Weapons Related,train
-50,Teapot,Wasp,1955-02-18,20:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-day,37.086535,-116.022735,4195,762,Weapons Effects,train
-51,Teapot,Moth,1955-02-22,13:45:00.00,LANL,NNSS Area 3,Tower,surface-tower,2 kt,2.0,tactical-yield,desert-night,37.095488,-116.103616,4026,300,Weapons Related,train
-52,Teapot,Tesla,1955-03-01,13:30:00.00,LLNL,NNSS Area 9,Tower,surface-tower,7 kt,7.0,tactical-yield,desert-night,37.125389,-116.048387,4021,300,Weapons Related,train
-53,Teapot,Turk,1955-03-07,13:20:00.00,LLNL,NNSS Area 2,Tower,surface-tower,43 kt,43.0,intermediate-yield,desert-night,37.138372,-116.118258,4491,500,Weapons Related,test
-55,Teapot,Bee,1955-03-22,13:05:00.00,LANL,NNSS Area 7,Tower,surface-tower,8 kt,8.0,tactical-yield,desert-night,37.09478,-116.024575,4245,500,Weapons Related,train
-56,Teapot,ESSEffects,1955-03-23,20:30:00.00,LANL,NNSS U10 ESS,Crater,surface-tower,1 kt,1.0,tactical-yield,desert-day,37.168412,-116.044669,4288,-67,Weapons Effects,train
-57,Teapot,Apple-1,1955-03-29,12:55:00.00,LANL,NNSS Area 4,Tower,surface-tower,14 kt,14.0,tactical-yield,desert-night,37.095488,-116.103616,4309,500,Weapons Related,val
-58,Teapot,Wasp,1955-03-29,18:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,3 kt,3.0,tactical-yield,desert-day,37.086535,-116.022735,4194,739,Weapons Related,train
-59,Teapot,HA,1955-04-06,18:00:00.00,LANL,NNSS Area 1,Airdrop,air-burst,3 kt,3.0,tactical-yield,desert-day,37.028664,-116.058714,4038,"40,000",Weapons Effects,train
-60,Teapot,Post,1955-04-09,12:30:00.00,LLNL,NNSS Area 9,Tower,surface-tower,2 kt,2.0,tactical-yield,desert-night,37.12209,-116.035276,4236,300,Weapons Related,train
-61,Teapot,METMilitary,1955-04-15,19:15:00.00,LANL/DoD,NNSS Area 5,Tower,surface-tower,22 kt,22.0,intermediate-yield,desert-day,36.797923,-115.929776,3078,400,Weapons Effects,test
-62,Teapot,Apple-2,1955-05-05,12:10:00.00,LANL,NNSS Area 1,Tower,surface-tower,29 kt,29.0,intermediate-yield,desert-night,37.05304,-116.103504,4236,500,Weapons Related,val
-63,Teapot,Zucchini,1955-05-15,12:00:00.00,LANL,NNSS Area 7,Tower,surface-tower,28 kt,28.0,intermediate-yield,desert-night,37.09478,-116.024575,4245,500,Weapons Related,train
-64,Wigwam,Wigwam,1955-05-14,20:00:00.00,LANL/DoD,Pacific,Underwater,underwater,30 kt,30.0,intermediate-yield,tropical-ocean,28.73334,-126.266743,0,"-2,000",Weapons Effects,val
-65,Project 56,Project,1955-11-01,22:10:00.00,LANL,NNSS Area 11a,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-day,36.98443,-115.96164,4200,3,Safety Experiment,train
-66,Project 56,Project,1955-11-03,21:15:00.00,LANL,NNSS Area 11b,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-day,36.980075,-115.959525,4200,3,Safety Experiment,train
-67,Project 56,Project,1955-11-05,19:55:00.00,LANL,NNSS Area 11c,Surface,surface-tower,36 grams,36.0,intermediate-yield,desert-day,36.975695,-115.957455,4200,3,Safety Experiment,val
-68,Project 56,Project,1956-01-18,21:30:00.00,LANL,NNSS Area 11d,Surface,surface-tower,1 ton,1.0,tactical-yield,desert-day,36.97134,-115.95535,4200,3,Safety Experiment,test
-69,Redwing,Lacrosse,1956-05-04,18:25:00.00,LANL,Enewetak Atoll,Surface,surface-tower,40 kt,40.0,intermediate-yield,tropical-dawn,11.553878,162.34805,17,0,Weapons Related,train
-70,Redwing,Cherokee,1956-05-20,17:51:00.00,LANL/DoD,Bikini Atoll,Airdrop,air-burst,3.8 Mt,3800.0,megaton-class,tropical-dawn,11.723,165.306,0,"4,350",Weapons Related,train
-71,Redwing,Zuni,1956-05-27,17:56:00.00,LLNL,Bikini Atoll,Surface,surface-tower,3.5 Mt,3500.0,megaton-class,tropical-dawn,11.503166,165.370537,9,0,Weapons Related,train
-72,Redwing,Yuma,1956-05-27,19:56:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,190 tons,190.0,intermediate-yield,tropical-ocean,11.61873,162.314125,10,205,Weapons Related,train
-73,Redwing,Erie,1956-05-30,18:15:00.00,LANL,Enewetak Atoll,Tower,surface-tower,14.9 kt,14.9,tactical-yield,tropical-dawn,11.5401,162.35795,10,300,Weapons Related,train
-74,Redwing,Seminole,1956-06-06,00:55:00.00,LANL,Enewetak Atoll,Surface,surface-tower,13.7 kt,13.7,tactical-yield,tropical-ocean,11.672427,162.210365,4,0,Weapons Related,train
-75,Redwing,Flathead,1956-06-12,18:26:00.00,LANL,Bikini Atoll,Barge,surface-tower,365 kt,365.0,intermediate-yield,tropical-dawn,11.6885,165.39,0,15,Weapons Related,val
-76,Redwing,Blackfoot,1956-06-12,18:26:00.00,LANL,Enewetak Atoll,Tower,surface-tower,8 kt,8.0,tactical-yield,tropical-dawn,11.5472,162.35205,10,200,Weapons Related,train
-77,Redwing,Kickapoo,1956-06-13,23:26:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,1.49 kt,1.49,tactical-yield,tropical-ocean,11.623857,162.31878,10,300,Weapons Related,train
-78,Redwing,Osage,1956-06-16,01:14:00.00,LANL,Enewetak Atoll,Airdrop,air-burst,1.7 kt,1.7,tactical-yield,tropical-ocean,11.54015,162.3564,0,670,Weapons Related,val
-79,Redwing,Inca,1956-06-21,21:56:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,15.2 kt,15.2,tactical-yield,tropical-ocean,11.6293,162.285,10,200,Weapons Related,train
-80,Redwing,Dakota,1956-06-25,18:06:00.00,LANL,Bikini Atoll,Barge,surface-tower,1.1 Mt,1100.0,megaton-class,tropical-dawn,11.679,165.3915,0,10,Weapons Related,test
-81,Redwing,Mohawk,1956-07-02,18:06:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,360 kt,360.0,intermediate-yield,tropical-dawn,11.627589,162.295691,10,300,Weapons Related,train
-83,Redwing,Navajo,1956-07-10,17:56:00.00,LANL,Bikini Atoll,Barge,surface-tower,4.5 Mt,4500.0,megaton-class,tropical-dawn,11.679,165.3915,0,15,Weapons Related,train
-84,Redwing,Tewa,1956-07-20,17:46:00.00,LLNL,Bikini Atoll,Barge,surface-tower,5 Mt,5000.0,megaton-class,tropical-dawn,11.68,165.341,0,15,Weapons Related,train
-85,Redwing,Huron,1956-07-21,18:16:00.00,LANL,Enewetak Atoll,Barge,surface-tower,250 kt,250.0,intermediate-yield,tropical-dawn,11.677817,162.204974,0,15,Weapons Related,val
-86,Project 57,Project,1957-04-24,14:27:00.00,LANL/DoD,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-day,37.319302,-115.906141,4585,0,Safety Experiment,train
-87,Project 57,Boltzmann,1957-05-28,11:55:00.00,LANL,NNSS Area 7,Tower,surface-tower,12 kt,12.0,tactical-yield,desert-night,37.094825,-116.0245,4235,500,Weapons Related,train
-88,Project 57,Franklin,1957-06-02,11:55:00.00,LANL,NNSS Area 3,Tower,surface-tower,140 tons,140.0,intermediate-yield,desert-night,37.095488,-116.103616,40,26 300,Weapons Related,train
-89,Project 57,LassenRadioactivity,1957-06-05,11:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,0.5 tons,0.5,sub-kiloton,desert-night,37.134742,-116.041648,4230,500,Weapons Related,train
-90,Project 57,Wilson,1957-06-18,11:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,10 kt,10.0,tactical-yield,desert-night,37.134742,-116.041648,42,30 500,Weapons Related,train
-91,Project 57,Priscilla,1957-06-24,13:30:00.00,LANL/DoD,NNSS Area 5,Balloon,air-burst,37 kt,37.0,intermediate-yield,desert-night,36.797923,-115.929776,3076,700,Weapons Related,train
-92,Project 57,Coulomb-ARadioactivity,1957-07-01,17:30:00.00,LANL,NNSS Area 3,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-day,37.0412,-116.02688,4000,0,Safety Experiment,train
-93,Project 57,HoodHighest-yield,1957-07-05,11:40:00.00,LLNL,NNSS Area 9,Balloon,air-burst,74 kt,74.0,intermediate-yield,desert-night,37.134742,-116.041648,4230,"1,500",Weapons Related,train
-94,Project 57,Diablo,1957-07-15,11:30:00.00,LLNL,NNSS Area 2,Tower,surface-tower,17 kt,17.0,tactical-yield,desert-night,37.1502,-116.109485,44,69 500,Weapons Related,train
-95,Project 57,John,1957-07-19,14:00:00.00,LANL/DoD,NNSS Area 10,Rocket,air-burst,About 2 kt,2.0,tactical-yield,desert-day,37.16035,-116.053805,4280,"14,830",Weapons Effects,train
-96,Project 57,Kepler,1957-07-24,11:50:00.00,LANL,NNSS Area 4,Tower,surface-tower,10 kt,10.0,tactical-yield,desert-night,37.095488,-116.103616,43,09 500,Weapons Related,test
-97,Project 57,Owens,1957-07-25,13:30:00.00,LLNL,NNSS Area 9,Balloon,air-burst,9.7 kt,9.7,tactical-yield,desert-night,37.134742,-116.041648,4215,500,Weapons Related,train
-99,Project 57,Stokes,1957-08-07,12:25:00.00,LANL,NNSS Area 7,Balloon,air-burst,19 kt,19.0,tactical-yield,desert-night,37.08654,-116.024805,4186,"1,500",Weapons Related,test
-101,Project 57,Shasta,1957-08-18,12:00:00.00,LLNL,NNSS Area 2,Tower,surface-tower,17 kt,17.0,tactical-yield,desert-night,37.12788,-116.10728,4387,500,Weapons Related,train
-102,Project 57,Doppler,1957-08-23,12:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,11 kt,11.0,tactical-yield,desert-night,37.08654,-116.024805,4230,"1,500",Weapons Related,train
-104,Project 57,Franklin,1957-08-30,12:40:00.00,LANL,NNSS Area 7,Balloon,air-burst,4.7 kt,4.7,tactical-yield,desert-night,37.08654,-116.024805,4186,750,Weapons Related,train
-105,Project 57,Smoky,1957-08-31,12:30:00.00,LLNL,NNSS Area 8,Tower,surface-tower,44 kt,44.0,intermediate-yield,desert-night,37.1872,-116.06867,4479,700,Weapons Related,train
-106,Project 57,Galileo,1957-09-02,12:40:00.00,LANL,NNSS Area 1,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-night,37.05304,-116.103504,4250,500,Weapons Related,train
-107,Project 57,Wheeler,1957-09-06,12:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,197 tons,197.0,intermediate-yield,desert-night,37.134742,-116.041648,4230,500,Weapons Related,test
-109,Plumbbob,Laplace,1957-09-08,13:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,1 kt,1.0,tactical-yield,desert-night,37.08654,-116.024805,4186,750,Weapons Related,val
-110,Plumbbob,Fizeau,1957-09-14,16:45:00.00,LANL,NNSS Area 3,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-day,37.03343,-116.032243,4030,500,Weapons Related,train
-111,Plumbbob,Newton,1957-09-16,12:50:00.00,LANL,NNSS Area 7,Balloon,air-burst,12 kt,12.0,tactical-yield,desert-night,37.08654,-116.024805,4186,"1,500",Weapons Related,train
-113,Plumbbob,Whitney,1957-09-23,12:30:00.00,LLNL,NNSS Area 2,Tower,surface-tower,19 kt,19.0,tactical-yield,desert-night,37.138372,-116.118258,4486,500,Weapons Related,val
-114,Plumbbob,Charleston,1957-09-28,13:00:00.00,LLNL,NNSS Area 9,Balloon,air-burst,12 kt,12.0,tactical-yield,desert-night,37.134742,-116.041648,4215,"1,500",Weapons Related,train
-115,Plumbbob,Morgan,1957-10-07,13:00:00.00,LLNL,NNSS Area 9,Balloon,air-burst,8 kt,8.0,tactical-yield,desert-night,37.134742,-116.041648,4214,500,Weapons Related,train
-117,Project 58,Coulomb-C,1957-12-09,20:00:00.00,LANL,NNSS S3i,Surface,surface-tower,500 tons,500.0,intermediate-yield,desert-day,37.0482,-116.0252,4050,0,Safety Experiment,train
-120,Newsreel,Yucca,1958-04-28,02:40:00.00,LANL/DoD,Pacific,Balloon,air-burst,1.7 kt,1.7,tactical-yield,tropical-ocean,12.616667,163.016667,0,"86,000",Weapons Effects,test
-121,Newsreel,Cactus,1958-05-05,18:15:00.00,LANL,Enewetak Atoll,Surface,surface-tower,18 kt,18.0,tactical-yield,tropical-dawn,11.69713,165.2742,5,3,Weapons Related,train
-122,Newsreel,Fir,1958-05-11,17:50:00.00,LLNL,Bikini Atoll,Barge,surface-tower,1.36 Mt,1360.0,megaton-class,tropical-dawn,11.697275,165.28,0,10,Weapons Related,train
-123,Newsreel,Butternut,1958-05-11,18:15:00.00,LANL,Enewetak Atoll,Barge,surface-tower,81 kt,81.0,intermediate-yield,tropical-dawn,11.5427,162.3386,0,10,Weapons Related,train
-124,Newsreel,Koa,1958-05-12,18:30:00.00,LANL,Enewetak Atoll,Surface,surface-tower,1.37 Mt,1370.0,megaton-class,tropical-dawn,11.67099,162.198652,5,3,Weapons Related,train
-125,Newsreel,Wahoo,1958-05-16,01:30:00.00,LANL/DoD,Enewetak Atoll,Underwater,underwater,9 kt,9.0,tactical-yield,tropical-ocean,11.3435,162.1749,0,-500,Weapons Effects,val
-126,Newsreel,Holly,1958-05-20,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-tower,5.9 kt,5.9,tactical-yield,tropical-dawn,11.5373,162.3474,0,13,Weapons Related,test
-127,Newsreel,Nutmeg,1958-05-21,21:20:00.00,LLNL,Bikini Atoll,Barge,surface-tower,25.1 kt,25.1,intermediate-yield,tropical-ocean,11.503,165.374,0,12,Weapons Related,train
-128,Newsreel,Yellowwood,1958-05-26,02:00:00.00,LANL,Enewetak Atoll,Barge,surface-tower,330 kt,330.0,intermediate-yield,tropical-ocean,11.659775,162.223408,0,11,Weapons Related,train
-129,Newsreel,Magnolia,1958-05-26,18:00:00.00,LANL,Enewetak Atoll,Barge,surface-tower,57 kt,57.0,intermediate-yield,tropical-dawn,11.535,162.345,0,14,Weapons Related,train
-130,Newsreel,Tobacco,1958-05-30,02:15:00.00,LANL,Enewetak Atoll,Barge,surface-tower,11.6 kt,11.6,tactical-yield,tropical-ocean,11.69122,162.21465,0,10,Weapons Related,train
-131,Newsreel,Sycamore,1958-05-31,03:00:00.00,LLNL,Bikini Atoll,Barge,surface-tower,92 kt,92.0,intermediate-yield,tropical-ocean,11.697275,165.28,0,12,Weapons Related,test
-132,Newsreel,Rose,1958-06-02,18:45:00.00,LANL,Enewetak Atoll,Barge,surface-tower,15 kt,15.0,tactical-yield,tropical-dawn,11.5326,162.3426,0,15,Weapons Related,train
-133,Newsreel,Umbrella,1958-06-09,23:15:00.00,LANL/DoD,Enewetak Atoll,Underwater,underwater,8 kt,8.0,tactical-yield,tropical-ocean,11.378,162.212,0,-150,Weapons Effects,train
-134,Newsreel,Maple,1958-06-10,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-tower,213 kt,213.0,intermediate-yield,tropical-dawn,11.69394,165.416375,0,12,Weapons Related,train
-135,Newsreel,Aspen,1958-06-14,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-tower,319 kt,319.0,intermediate-yield,tropical-dawn,11.697275,165.28,0,11,Weapons Related,train
-136,Newsreel,Walnut,1958-06-14,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-tower,1.45 Mt,1450.0,megaton-class,tropical-dawn,11.6847,162.23985,0,7,Weapons Related,train
-138,Hardtack I,Redwood,1958-06-27,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-tower,412 kt,412.0,intermediate-yield,tropical-dawn,11.69394,165.416375,0,11,Weapons Related,train
-139,Hardtack I,Elder,1958-06-27,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-tower,880 kt,880.0,intermediate-yield,tropical-dawn,11.6772,162.185255,0,9,Weapons Related,train
-140,Hardtack I,Oak,1958-06-28,19:30:00.00,LANL,Enewetak Atoll,Barge,surface-tower,8.9 Mt,8900.0,megaton-class,tropical-ocean,11.605086,162.100486,0,6,Weapons Related,test
-141,Hardtack I,Hickory,1958-06-29,24:00:00.00,LLNL,Bikini Atoll,Barge,surface-tower,14 kt,14.0,tactical-yield,tropical-ocean,11.503,165.374,0,12,Weapons Related,val
-142,Hardtack I,Sequoia,1958-07-01,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-tower,5.2 kt,5.2,tactical-yield,tropical-dawn,11.54305,162.347,0,6,Weapons Related,train
-143,Hardtack I,Cedar,1958-07-02,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-tower,220 kt,220.0,intermediate-yield,tropical-dawn,11.697275,165.28,0,11,Weapons Related,test
-144,Hardtack I,Dogwood,1958-07-05,18:30:00.00,LLNL,Enewetak Atoll,Barge,surface-tower,397 kt,397.0,intermediate-yield,tropical-dawn,11.67757,162.206157,0,12,Weapons Related,train
-145,Hardtack I,Poplar,1958-07-12,03:30:00.00,LLNL,Bikini Atoll,Barge,surface-tower,9.3 Mt,9300.0,megaton-class,tropical-ocean,11.694458,165.265189,0,12,Weapons Related,train
-146,Hardtack I,Scaevola,1958-07-14,04:00:00.00,LANL,Enewetak Atoll,Barge,surface-tower,Zero,0.0,sub-kiloton,tropical-ocean,11.55,162.3425,0,20,Safety Experiment,train
-147,Hardtack I,Pisonia,1958-07-17,23:00:00.00,LANL,Enewetak Atoll,Barge,surface-tower,255 kt,255.0,intermediate-yield,tropical-ocean,11.541,162.32,0,6,Weapons Related,train
-148,Hardtack I,Juniper,1958-07-22,04:20:00.00,LLNL,Bikini Atoll,Barge,surface-tower,65 kt,65.0,intermediate-yield,tropical-ocean,11.503,165.374,0,12,Weapons Related,train
-149,Hardtack I,Olive,1958-07-22,20:30:00.00,LLNL,Enewetak Atoll,Barge,surface-tower,202 kt,202.0,intermediate-yield,tropical-ocean,11.678501,162.208073,0,8,Weapons Related,train
-150,Hardtack I,Pine,1958-07-26,20:30:00.00,LLNL,Enewetak Atoll,Barge,surface-tower,2 Mt,2000.0,megaton-class,tropical-ocean,11.65126,162.21965,0,8,Weapons Related,train
-151,Newsreel,Teak,1958-08-01,10:50:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,3.8 Mt,3800.0,megaton-class,tropical-ocean,16.743889,-169.533333,0,"252,000",Weapons Effects,train
-152,Newsreel,Quince,1958-08-06,02:15:00.00,LLNL/DoD,Enewetak Atoll,Surface,surface-tower,Zero,0.0,sub-kiloton,tropical-ocean,11.5455,162.3527,10,3,Weapons Related,test
-153,Newsreel,Orange,1958-08-12,10:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,3.8 Mt,3800.0,megaton-class,tropical-ocean,16.358333,-169.535556,0,"141,000",Weapons Effects,val
-154,Newsreel,Fig,1958-08-18,04:00:00.00,LLNL/DoD,Enewetak Atoll,Surface,surface-tower,20 tons,20.0,tactical-yield,tropical-ocean,11.5455,162.3527,10,2,Weapons Related,train
-155,Argus,Argus,1958-08-27,02:28:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-day,-38.8,-10.9,0,~300 miles,Weapons Effects,val
-156,Argus,Argus,1958-08-30,02:28:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-day,-49.4,-8.7,0,~300 miles,Weapons Effects,train
-157,Argus,Argus,1958-09-06,22:13:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-day,-49.5,-10.45,0,~300 miles,Weapons Effects,train
-160,Hardtack II,Eddy,1958-09-19,14:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,83 tons,83.0,intermediate-yield,desert-day,37.08654,-116.024805,4186,500,Weapons Related,train
-165,Hardtack II,Mora,1958-09-29,14:05:00.00,LANL,NNSS Area 7,Balloon,air-burst,2 kt,2.0,tactical-yield,desert-day,37.08654,-116.024805,4186,"1,500",Weapons Related,train
-166,Hardtack II,Hidalgo,1958-10-05,14:10:00.00,LANL,NNSS Area 7,Balloon,air-burst,77 tons,77.0,intermediate-yield,desert-day,37.08654,-116.024805,4186,377,Safety Experiment,train
-169,Hardtack II,Quay,1958-10-10,14:30:00.00,LANL,NNSS Area 7,Tower,surface-tower,79 tons,79.0,intermediate-yield,desert-day,37.094825,-116.0245,4249,100,Weapons Related,train
-170,Hardtack II,Lea,1958-10-13,13:20:00.00,LANL,NNSS Area 7,Balloon,air-burst,1.4 kt,1.4,tactical-yield,desert-night,37.08654,-116.024805,4186,"1,500",Weapons Related,train
-172,Hardtack II,Hamilton,1958-10-15,16:00:00.00,LLNL/DoD,NNSS Area 5,Tower,surface-tower,1.2 tons,1.2,tactical-yield,desert-day,36.802261,-115.933075,3080,50,Weapons Related,train
-174,Hardtack II,Dona,1958-10-16,14:20:00.00,LANL,NNSS Area 7,Balloon,air-burst,37 tons,37.0,intermediate-yield,desert-day,37.08654,-116.024805,4186,450,Weapons Related,train
-175,Hardtack II,VestaFired,1958-10-17,23:00:00.00,LLNL,NNSS S9e,Surface,surface-tower,24 tons,24.0,intermediate-yield,desert-day,37.1226,-116.0354,4226,0,Safety Experiment,train
-176,Hardtack II,Rio,1958-10-18,14:25:00.00,LANL,NNSS Area 3,Tower,surface-tower,90 tons,90.0,intermediate-yield,desert-day,37.040875,-116.02675,4010,73,Weapons Related,train
-178,Hardtack II,Socorro,1958-10-22,13:30:00.00,LANL,NNSS Area 7,Balloon,air-burst,6 kt,6.0,tactical-yield,desert-night,37.08654,-116.024805,1450,"1,450",Weapons Related,train
-179,Hardtack II,Wrangell,1958-10-22,16:50:00.00,LLNL,NNSS Area 5,Balloon,air-burst,115 tons,115.0,intermediate-yield,desert-day,36.797923,-115.929776,3077,"1,500",Weapons Related,test
-180,Hardtack II,OberonNo,1958-10-22,20:30:00.00,LLNL,NNSS Area 8,Tower,surface-tower,Zero,0.0,sub-kiloton,desert-day,37.182847,-116.06927,4446,25,Safety Experiment,train
-181,Hardtack II,Rushmore,1958-10-22,23:40:00.00,LLNL,NNSS Area 9,Balloon,air-burst,188 tons,188.0,intermediate-yield,desert-day,37.134742,-116.041648,4244,500,Weapons Related,train
-182,Hardtack II,Catron,1958-10-24,15:00:00.00,LANL,NNSS Area 3,Tower,surface-tower,21 tons,21.0,intermediate-yield,desert-day,37.0428,-116.0278,4026,73,Safety Experiment,train
-183,Hardtack II,Juno,1958-10-24,16:01:00.00,LLNL,NNSS S9f,Surface,surface-tower,1.7 tons,1.7,tactical-yield,desert-day,37.12325,-116.03865,4210,0,Safety Experiment,test
-184,Hardtack II,CeresRadioactivity,1958-10-26,04:00:00.00,LLNL,NNSS Area 8,Tower,surface-tower,0.7 tons,0.7,sub-kiloton,desert-night,37.181329,-116.069535,4428,25,Safety Experiment,train
-185,Hardtack II,Sanford,1958-10-26,10:20:00.00,LLNL,NNSS Area 5,Balloon,air-burst,4.9 kt,4.9,tactical-yield,desert-night,36.797923,-115.929776,3077,"1,500",Weapons Related,train
-187,Hardtack II,Chaves,1958-10-27,14:30:00.00,LANL,NNSS Area 3,Tower,surface-tower,0.6 tons,0.6,sub-kiloton,desert-day,37.0446,-116.03065,4025,52,Safety Experiment,train
-189,Hardtack II,MazamaNo,1958-10-29,11:20:00.00,LLNL,NNSS Area 9,Tower,surface-tower,Zero,0.0,sub-kiloton,desert-night,37.126459,-116.041931,4202,50,Weapons Related,val
-190,Hardtack II,Humboldt,1958-10-29,14:45:00.00,LLNL/DoD,NNSS Area 3,Tower,surface-tower,7.8 tons,7.8,tactical-yield,desert-day,37.047565,-116.025425,4029,25,Weapons Related,train
-191,Hardtack II,Santa,1958-10-30,03:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,1.3 kt,1.3,tactical-yield,desert-day,37.08654,-116.024805,4186,"1,500",Weapons Related,train
-192,Hardtack II,Ganymede,1958-10-30,11:00:00.00,LLNL,NNSS S9g,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-night,37.125587,-116.047855,4,",193 0",Safety Experiment,train
-194,Hardtack II,Titania,1958-10-30,20:34:00.00,LLNL,NNSS Area 8,Tower,surface-tower,0.2 tons,0.2,sub-kiloton,desert-day,37.1772,-116.07005,4403,25,Safety Experiment,train
-216,Nougat,Danny,1962-03-05,18:15:00.12,LLNL/DoD,NNSS U18a,Crater,surface-tower,430 tons,430.0,intermediate-yield,desert-day,37.111003,-116.365835,5384,-110,Weapons Effects,val
-228,Dominic,Aztec,1962-04-27,16:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,410 kt,410.0,intermediate-yield,tropical-ocean,1.565,-157.365,0,"2,610",Weapons Related,train
-230,Dominic,Arkansas,1962-05-02,18:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.09 Mt,1090.0,megaton-class,tropical-dawn,1.5,-157.277,0,"5,030",Weapons Related,train
-231,Dominic,Questa,1962-05-04,19:04:00.00,LANL,Christmas Island area,Airdrop,air-burst,670 kt,670.0,intermediate-yield,tropical-ocean,1.565,-157.365,0,"5,230",Weapons Related,train
-234,Dominic,Yukon,1962-05-08,18:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,100 kt,100.0,intermediate-yield,tropical-dawn,1.565,-157.365,0,"2,880",Weapons Related,train
-235,Dominic,Mesilla,1962-05-09,17:01:00.00,LANL,Christmas Island area,Airdrop,air-burst,100 kt,100.0,intermediate-yield,tropical-dawn,1.565,-157.365,0,"2,450",Weapons Related,train
-237,Dominic,Muskegon,1962-05-11,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,50 kt,50.0,intermediate-yield,tropical-ocean,1.565,-157.365,0,"2,995",Weapons Related,val
-238,Dominic,Swordfish,1962-05-11,20:02:00.00,LANL/DoD,Pacific,Underwater,underwater,Low,10.0,tactical-yield,tropical-ocean,31.233333,-124.216667,0,- - - -,Weapons Effects,test
-239,Dominic,Encino,1962-05-12,17:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,500 kt,500.0,intermediate-yield,tropical-dawn,1.565,-157.365,0,"5,510",Weapons Related,train
-241,Dominic,Swanee,1962-05-14,15:21:00.00,LLNL,Christmas Island area,Airdrop,air-burst,97 kt,97.0,intermediate-yield,tropical-ocean,1.57,-157.365,0,"2,940",Weapons Related,train
-243,Dominic,Chetco,1962-05-19,15:36:00.00,LLNL,Christmas Island area,Airdrop,air-burst,73 kt,73.0,intermediate-yield,tropical-ocean,1.565,-157.365,0,"6,945",Weapons Related,train
-245,Dominic,Tanana,1962-05-25,16:08:00.00,LLNL,Christmas Island area,Airdrop,air-burst,2.6 kt,2.6,tactical-yield,tropical-ocean,1.55,-157.35,0,"9,030",Weapons Related,train
-249,Dominic,Alma,1962-06-08,17:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,782 kt,782.0,intermediate-yield,tropical-dawn,1.38,-157.195,0,"8,865",Weapons Related,train
-250,Dominic,Truckee,1962-06-09,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,210 kt,210.0,intermediate-yield,tropical-ocean,1.49,-157.327,0,"6,970",Weapons Related,train
-251,Dominic,Yeso,1962-06-10,16:01:00.00,LANL,Christmas Island area,Airdrop,air-burst,3 Mt,3000.0,megaton-class,tropical-ocean,1.38,-157.195,0,"8,325",Weapons Related,train
-252,Dominic,Harlem,1962-06-12,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.2 Mt,1200.0,megaton-class,tropical-ocean,1.47,-157.195,0,"13,645",Weapons Related,train
-254,Dominic,Rinconada,1962-06-15,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,800 kt,800.0,intermediate-yield,tropical-ocean,1.47,-157.195,0,"9,105",Weapons Related,train
-255,Dominic,Dulce,1962-06-17,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,52 kt,52.0,intermediate-yield,tropical-ocean,1.49,-157.327,0,"9,090",Weapons Related,train
-256,Dominic,Petit,1962-06-19,15:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,2.2 kt,2.2,tactical-yield,tropical-ocean,1.47,-157.32,0,"14,995",Weapons Related,train
-258,Dominic,Otowi,1962-06-22,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,81.5 kt,81.5,intermediate-yield,tropical-ocean,1.55,-157.35,0,"9,011",Weapons Related,test
-259,Dominic,Bighorn,1962-06-27,15:19:00.00,LLNL,Christmas Island area,Airdrop,air-burst,7.65 Mt,7650.0,megaton-class,tropical-ocean,1.23,-157.22,0,"11,810",Weapons Related,train
-262,Dominic,Bluestone,1962-06-30,15:21:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.27 Mt,1270.0,megaton-class,tropical-ocean,1.38,-157.195,0,"4,980",Weapons Related,train
-266,Fishbowl,Starfish,1962-07-09,09:00:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,1.4 Mt,1400.0,megaton-class,tropical-ocean,16.468422,-169.630075,0,250 miles,Weapons Effects,train
-267,Dominic,Sunset,1962-07-10,16:33:00.00,LANL,Christmas Island area,Airdrop,air-burst,1 Mt,1000.0,intermediate-yield,tropical-ocean,1.52,-157.28,0,"5,000",Weapons Related,train
-268,Dominic,Pamlico,1962-07-11,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,3.88 Mt,3880.0,megaton-class,tropical-ocean,1.23,-157.18,0,"14,330",Weapons Related,test
-269,Sunbeam,Johnnie,1962-07-11,16:45:00.09,LLNL/DoD,NNSS U18j2,Crater,surface-tower,500 tons,500.0,intermediate-yield,desert-day,37.12215,-116.333947,5066,-23,Weapons Effects,train
-271,Sunbeam,Small,1962-07-14,18:30:00.00,LANL/DoD,NNSS Area 5,Tower,surface-tower,Low,10.0,tactical-yield,desert-day,36.802465,-115.92591,3078,10,Weapons Effects,train
-272,Sunbeam,Little,1962-07-17,17:00:00.00,SNL/DoD,NNSS Area 18,Surface,surface-tower,Low,10.0,tactical-yield,desert-day,37.109551,-116.318154,5178,3,Weapons Effects,train
-280,Dominic,Androscoggin,1962-10-02,16:18:00.00,LLNL,Johnston Island area,Airdrop,air-burst,75 kt,75.0,intermediate-yield,tropical-ocean,13.83,-172.083,0,"10,260",Weapons Related,train
-282,Dominic,Bumping,1962-10-06,16:03:00.00,LLNL,Johnston Island area,Airdrop,air-burst,11.3 kt,11.3,tactical-yield,tropical-ocean,14.67,-168.25,0,"9,900",Weapons Related,train
-286,Dominic,Chama,1962-10-18,16:01:00.00,LANL,Johnston Island area,Airdrop,air-burst,1.59 Mt,1590.0,megaton-class,tropical-ocean,14.67,-168.75,0,"11,970",Weapons Related,train
-288,Fishbowl,Checkmate,1962-10-20,08:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Low,10.0,tactical-yield,tropical-ocean,16.072381,-169.609986,0,tens of miles,Weapons Effects,train
-289,Fishbowl,Bluegill,1962-10-26,09:59:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Submegaton,500.0,intermediate-yield,tropical-ocean,16.468422,-169.630075,0,tens of miles,Weapons Effects,train
-291,Dominic,Calamity,1962-10-27,15:46:00.00,LLNL,Johnston Island area,Airdrop,air-burst,800 kt,800.0,intermediate-yield,tropical-ocean,14.7,-168.417,0,"11,780",Weapons Related,train
-292,Dominic,Housatonic,1962-10-30,16:01:00.00,LLNL,Johnston Island area,Airdrop,air-burst,8.3 Mt,8300.0,megaton-class,tropical-ocean,13.613333,-172.216667,0,"12,130",Weapons Related,train
-293,Fishbowl,Kingfish,1962-11-01,12:10:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Submegaton,500.0,intermediate-yield,tropical-ocean,16.113503,-169.680561,0,tens of miles,Weapons Effects,val
-294,Fishbowl,Tightrope,1962-11-04,07:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Low,10.0,tactical-yield,tropical-ocean,16.707419,-169.542406,0,tens of miles,Weapons Effects,val
-319,Roller Coaster,Double,1963-05-15,09:55:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-night,37.706091,-116.988191,4972,1,Joint US-UK,test
-323,Roller Coaster,Clean,1963-05-25,11:17:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-night,37.708495,-116.65786,5380,1,Joint US-UK,val
+test_number,operation,shot_name,date,time_gmt,sponsor,location,raw_type,burst_type,yield_raw,yield_kt,yield_tier,terrain,lighting,setting,latitude,longitude,elevation_ft,burst_height_ft,purpose,reconciliation_group,split
+1,Trinity,Trinity,1945-07-16,12:29:00.00,LANL,"near Alamogordo, New Mexico",Tower,surface-tower,21 kt,21.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,33.67728,-106.475378,4624,100,Weapons Related,US_ATMOSPHERIC,val
+2,Crossroads,Able,1946-06-30,22:00:00.00,LANL/DoD,Bikini Atoll,Airdrop,air-burst,21 kt,21.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.59,165.5167,0,523,Weapons Effects,US_ATMOSPHERIC,train
+3,Crossroads,Baker,1946-07-24,21:35:00.00,LANL/DoD,Bikini Atoll,Underwater,underwater,21 kt,21.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.5892,165.5182,0,-90,Weapons Effects,UNDERWATER,val
+4,Sandstone,X-Ray,1948-04-14,18:17:00.00,LANL,Enewetak Atoll,Tower,surface-tower,37 kt,37.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.6653,162.234,0,200,Weapons Related,US_ATMOSPHERIC,test
+5,Sandstone,Yoke,1948-04-30,18:09:00.00,LANL,Enewetak Atoll,Tower,surface-tower,49 kt,49.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.61941,162.313825,0,200,Weapons Related,US_ATMOSPHERIC,train
+6,Sandstone,Zebra,1948-05-14,18:04:00.00,LANL,Enewetak Atoll,Tower,surface-tower,18 kt,18.0,tactical-yield,tropical-ocean,night,tropical-ocean,11.55145,162.3481,10,200,Weapons Related,US_ATMOSPHERIC,train
+7,Ranger,Able,1951-01-27,13:45:00.00,LANL,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,36.8051,-115.9502,3140,"1,060",Weapons Related,US_ATMOSPHERIC,train
+8,Ranger,Baker,1951-01-28,13:52:00.00,LANL,NNSS Area 5,Airdrop,air-burst,8 kt,8.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,36.8051,-115.9502,3140,"1,080",Weapons Related,US_ATMOSPHERIC,val
+9,Ranger,Easy,1951-02-01,13:47:00.00,LANL,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,36.8051,-115.9502,3140,"1,080",Weapons Related,US_ATMOSPHERIC,train
+10,Ranger,Baker-2,1951-02-02,13:49:00.00,LANL,NNSS Area 5,Airdrop,air-burst,8 kt,8.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,36.8051,-115.9502,3140,"1,100",Weapons Related,US_ATMOSPHERIC,test
+11,Ranger,Fox,1951-02-06,13:47:00.00,LANL,NNSS Area 5,Airdrop,air-burst,22 kt,22.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,36.8051,-115.9502,3140,"1,435",Weapons Related,US_ATMOSPHERIC,train
+12,Greenhouse,Dog,1951-04-07,18:34:00.00,LANL,Enewetak Atoll,Tower,surface-tower,81 kt,81.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.551866,162.347893,10,300,Weapons Related,US_ATMOSPHERIC,train
+13,Greenhouse,Easy,1951-04-20,18:27:00.00,LANL,Enewetak Atoll,Tower,surface-tower,47 kt,47.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.6654,162.2338,10,300,Weapons Related,US_ATMOSPHERIC,train
+14,Greenhouse,George,1951-05-08,21:30:00.00,LANL,Enewetak Atoll,Tower,surface-tower,225 kt,225.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.6243,162.3039,10,200,Weapons Related,US_ATMOSPHERIC,train
+15,Greenhouse,Item,1951-05-24,18:17:00.00,LANL,Enewetak Atoll,Tower,surface-tower,45.5 kt,45.5,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.6693,162.2415,10,200,Weapons Related,US_ATMOSPHERIC,train
+16,Buster,Able,1951-10-22,14:00:00.00,LANL,NNSS Area 7,Tower,surface-tower,Less than 0.1 kt,0.1,sub-kiloton,desert-flats,dawn,desert-flats-dawn,37.08325,-116.0247,4169,100,Weapons Related,US_ATMOSPHERIC,train
+17,Buster,Baker,1951-10-28,15:20:00.00,LANL,NNSS Area 7,Airdrop,air-burst,3.5 kt,3.5,tactical-yield,desert-flats,day,desert-flats-day,37.08495,-116.021125,4193,"1,118",Weapons Related,US_ATMOSPHERIC,train
+18,Buster,Charlie,1951-10-30,15:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,14 kt,14.0,tactical-yield,desert-flats,day,desert-flats-day,37.08495,-116.02125,4193,"1,132",Weapons Related,US_ATMOSPHERIC,train
+19,Buster,Dog,1951-11-01,15:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,21 kt,21.0,intermediate-yield,desert-flats,day,desert-flats-day,37.08455,-116.02085,4193,"1,417",Weapons Related,US_ATMOSPHERIC,train
+20,Buster,Easy,1951-11-05,16:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,31 kt,31.0,intermediate-yield,desert-flats,day,desert-flats-day,37.0919,-116.0253,4224,"1,314",Weapons Related,US_ATMOSPHERIC,train
+21,Jangle,Sugar,1951-11-19,17:00:00.00,LANL/DoD,NNSS Area 9,Surface,surface-tower,1.2 kt,1.2,tactical-yield,desert-flats,day,desert-flats-day,37.131467,-116.039417,4215,4,Weapons Effects,US_ATMOSPHERIC,train
+22,Jangle,Uncle,1951-11-29,20:00:00.00,LANL/DoD,NNSS U10 Uncle,Crater,surface-tower,1.2 kt,1.2,tactical-yield,desert-flats,day,desert-flats-day,37.169792,-116.043312,4299,-17,Weapons Effects,PRE_TREATY_CRATER,train
+23,Tumbler-Snapper,Able,1952-04-01,17:00:00.00,LANL/DoD,NNSS Area 5,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-flats,day,desert-flats-day,36.797966,-115.936418,3077,793,Weapons Effects,US_ATMOSPHERIC,train
+24,Tumbler-Snapper,Baker,1952-04-15,17:30:00.00,LANL/DoD,NNSS Area 7,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-flats,day,desert-flats-day,37.08412,-116.020306,4193,"1,109",Weapons Effects,US_ATMOSPHERIC,train
+25,Tumbler-Snapper,Charlie,1952-04-22,17:30:00.00,LANL/DoD,NNSS Area 7,Airdrop,air-burst,31 kt,31.0,intermediate-yield,desert-flats,day,desert-flats-day,37.0844,-116.021143,4193,"3,447",Weapons Related,US_ATMOSPHERIC,train
+26,Tumbler-Snapper,Dog,1952-05-01,16:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,19 kt,19.0,tactical-yield,desert-flats,day,desert-flats-day,37.08412,-116.02114,4193,"1,040",Weapons Related,US_ATMOSPHERIC,test
+27,Tumbler-Snapper,Easy,1952-05-07,12:15:00.00,LANL,NNSS Area 1,Tower,surface-tower,12 kt,12.0,tactical-yield,desert-flats,night,desert-flats-night,37.05304,-116.103504,4329,300,Weapons Related,US_ATMOSPHERIC,train
+28,Tumbler-Snapper,Fox,1952-05-25,12:00:00.00,LANL,NNSS Area 4,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-flats,night,desert-flats-night,37.095488,-116.103616,4309,300,Weapons Related,US_ATMOSPHERIC,train
+29,Tumbler-Snapper,George,1952-06-01,11:55:00.00,LANL,NNSS Area 3,Tower,surface-tower,15 kt,15.0,tactical-yield,desert-flats,night,desert-flats-night,37.095488,-116.103616,4028,300,Weapons Related,US_ATMOSPHERIC,test
+30,Tumbler-Snapper,How,1952-06-05,11:55:00.00,LANL,NNSS Area 2,Tower,surface-tower,14 kt,14.0,tactical-yield,desert-flats,night,desert-flats-night,37.138372,-116.118258,4,492 300,Weapons Related,US_ATMOSPHERIC,train
+31,Ivy,Mike,1952-10-31,19:15:00.00,LANL,Enewetak Atoll,Surface,surface-tower,10.4 Mt,10400.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.667,162.1899,10,7,Weapons Related,US_ATMOSPHERIC,train
+32,Ivy,King,1952-11-15,23:30:00.00,LANL,Enewetak Atoll,Airdrop,air-burst,500 kt,500.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.5588,162.3454,0,"1,480",Weapons Related,US_ATMOSPHERIC,train
+33,Upshot-Knothole,Annie,1953-03-17,13:20:00.00,LANL,NNSS Area 3,Tower,surface-tower,16 kt,16.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.095488,-116.103616,4026,300,Weapons Related,US_ATMOSPHERIC,train
+34,Upshot-Knothole,Nancy,1953-03-24,13:10:00.00,LANL,NNSS Area 4,Tower,surface-tower,24 kt,24.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.095488,-116.103616,4309,300,Weapons Related,US_ATMOSPHERIC,test
+35,Upshot-Knothole,Ruth,1953-03-31,13:00:00.00,LLNL,NNSS Area 7,Tower,surface-tower,200 tons,200.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.085291,-116.022137,4000,305,Weapons Related,US_ATMOSPHERIC,train
+36,Upshot-Knothole,Dixie,1953-04-06,15:30:00.00,LANL,NNSS Area 7,Airdrop,air-burst,11 kt,11.0,tactical-yield,desert-flats,day,desert-flats-day,37.084604,-116.020654,4025,"6,022",Weapons Related,US_ATMOSPHERIC,train
+37,Upshot-Knothole,Ray,1953-04-11,12:45:00.00,LLNL,NNSS Area 4,Tower,surface-tower,200 tons,200.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.098891,-116.093345,4026,100,Weapons Related,US_ATMOSPHERIC,train
+38,Upshot-Knothole,Badger,1953-04-18,12:35:00.00,LANL,NNSS Area 2,Tower,surface-tower,23 kt,23.0,intermediate-yield,desert-flats,night,desert-flats-night,37.138372,-116.118258,4491,300,Weapons Related,US_ATMOSPHERIC,train
+39,Upshot-Knothole,Simon,1953-04-25,12:30:00.00,LANL,NNSS Area 1,Tower,surface-tower,43 kt,43.0,intermediate-yield,desert-flats,night,desert-flats-night,37.05304,-116.103504,4239,300,Weapons Related,US_ATMOSPHERIC,test
+40,Upshot-Knothole,Encore,1953-05-08,15:30:00.00,LANL/DoD,NNSS Area 5,Airdrop,air-burst,27 kt,27.0,intermediate-yield,desert-flats,day,desert-flats-day,36.797923,-115.929776,3077,"2,423",Weapons Effects,US_ATMOSPHERIC,test
+41,Upshot-Knothole,Harry,1953-05-19,12:05:00.00,LANL,NNSS Area 3,Tower,surface-tower,32 kt,32.0,intermediate-yield,desert-flats,night,desert-flats-night,37.040342,-116.026241,4006,300,Weapons Related,US_ATMOSPHERIC,train
+42,Upshot-Knothole,Grable,1953-05-25,15:30:00.00,LANL,NNSS Area 5,Airburst,air-burst,15 kt,15.0,tactical-yield,desert-flats,day,desert-flats-day,36.797923,-115.929776,3077,524,Weapons Related,US_ATMOSPHERIC,train
+43,Upshot-Knothole,Climax,1953-06-04,11:15:00.00,LANL,NNSS Area 7,Airdrop,air-burst,61 kt,61.0,intermediate-yield,desert-flats,night,desert-flats-night,37.087549,-116.019208,4025,"1,334",Weapons Related,US_ATMOSPHERIC,test
+44,Castle,Bravo,1954-02-28,18:45:00.00,LANL,Bikini Atoll,Surface,surface-tower,15 Mt,15000.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.69713,165.2742,10,7,Weapons Related,US_ATMOSPHERIC,train
+45,Castle,Romeo,1954-03-26,18:30:00.00,LANL,Bikini Atoll,Barge,surface-barge,11 Mt,11000.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.69713,165.2742,0,7,Weapons Related,US_ATMOSPHERIC,val
+46,Castle,Koon,1954-04-06,18:20:00.00,LLNL,Bikini Atoll,Surface,surface-tower,110 kt,110.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.503166,165.36945,10,14,Weapons Related,US_ATMOSPHERIC,train
+47,Castle,Union,1954-04-25,18:05:00.00,LANL,Bikini Atoll,Barge,surface-barge,6.9 Mt,6900.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.679,165.3915,0,7,Weapons Related,US_ATMOSPHERIC,train
+48,Castle,Yankee,1954-05-04,18:10:00.00,LANL,Bikini Atoll,Barge,surface-barge,13.5 Mt,13500.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.679,165.3915,0,7,Weapons Related,US_ATMOSPHERIC,train
+49,Castle,Nectar,1954-05-13,18:20:00.00,LANL,Enewetak Atoll,Barge,surface-barge,1.69 Mt,1690.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.6666,162.19,0,7,Weapons Related,US_ATMOSPHERIC,train
+50,Teapot,Wasp,1955-02-18,20:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,1 kt,1.0,tactical-yield,desert-flats,day,desert-flats-day,37.086535,-116.022735,4195,762,Weapons Effects,US_ATMOSPHERIC,train
+51,Teapot,Moth,1955-02-22,13:45:00.00,LANL,NNSS Area 3,Tower,surface-tower,2 kt,2.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.095488,-116.103616,4026,300,Weapons Related,US_ATMOSPHERIC,train
+52,Teapot,Tesla,1955-03-01,13:30:00.00,LLNL,NNSS Area 9,Tower,surface-tower,7 kt,7.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.125389,-116.048387,4021,300,Weapons Related,US_ATMOSPHERIC,train
+53,Teapot,Turk,1955-03-07,13:20:00.00,LLNL,NNSS Area 2,Tower,surface-tower,43 kt,43.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.138372,-116.118258,4491,500,Weapons Related,US_ATMOSPHERIC,train
+54,Teapot,Hornet,1955-03-12,13:20:00.00,LANL,NNSS Area 3,Tower,surface-tower,4 kt,4.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.040342,-116.026241,4007,300,Weapons Related,US_ATMOSPHERIC,val
+55,Teapot,Bee,1955-03-22,13:05:00.00,LANL,NNSS Area 7,Tower,surface-tower,8 kt,8.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.09478,-116.024575,4245,500,Weapons Related,US_ATMOSPHERIC,train
+56,Teapot,ESS,1955-03-23,20:30:00.00,LANL,NNSS U10 ESS,Crater,surface-tower,1 kt,1.0,tactical-yield,desert-flats,day,desert-flats-day,37.168412,-116.044669,4288,-67,Weapons Effects,PRE_TREATY_CRATER,train
+57,Teapot,Apple-1,1955-03-29,12:55:00.00,LANL,NNSS Area 4,Tower,surface-tower,14 kt,14.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.095488,-116.103616,4309,500,Weapons Related,US_ATMOSPHERIC,train
+58,Teapot,Wasp Prime,1955-03-29,18:00:00.00,LANL,NNSS Area 7,Airdrop,air-burst,3 kt,3.0,tactical-yield,desert-flats,day,desert-flats-day,37.086535,-116.022735,4194,739,Weapons Related,US_ATMOSPHERIC,train
+59,Teapot,HA,1955-04-06,18:00:00.00,LANL,NNSS Area 1,Airdrop,air-burst,3 kt,3.0,tactical-yield,desert-flats,day,desert-flats-day,37.028664,-116.058714,4038,"40,000",Weapons Effects,US_ATMOSPHERIC,test
+60,Teapot,Post,1955-04-09,12:30:00.00,LLNL,NNSS Area 9,Tower,surface-tower,2 kt,2.0,tactical-yield,desert-flats,night,desert-flats-night,37.12209,-116.035276,4236,300,Weapons Related,US_ATMOSPHERIC,train
+61,Teapot,MET,1955-04-15,19:15:00.00,LANL/DoD,NNSS Area 5,Tower,surface-tower,22 kt,22.0,intermediate-yield,desert-flats,day,desert-flats-day,36.797923,-115.929776,3078,400,Weapons Effects,US_ATMOSPHERIC,val
+62,Teapot,Apple-2,1955-05-05,12:10:00.00,LANL,NNSS Area 1,Tower,surface-tower,29 kt,29.0,intermediate-yield,desert-flats,night,desert-flats-night,37.05304,-116.103504,4236,500,Weapons Related,US_ATMOSPHERIC,train
+63,Teapot,Zucchini,1955-05-15,12:00:00.00,LANL,NNSS Area 7,Tower,surface-tower,28 kt,28.0,intermediate-yield,desert-flats,night,desert-flats-night,37.09478,-116.024575,4245,500,Weapons Related,US_ATMOSPHERIC,train
+64,Wigwam,Wigwam,1955-05-14,20:00:00.00,LANL/DoD,Pacific,Underwater,underwater,30 kt,30.0,intermediate-yield,desert-flats,day,desert-flats-day,28.73334,-126.266743,0,"-2,000",Weapons Effects,UNDERWATER,train
+65,Project 56,Project 56 No. 1,1955-11-01,22:10:00.00,LANL,NNSS Area 11a,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,day,desert-flats-day,36.98443,-115.96164,4200,3,Safety Experiment,US_ATMOSPHERIC,train
+66,Project 56,Project 56 No. 2,1955-11-03,21:15:00.00,LANL,NNSS Area 11b,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,day,desert-flats-day,36.980075,-115.959525,4200,3,Safety Experiment,US_ATMOSPHERIC,train
+67,Project 56,Project 56 No. 3,1955-11-05,19:55:00.00,LANL,NNSS Area 11c,Surface,surface-tower,36 grams,36.0,intermediate-yield,desert-flats,day,desert-flats-day,36.975695,-115.957455,4200,3,Safety Experiment,US_ATMOSPHERIC,train
+68,Project 56,Project 56 No. 4,1956-01-18,21:30:00.00,LANL,NNSS Area 11d,Surface,surface-tower,1 ton,1.0,tactical-yield,desert-flats,day,desert-flats-day,36.97134,-115.95535,4200,3,Safety Experiment,US_ATMOSPHERIC,train
+69,Redwing,Lacrosse,1956-05-04,18:25:00.00,LANL,Enewetak Atoll,Surface,surface-tower,40 kt,40.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.553878,162.34805,17,0,Weapons Related,US_ATMOSPHERIC,train
+70,Redwing,Cherokee,1956-05-20,17:51:00.00,LANL/DoD,Bikini Atoll,Airdrop,air-burst,3.8 Mt,3800.0,megaton-class,tropical-ocean,night,tropical-ocean,11.723,165.306,0,"4,350",Weapons Related,US_ATMOSPHERIC,train
+71,Redwing,Zuni,1956-05-27,17:56:00.00,LLNL,Bikini Atoll,Surface,surface-tower,3.5 Mt,3500.0,megaton-class,tropical-ocean,night,tropical-ocean,11.503166,165.370537,9,0,Weapons Related,US_ATMOSPHERIC,test
+72,Redwing,Yuma,1956-05-27,19:56:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,190 tons,190.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.61873,162.314125,10,205,Weapons Related,US_ATMOSPHERIC,train
+73,Redwing,Erie,1956-05-30,18:15:00.00,LANL,Enewetak Atoll,Tower,surface-tower,14.9 kt,14.9,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.5401,162.35795,10,300,Weapons Related,US_ATMOSPHERIC,train
+74,Redwing,Seminole,1956-06-06,00:55:00.00,LANL,Enewetak Atoll,Surface,surface-tower,13.7 kt,13.7,tactical-yield,tropical-ocean,day,tropical-ocean,11.672427,162.210365,4,0,Weapons Related,US_ATMOSPHERIC,train
+75,Redwing,Flathead,1956-06-12,18:26:00.00,LANL,Bikini Atoll,Barge,surface-barge,365 kt,365.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.6885,165.39,0,15,Weapons Related,US_ATMOSPHERIC,train
+76,Redwing,Blackfoot,1956-06-12,18:26:00.00,LANL,Enewetak Atoll,Tower,surface-tower,8 kt,8.0,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.5472,162.35205,10,200,Weapons Related,US_ATMOSPHERIC,train
+77,Redwing,Kickapoo,1956-06-13,23:26:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,1.49 kt,1.49,tactical-yield,tropical-ocean,day,tropical-ocean,11.623857,162.31878,10,300,Weapons Related,US_ATMOSPHERIC,test
+78,Redwing,Osage,1956-06-16,01:14:00.00,LANL,Enewetak Atoll,Airdrop,air-burst,1.7 kt,1.7,tactical-yield,tropical-ocean,day,tropical-ocean,11.54015,162.3564,0,670,Weapons Related,US_ATMOSPHERIC,train
+79,Redwing,Inca,1956-06-21,21:56:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,15.2 kt,15.2,tactical-yield,tropical-ocean,day,tropical-ocean,11.6293,162.285,10,200,Weapons Related,US_ATMOSPHERIC,train
+80,Redwing,Dakota,1956-06-25,18:06:00.00,LANL,Bikini Atoll,Barge,surface-barge,1.1 Mt,1100.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.679,165.3915,0,10,Weapons Related,US_ATMOSPHERIC,train
+81,Redwing,Mohawk,1956-07-02,18:06:00.00,LLNL,Enewetak Atoll,Tower,surface-tower,360 kt,360.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.627589,162.295691,10,300,Weapons Related,US_ATMOSPHERIC,train
+82,Redwing,Apache,1956-07-08,18:06:00.00,LLNL,Enewetak Atoll,Barge,surface-barge,1.85 Mt,1850.0,megaton-class,tropical-ocean,night,tropical-ocean,11.6709,162.1996,0,10,Weapons Related,US_ATMOSPHERIC,train
+83,Redwing,Navajo,1956-07-10,17:56:00.00,LANL,Bikini Atoll,Barge,surface-barge,4.5 Mt,4500.0,megaton-class,tropical-ocean,night,tropical-ocean,11.679,165.3915,0,15,Weapons Related,US_ATMOSPHERIC,train
+84,Redwing,Tewa,1956-07-20,17:46:00.00,LLNL,Bikini Atoll,Barge,surface-barge,5 Mt,5000.0,megaton-class,tropical-ocean,night,tropical-ocean,11.68,165.341,0,15,Weapons Related,US_ATMOSPHERIC,test
+85,Redwing,Huron,1956-07-21,18:16:00.00,LANL,Enewetak Atoll,Barge,surface-barge,250 kt,250.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.677817,162.204974,0,15,Weapons Related,US_ATMOSPHERIC,val
+86,Project 57,Project 57 No. 1,1957-04-24,14:27:00.00,LANL/DoD,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,dawn,desert-flats-dawn,37.319302,-115.906141,4585,0,Safety Experiment,US_ATMOSPHERIC,test
+87,Plumbbob,Boltzmann,1957-05-28,11:55:00.00,LANL,NNSS Area 7,Tower,surface-tower,12 kt,12.0,tactical-yield,desert-flats,night,desert-flats-night,37.094825,-116.0245,4235,500,Weapons Related,US_ATMOSPHERIC,train
+88,Plumbbob,Franklin,1957-06-02,11:55:00.00,LANL,NNSS Area 3,Tower,surface-tower,140 tons,140.0,intermediate-yield,desert-flats,night,desert-flats-night,37.095488,-116.103616,40,26 300,Weapons Related,US_ATMOSPHERIC,val
+89,Plumbbob,Lassen,1957-06-05,11:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,0.5 tons,0.5,sub-kiloton,desert-flats,night,desert-flats-night,37.134742,-116.041648,4230,500,Weapons Related,US_ATMOSPHERIC,train
+90,Plumbbob,Wilson,1957-06-18,11:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,10 kt,10.0,tactical-yield,desert-flats,night,desert-flats-night,37.134742,-116.041648,42,30 500,Weapons Related,US_ATMOSPHERIC,train
+91,Plumbbob,Priscilla,1957-06-24,13:30:00.00,LANL/DoD,NNSS Area 5,Balloon,air-burst,37 kt,37.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,36.797923,-115.929776,3076,700,Weapons Related,US_ATMOSPHERIC,train
+92,Plumbbob,Coulomb-A,1957-07-01,17:30:00.00,LANL,NNSS Area 3,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,day,desert-flats-day,37.0412,-116.02688,4000,0,Safety Experiment,US_ATMOSPHERIC,val
+93,Plumbbob,Hood,1957-07-05,11:40:00.00,LLNL,NNSS Area 9,Balloon,air-burst,74 kt,74.0,intermediate-yield,desert-flats,night,desert-flats-night,37.134742,-116.041648,4230,"1,500",Weapons Related,US_ATMOSPHERIC,train
+94,Plumbbob,Diablo,1957-07-15,11:30:00.00,LLNL,NNSS Area 2,Tower,surface-tower,17 kt,17.0,tactical-yield,desert-flats,night,desert-flats-night,37.1502,-116.109485,44,69 500,Weapons Related,US_ATMOSPHERIC,train
+95,Plumbbob,John,1957-07-19,14:00:00.00,LANL/DoD,NNSS Area 10,Rocket,air-burst,About 2 kt,2.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.16035,-116.053805,4280,"14,830",Weapons Effects,US_ATMOSPHERIC,train
+96,Plumbbob,Kepler,1957-07-24,11:50:00.00,LANL,NNSS Area 4,Tower,surface-tower,10 kt,10.0,tactical-yield,desert-flats,night,desert-flats-night,37.095488,-116.103616,43,09 500,Weapons Related,US_ATMOSPHERIC,train
+97,Plumbbob,Owens,1957-07-25,13:30:00.00,LLNL,NNSS Area 9,Balloon,air-burst,9.7 kt,9.7,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.134742,-116.041648,4215,500,Weapons Related,US_ATMOSPHERIC,train
+99,Plumbbob,Stokes,1957-08-07,12:25:00.00,LANL,NNSS Area 7,Balloon,air-burst,19 kt,19.0,tactical-yield,desert-flats,night,desert-flats-night,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+101,Plumbbob,Shasta,1957-08-18,12:00:00.00,LLNL,NNSS Area 2,Tower,surface-tower,17 kt,17.0,tactical-yield,desert-flats,night,desert-flats-night,37.12788,-116.10728,4387,500,Weapons Related,US_ATMOSPHERIC,train
+102,Plumbbob,Doppler,1957-08-23,12:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,11 kt,11.0,tactical-yield,desert-flats,night,desert-flats-night,37.08654,-116.024805,4230,"1,500",Weapons Related,US_ATMOSPHERIC,val
+104,Plumbbob,Franklin Prime,1957-08-30,12:40:00.00,LANL,NNSS Area 7,Balloon,air-burst,4.7 kt,4.7,tactical-yield,desert-flats,night,desert-flats-night,37.08654,-116.024805,4186,750,Weapons Related,US_ATMOSPHERIC,train
+105,Plumbbob,Smoky,1957-08-31,12:30:00.00,LLNL,NNSS Area 8,Tower,surface-tower,44 kt,44.0,intermediate-yield,desert-flats,night,desert-flats-night,37.1872,-116.06867,4479,700,Weapons Related,US_ATMOSPHERIC,train
+106,Plumbbob,Galileo,1957-09-02,12:40:00.00,LANL,NNSS Area 1,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-flats,night,desert-flats-night,37.05304,-116.103504,4250,500,Weapons Related,US_ATMOSPHERIC,val
+107,Plumbbob,Wheeler,1957-09-06,12:45:00.00,LLNL,NNSS Area 9,Balloon,air-burst,197 tons,197.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.134742,-116.041648,4230,500,Weapons Related,US_ATMOSPHERIC,train
+108,Plumbbob,Coulomb-B,1957-09-06,20:05:00.00,LANL,NNSS S3g,Surface,surface-tower,300 tons,300.0,intermediate-yield,desert-flats,day,desert-flats-day,37.0429,-116.0271,4035,3,Safety Experiment,US_ATMOSPHERIC,train
+109,Plumbbob,Laplace,1957-09-08,13:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,1 kt,1.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,750,Weapons Related,US_ATMOSPHERIC,train
+110,Plumbbob,Fizeau,1957-09-14,16:45:00.00,LANL,NNSS Area 3,Tower,surface-tower,11 kt,11.0,tactical-yield,desert-flats,day,desert-flats-day,37.03343,-116.032243,4030,500,Weapons Related,US_ATMOSPHERIC,train
+111,Plumbbob,Newton,1957-09-16,12:50:00.00,LANL,NNSS Area 7,Balloon,air-burst,12 kt,12.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+113,Plumbbob,Whitney,1957-09-23,12:30:00.00,LLNL,NNSS Area 2,Tower,surface-tower,19 kt,19.0,tactical-yield,desert-flats,night,desert-flats-night,37.138372,-116.118258,4486,500,Weapons Related,US_ATMOSPHERIC,test
+114,Plumbbob,Charleston,1957-09-28,13:00:00.00,LLNL,NNSS Area 9,Balloon,air-burst,12 kt,12.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.134742,-116.041648,4215,"1,500",Weapons Related,US_ATMOSPHERIC,train
+115,Plumbbob,Morgan,1957-10-07,13:00:00.00,LLNL,NNSS Area 9,Balloon,air-burst,8 kt,8.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.134742,-116.041648,4214,500,Weapons Related,US_ATMOSPHERIC,test
+117,Project 58,Coulomb-C,1957-12-09,20:00:00.00,LANL,NNSS S3i,Surface,surface-tower,500 tons,500.0,intermediate-yield,desert-flats,day,desert-flats-day,37.0482,-116.0252,4050,0,Safety Experiment,US_ATMOSPHERIC,train
+120,Hardtack I,Yucca,1958-04-28,02:40:00.00,LANL/DoD,Pacific,Balloon,air-burst,1.7 kt,1.7,tactical-yield,desert-flats,day,desert-flats-day,12.616667,163.016667,0,"86,000",Weapons Effects,US_ATMOSPHERIC,val
+121,Hardtack I,Cactus,1958-05-05,18:15:00.00,LANL,Enewetak Atoll,Surface,surface-tower,18 kt,18.0,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.69713,165.2742,5,3,Weapons Related,US_ATMOSPHERIC,train
+122,Hardtack I,Fir,1958-05-11,17:50:00.00,LLNL,Bikini Atoll,Barge,surface-barge,1.36 Mt,1360.0,megaton-class,tropical-ocean,night,tropical-ocean,11.697275,165.28,0,10,Weapons Related,US_ATMOSPHERIC,train
+123,Hardtack I,Butternut,1958-05-11,18:15:00.00,LANL,Enewetak Atoll,Barge,surface-barge,81 kt,81.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.5427,162.3386,0,10,Weapons Related,US_ATMOSPHERIC,train
+124,Hardtack I,Koa,1958-05-12,18:30:00.00,LANL,Enewetak Atoll,Surface,surface-tower,1.37 Mt,1370.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.67099,162.198652,5,3,Weapons Related,US_ATMOSPHERIC,val
+125,Hardtack I,Wahoo,1958-05-16,01:30:00.00,LANL/DoD,Enewetak Atoll,Underwater,underwater,9 kt,9.0,tactical-yield,tropical-ocean,day,tropical-ocean,11.3435,162.1749,0,-500,Weapons Effects,UNDERWATER,train
+126,Hardtack I,Holly,1958-05-20,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-barge,5.9 kt,5.9,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.5373,162.3474,0,13,Weapons Related,US_ATMOSPHERIC,val
+127,Hardtack I,Nutmeg,1958-05-21,21:20:00.00,LLNL,Bikini Atoll,Barge,surface-barge,25.1 kt,25.1,intermediate-yield,tropical-ocean,day,tropical-ocean,11.503,165.374,0,12,Weapons Related,US_ATMOSPHERIC,train
+128,Hardtack I,Yellowwood,1958-05-26,02:00:00.00,LANL,Enewetak Atoll,Barge,surface-barge,330 kt,330.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.659775,162.223408,0,11,Weapons Related,US_ATMOSPHERIC,test
+129,Hardtack I,Magnolia,1958-05-26,18:00:00.00,LANL,Enewetak Atoll,Barge,surface-barge,57 kt,57.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.535,162.345,0,14,Weapons Related,US_ATMOSPHERIC,train
+130,Hardtack I,Tobacco,1958-05-30,02:15:00.00,LANL,Enewetak Atoll,Barge,surface-barge,11.6 kt,11.6,tactical-yield,tropical-ocean,day,tropical-ocean,11.69122,162.21465,0,10,Weapons Related,US_ATMOSPHERIC,test
+131,Hardtack I,Sycamore,1958-05-31,03:00:00.00,LLNL,Bikini Atoll,Barge,surface-barge,92 kt,92.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.697275,165.28,0,12,Weapons Related,US_ATMOSPHERIC,train
+132,Hardtack I,Rose,1958-06-02,18:45:00.00,LANL,Enewetak Atoll,Barge,surface-barge,15 kt,15.0,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.5326,162.3426,0,15,Weapons Related,US_ATMOSPHERIC,train
+133,Hardtack I,Umbrella,1958-06-09,23:15:00.00,LANL/DoD,Enewetak Atoll,Underwater,underwater,8 kt,8.0,tactical-yield,tropical-ocean,day,tropical-ocean,11.378,162.212,0,-150,Weapons Effects,UNDERWATER,test
+134,Hardtack I,Maple,1958-06-10,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-barge,213 kt,213.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.69394,165.416375,0,12,Weapons Related,US_ATMOSPHERIC,train
+135,Hardtack I,Aspen,1958-06-14,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-barge,319 kt,319.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.697275,165.28,0,11,Weapons Related,US_ATMOSPHERIC,train
+136,Hardtack I,Walnut,1958-06-14,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-barge,1.45 Mt,1450.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.6847,162.23985,0,7,Weapons Related,US_ATMOSPHERIC,train
+137,Hardtack I,Linden,1958-06-18,03:00:00.00,LANL,Enewetak Atoll,Barge,surface-barge,11 kt,11.0,tactical-yield,tropical-ocean,day,tropical-ocean,11.6089,162.3213,0,8,Weapons Related,US_ATMOSPHERIC,train
+138,Hardtack I,Redwood,1958-06-27,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-barge,412 kt,412.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.69394,165.416375,0,11,Weapons Related,US_ATMOSPHERIC,train
+139,Hardtack I,Elder,1958-06-27,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-barge,880 kt,880.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.6772,162.185255,0,9,Weapons Related,US_ATMOSPHERIC,train
+140,Hardtack I,Oak,1958-06-28,19:30:00.00,LANL,Enewetak Atoll,Barge,surface-barge,8.9 Mt,8900.0,megaton-class,tropical-ocean,dawn,tropical-ocean,11.605086,162.100486,0,6,Weapons Related,US_ATMOSPHERIC,train
+141,Hardtack I,Hickory,1958-06-29,24:00:00.00,LLNL,Bikini Atoll,Barge,surface-barge,14 kt,14.0,tactical-yield,tropical-ocean,day,tropical-ocean,11.503,165.374,0,12,Weapons Related,US_ATMOSPHERIC,train
+142,Hardtack I,Sequoia,1958-07-01,18:30:00.00,LANL,Enewetak Atoll,Barge,surface-barge,5.2 kt,5.2,tactical-yield,tropical-ocean,dawn,tropical-ocean,11.54305,162.347,0,6,Weapons Related,US_ATMOSPHERIC,train
+143,Hardtack I,Cedar,1958-07-02,17:30:00.00,LLNL,Bikini Atoll,Barge,surface-barge,220 kt,220.0,intermediate-yield,tropical-ocean,night,tropical-ocean,11.697275,165.28,0,11,Weapons Related,US_ATMOSPHERIC,train
+144,Hardtack I,Dogwood,1958-07-05,18:30:00.00,LLNL,Enewetak Atoll,Barge,surface-barge,397 kt,397.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,11.67757,162.206157,0,12,Weapons Related,US_ATMOSPHERIC,test
+145,Hardtack I,Poplar,1958-07-12,03:30:00.00,LLNL,Bikini Atoll,Barge,surface-barge,9.3 Mt,9300.0,megaton-class,tropical-ocean,day,tropical-ocean,11.694458,165.265189,0,12,Weapons Related,US_ATMOSPHERIC,train
+146,Hardtack I,Scaevola,1958-07-14,04:00:00.00,LANL,Enewetak Atoll,Barge,surface-barge,Zero,0.0,sub-kiloton,tropical-ocean,day,tropical-ocean,11.55,162.3425,0,20,Safety Experiment,US_ATMOSPHERIC,train
+147,Hardtack I,Pisonia,1958-07-17,23:00:00.00,LANL,Enewetak Atoll,Barge,surface-barge,255 kt,255.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.541,162.32,0,6,Weapons Related,US_ATMOSPHERIC,train
+148,Hardtack I,Juniper,1958-07-22,04:20:00.00,LLNL,Bikini Atoll,Barge,surface-barge,65 kt,65.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.503,165.374,0,12,Weapons Related,US_ATMOSPHERIC,train
+149,Hardtack I,Olive,1958-07-22,20:30:00.00,LLNL,Enewetak Atoll,Barge,surface-barge,202 kt,202.0,intermediate-yield,tropical-ocean,day,tropical-ocean,11.678501,162.208073,0,8,Weapons Related,US_ATMOSPHERIC,val
+150,Hardtack I,Pine,1958-07-26,20:30:00.00,LLNL,Enewetak Atoll,Barge,surface-barge,2 Mt,2000.0,megaton-class,tropical-ocean,day,tropical-ocean,11.65126,162.21965,0,8,Weapons Related,US_ATMOSPHERIC,train
+151,Hardtack I,Teak,1958-08-01,10:50:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,3.8 Mt,3800.0,megaton-class,tropical-ocean,night,tropical-ocean,16.743889,-169.533333,0,"252,000",Weapons Effects,US_ATMOSPHERIC,train
+152,Hardtack I,Quince,1958-08-06,02:15:00.00,LLNL/DoD,Enewetak Atoll,Surface,surface-tower,Zero,0.0,sub-kiloton,tropical-ocean,day,tropical-ocean,11.5455,162.3527,10,3,Weapons Related,US_ATMOSPHERIC,train
+153,Hardtack I,Orange,1958-08-12,10:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,3.8 Mt,3800.0,megaton-class,tropical-ocean,night,tropical-ocean,16.358333,-169.535556,0,"141,000",Weapons Effects,US_ATMOSPHERIC,val
+154,Hardtack I,Fig,1958-08-18,04:00:00.00,LLNL/DoD,Enewetak Atoll,Surface,surface-tower,20 tons,20.0,tactical-yield,tropical-ocean,day,tropical-ocean,11.5455,162.3527,10,2,Weapons Related,US_ATMOSPHERIC,val
+155,Argus,Argus I,1958-08-27,02:28:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-flats,night,desert-flats-night,-38.8,-10.9,0,~300 miles,Weapons Effects,US_ATMOSPHERIC,train
+156,Argus,Argus II,1958-08-30,02:28:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-flats,night,desert-flats-night,-49.4,-8.7,0,~300 miles,Weapons Effects,US_ATMOSPHERIC,val
+157,Argus,Argus III,1958-09-06,22:13:00.00,LANL/DoD,South Atlantic,Rocket,air-burst,1.7 kt,1.7,tactical-yield,desert-flats,night,desert-flats-night,-49.5,-10.45,0,~300 miles,Weapons Effects,US_ATMOSPHERIC,train
+160,Hardtack II,Eddy,1958-09-19,14:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,83 tons,83.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,500,Weapons Related,US_ATMOSPHERIC,train
+165,Hardtack II,Mora,1958-09-29,14:05:00.00,LANL,NNSS Area 7,Balloon,air-burst,2 kt,2.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+166,Hardtack II,Hidalgo,1958-10-05,14:10:00.00,LANL,NNSS Area 7,Balloon,air-burst,77 tons,77.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,377,Safety Experiment,US_ATMOSPHERIC,train
+169,Hardtack II,Quay,1958-10-10,14:30:00.00,LANL,NNSS Area 7,Tower,surface-tower,79 tons,79.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.094825,-116.0245,4249,100,Weapons Related,US_ATMOSPHERIC,train
+170,Hardtack II,Lea,1958-10-13,13:20:00.00,LANL,NNSS Area 7,Balloon,air-burst,1.4 kt,1.4,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+172,Hardtack II,Hamilton,1958-10-15,16:00:00.00,LLNL/DoD,NNSS Area 5,Tower,surface-tower,1.2 tons,1.2,tactical-yield,desert-flats,day,desert-flats-day,36.802261,-115.933075,3080,50,Weapons Related,US_ATMOSPHERIC,train
+174,Hardtack II,Dona Ana,1958-10-16,14:20:00.00,LANL,NNSS Area 7,Balloon,air-burst,37 tons,37.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,4186,450,Weapons Related,US_ATMOSPHERIC,train
+175,Hardtack II,Vesta,1958-10-17,23:00:00.00,LLNL,NNSS S9e,Surface,surface-tower,24 tons,24.0,intermediate-yield,desert-flats,day,desert-flats-day,37.1226,-116.0354,4226,0,Safety Experiment,US_ATMOSPHERIC,train
+176,Hardtack II,Rio Arriba,1958-10-18,14:25:00.00,LANL,NNSS Area 3,Tower,surface-tower,90 tons,90.0,intermediate-yield,desert-flats,dawn,desert-flats-dawn,37.040875,-116.02675,4010,73,Weapons Related,US_ATMOSPHERIC,train
+178,Hardtack II,Socorro,1958-10-22,13:30:00.00,LANL,NNSS Area 7,Balloon,air-burst,6 kt,6.0,tactical-yield,desert-flats,dawn,desert-flats-dawn,37.08654,-116.024805,1450,"1,450",Weapons Related,US_ATMOSPHERIC,train
+179,Hardtack II,Wrangell,1958-10-22,16:50:00.00,LLNL,NNSS Area 5,Balloon,air-burst,115 tons,115.0,intermediate-yield,desert-flats,day,desert-flats-day,36.797923,-115.929776,3077,"1,500",Weapons Related,US_ATMOSPHERIC,train
+180,Hardtack II,Oberon,1958-10-22,20:30:00.00,LLNL,NNSS Area 8,Tower,surface-tower,Zero,0.0,sub-kiloton,desert-flats,day,desert-flats-day,37.182847,-116.06927,4446,25,Safety Experiment,US_ATMOSPHERIC,train
+181,Hardtack II,Rushmore,1958-10-22,23:40:00.00,LLNL,NNSS Area 9,Balloon,air-burst,188 tons,188.0,intermediate-yield,desert-flats,day,desert-flats-day,37.134742,-116.041648,4244,500,Weapons Related,US_ATMOSPHERIC,train
+182,Hardtack II,Catron,1958-10-24,15:00:00.00,LANL,NNSS Area 3,Tower,surface-tower,21 tons,21.0,intermediate-yield,desert-flats,day,desert-flats-day,37.0428,-116.0278,4026,73,Safety Experiment,US_ATMOSPHERIC,train
+183,Hardtack II,Juno,1958-10-24,16:01:00.00,LLNL,NNSS S9f,Surface,surface-tower,1.7 tons,1.7,tactical-yield,desert-flats,day,desert-flats-day,37.12325,-116.03865,4210,0,Safety Experiment,US_ATMOSPHERIC,val
+184,Hardtack II,Ceres,1958-10-26,04:00:00.00,LLNL,NNSS Area 8,Tower,surface-tower,0.7 tons,0.7,sub-kiloton,desert-flats,night,desert-flats-night,37.181329,-116.069535,4428,25,Safety Experiment,US_ATMOSPHERIC,train
+185,Hardtack II,Sanford,1958-10-26,10:20:00.00,LLNL,NNSS Area 5,Balloon,air-burst,4.9 kt,4.9,tactical-yield,desert-flats,night,desert-flats-night,36.797923,-115.929776,3077,"1,500",Weapons Related,US_ATMOSPHERIC,train
+186,Hardtack II,De Baca,1958-10-26,16:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,2.2 kt,2.2,tactical-yield,desert-flats,day,desert-flats-day,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+187,Hardtack II,Chaves,1958-10-27,14:30:00.00,LANL,NNSS Area 3,Tower,surface-tower,0.6 tons,0.6,sub-kiloton,desert-flats,dawn,desert-flats-dawn,37.0446,-116.03065,4025,52,Safety Experiment,US_ATMOSPHERIC,train
+189,Hardtack II,Mazama,1958-10-29,11:20:00.00,LLNL,NNSS Area 9,Tower,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.126459,-116.041931,4202,50,Weapons Related,US_ATMOSPHERIC,train
+190,Hardtack II,Humboldt,1958-10-29,14:45:00.00,LLNL/DoD,NNSS Area 3,Tower,surface-tower,7.8 tons,7.8,tactical-yield,desert-flats,day,desert-flats-day,37.047565,-116.025425,4029,25,Weapons Related,US_ATMOSPHERIC,train
+191,Hardtack II,Santa Fe,1958-10-30,03:00:00.00,LANL,NNSS Area 7,Balloon,air-burst,1.3 kt,1.3,tactical-yield,desert-flats,day,desert-flats-day,37.08654,-116.024805,4186,"1,500",Weapons Related,US_ATMOSPHERIC,train
+192,Hardtack II,Ganymede,1958-10-30,11:00:00.00,LLNL,NNSS S9g,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.125587,-116.047855,4,",193 0",Safety Experiment,US_ATMOSPHERIC,train
+194,Hardtack II,Titania,1958-10-30,20:34:00.00,LLNL,NNSS Area 8,Tower,surface-tower,0.2 tons,0.2,sub-kiloton,desert-flats,day,desert-flats-day,37.1772,-116.07005,4403,25,Safety Experiment,US_ATMOSPHERIC,train
+216,Nougat,Danny Boy,1962-03-05,18:15:00.12,LLNL/DoD,NNSS U18a,Crater,surface-tower,430 tons,430.0,intermediate-yield,desert-flats,day,desert-flats-day,37.111003,-116.365835,5384,-110,Weapons Effects,PRE_TREATY_CRATER,train
+227,Dominic,Adobe,1962-04-25,15:46:00.00,LANL,Christmas Island area,Airdrop,air-burst,190 kt,190.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"2,900",Weapons Related,US_ATMOSPHERIC,train
+228,Dominic,Aztec,1962-04-27,16:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,410 kt,410.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"2,610",Weapons Related,US_ATMOSPHERIC,train
+230,Dominic,Arkansas,1962-05-02,18:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.09 Mt,1090.0,megaton-class,tropical-ocean,day,tropical-ocean,1.5,-157.277,0,"5,030",Weapons Related,US_ATMOSPHERIC,train
+231,Dominic,Questa,1962-05-04,19:04:00.00,LANL,Christmas Island area,Airdrop,air-burst,670 kt,670.0,intermediate-yield,tropical-ocean,day,tropical-ocean,1.565,-157.365,0,"5,230",Weapons Related,US_ATMOSPHERIC,val
+232,Dominic,Frigate Bird,1962-05-06,23:30:00.00,LLNL/DoD,Pacific,Rocket,air-burst,"200 to 1,000 kt",600.0,intermediate-yield,desert-flats,day,desert-flats-day,4.833333,-149.416667,0,"11,000",Weapons Related,US_ATMOSPHERIC,train
+234,Dominic,Yukon,1962-05-08,18:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,100 kt,100.0,intermediate-yield,tropical-ocean,day,tropical-ocean,1.565,-157.365,0,"2,880",Weapons Related,US_ATMOSPHERIC,test
+235,Dominic,Mesilla,1962-05-09,17:01:00.00,LANL,Christmas Island area,Airdrop,air-burst,100 kt,100.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"2,450",Weapons Related,US_ATMOSPHERIC,train
+237,Dominic,Muskegon,1962-05-11,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,50 kt,50.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"2,995",Weapons Related,US_ATMOSPHERIC,val
+238,Dominic,Swordfish,1962-05-11,20:02:00.00,LANL/DoD,Pacific,Underwater,underwater,Low,5.0,tactical-yield,desert-flats,day,desert-flats-day,31.233333,-124.216667,0,- - - -,Weapons Effects,UNDERWATER,train
+239,Dominic,Encino,1962-05-12,17:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,500 kt,500.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"5,510",Weapons Related,US_ATMOSPHERIC,train
+241,Dominic,Swanee,1962-05-14,15:21:00.00,LLNL,Christmas Island area,Airdrop,air-burst,97 kt,97.0,intermediate-yield,tropical-ocean,night,tropical-ocean,1.57,-157.365,0,"2,940",Weapons Related,US_ATMOSPHERIC,train
+243,Dominic,Chetco,1962-05-19,15:36:00.00,LLNL,Christmas Island area,Airdrop,air-burst,73 kt,73.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.565,-157.365,0,"6,945",Weapons Related,US_ATMOSPHERIC,val
+245,Dominic,Tanana,1962-05-25,16:08:00.00,LLNL,Christmas Island area,Airdrop,air-burst,2.6 kt,2.6,tactical-yield,tropical-ocean,dawn,tropical-ocean,1.55,-157.35,0,"9,030",Weapons Related,US_ATMOSPHERIC,train
+246,Dominic,Nambe,1962-05-27,17:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,43 kt,43.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.55,-157.35,0,"7,140",Weapons Related,US_ATMOSPHERIC,train
+249,Dominic,Alma,1962-06-08,17:02:00.00,LANL,Christmas Island area,Airdrop,air-burst,782 kt,782.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.38,-157.195,0,"8,865",Weapons Related,US_ATMOSPHERIC,train
+250,Dominic,Truckee,1962-06-09,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,210 kt,210.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.49,-157.327,0,"6,970",Weapons Related,US_ATMOSPHERIC,train
+251,Dominic,Yeso,1962-06-10,16:01:00.00,LANL,Christmas Island area,Airdrop,air-burst,3 Mt,3000.0,megaton-class,tropical-ocean,dawn,tropical-ocean,1.38,-157.195,0,"8,325",Weapons Related,US_ATMOSPHERIC,train
+252,Dominic,Harlem,1962-06-12,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.2 Mt,1200.0,megaton-class,tropical-ocean,dawn,tropical-ocean,1.47,-157.195,0,"13,645",Weapons Related,US_ATMOSPHERIC,train
+254,Dominic,Rinconada,1962-06-15,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,800 kt,800.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.47,-157.195,0,"9,105",Weapons Related,US_ATMOSPHERIC,train
+255,Dominic,Dulce,1962-06-17,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,52 kt,52.0,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.49,-157.327,0,"9,090",Weapons Related,US_ATMOSPHERIC,train
+256,Dominic,Petit,1962-06-19,15:01:00.00,LLNL,Christmas Island area,Airdrop,air-burst,2.2 kt,2.2,tactical-yield,tropical-ocean,night,tropical-ocean,1.47,-157.32,0,"14,995",Weapons Related,US_ATMOSPHERIC,train
+258,Dominic,Otowi,1962-06-22,16:00:00.00,LANL,Christmas Island area,Airdrop,air-burst,81.5 kt,81.5,intermediate-yield,tropical-ocean,dawn,tropical-ocean,1.55,-157.35,0,"9,011",Weapons Related,US_ATMOSPHERIC,train
+259,Dominic,Bighorn,1962-06-27,15:19:00.00,LLNL,Christmas Island area,Airdrop,air-burst,7.65 Mt,7650.0,megaton-class,tropical-ocean,night,tropical-ocean,1.23,-157.22,0,"11,810",Weapons Related,US_ATMOSPHERIC,train
+262,Dominic,Bluestone,1962-06-30,15:21:00.00,LLNL,Christmas Island area,Airdrop,air-burst,1.27 Mt,1270.0,megaton-class,tropical-ocean,night,tropical-ocean,1.38,-157.195,0,"4,980",Weapons Related,US_ATMOSPHERIC,train
+264,Storax,Sedan,1962-07-06,17:00:00.15,LLNL,NNSS U10h,Crater,surface-tower,104 kt,104.0,intermediate-yield,desert-flats,day,desert-flats-day,37.17696,-116.046256,4317,-635,Plowshare,PRE_TREATY_CRATER,train
+265,Sunbeam,Little Feller II,1962-07-07,17:00:00.00,SNL/DoD,NNSS Area 18,Surface,surface-tower,Low,5.0,tactical-yield,desert-flats,day,desert-flats-day,37.119142,-116.303697,5136,3,Weapons Effects,US_ATMOSPHERIC,train
+266,Fishbowl,Starfish Prime,1962-07-09,09:00:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,1.4 Mt,1400.0,megaton-class,tropical-ocean,night,tropical-ocean,16.468422,-169.630075,0,250 miles,Weapons Effects,US_ATMOSPHERIC,train
+267,Dominic,Sunset,1962-07-10,16:33:00.00,LANL,Christmas Island area,Airdrop,air-burst,1 Mt,1000.0,megaton-class,tropical-ocean,dawn,tropical-ocean,1.52,-157.28,0,"5,000",Weapons Related,US_ATMOSPHERIC,train
+268,Dominic,Pamlico,1962-07-11,15:37:00.00,LLNL,Christmas Island area,Airdrop,air-burst,3.88 Mt,3880.0,megaton-class,tropical-ocean,dawn,tropical-ocean,1.23,-157.18,0,"14,330",Weapons Related,US_ATMOSPHERIC,train
+269,Sunbeam,Johnnie Boy,1962-07-11,16:45:00.09,LLNL/DoD,NNSS U18j2,Crater,surface-tower,500 tons,500.0,intermediate-yield,desert-flats,day,desert-flats-day,37.12215,-116.333947,5066,-23,Weapons Effects,PRE_TREATY_CRATER,train
+271,Sunbeam,Small Boy,1962-07-14,18:30:00.00,LANL/DoD,NNSS Area 5,Tower,surface-tower,Low,5.0,tactical-yield,desert-flats,day,desert-flats-day,36.802465,-115.92591,3078,10,Weapons Effects,US_ATMOSPHERIC,test
+272,Sunbeam,Little Feller I,1962-07-17,17:00:00.00,SNL/DoD,NNSS Area 18,Surface,surface-tower,Low,5.0,tactical-yield,desert-flats,day,desert-flats-day,37.109551,-116.318154,5178,3,Weapons Effects,US_ATMOSPHERIC,train
+280,Dominic,Androscoggin,1962-10-02,16:18:00.00,LLNL,Johnston Island area,Airdrop,air-burst,75 kt,75.0,intermediate-yield,tropical-ocean,night,tropical-ocean,13.83,-172.083,0,"10,260",Weapons Related,US_ATMOSPHERIC,train
+282,Dominic,Bumping,1962-10-06,16:03:00.00,LLNL,Johnston Island area,Airdrop,air-burst,11.3 kt,11.3,tactical-yield,tropical-ocean,night,tropical-ocean,14.67,-168.25,0,"9,900",Weapons Related,US_ATMOSPHERIC,train
+286,Dominic,Chama,1962-10-18,16:01:00.00,LANL,Johnston Island area,Airdrop,air-burst,1.59 Mt,1590.0,megaton-class,tropical-ocean,night,tropical-ocean,14.67,-168.75,0,"11,970",Weapons Related,US_ATMOSPHERIC,val
+288,Fishbowl,Checkmate,1962-10-20,08:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Low,5.0,tactical-yield,tropical-ocean,night,tropical-ocean,16.072381,-169.609986,0,tens of miles,Weapons Effects,US_ATMOSPHERIC,train
+289,Fishbowl,Bluegill 3 Prime,1962-10-26,09:59:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Submegaton,1000.0,megaton-class,tropical-ocean,night,tropical-ocean,16.468422,-169.630075,0,tens of miles,Weapons Effects,US_ATMOSPHERIC,train
+291,Dominic,Calamity,1962-10-27,15:46:00.00,LLNL,Johnston Island area,Airdrop,air-burst,800 kt,800.0,intermediate-yield,tropical-ocean,night,tropical-ocean,14.7,-168.417,0,"11,780",Weapons Related,US_ATMOSPHERIC,train
+292,Dominic,Housatonic,1962-10-30,16:01:00.00,LLNL,Johnston Island area,Airdrop,air-burst,8.3 Mt,8300.0,megaton-class,tropical-ocean,night,tropical-ocean,13.613333,-172.216667,0,"12,130",Weapons Related,US_ATMOSPHERIC,test
+293,Fishbowl,Kingfish,1962-11-01,12:10:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Submegaton,1000.0,megaton-class,tropical-ocean,night,tropical-ocean,16.113503,-169.680561,0,tens of miles,Weapons Effects,US_ATMOSPHERIC,test
+294,Fishbowl,Tightrope,1962-11-04,07:30:00.00,LANL/DoD,Johnston Island area,Rocket,air-burst,Low,5.0,tactical-yield,tropical-ocean,night,tropical-ocean,16.707419,-169.542406,0,tens of miles,Weapons Effects,US_ATMOSPHERIC,train
+319,Roller Coaster,Double Tracks,1963-05-15,09:55:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.706091,-116.988191,4972,1,Joint US-UK,JOINT_US_UK_ATMOSPHERIC,test
+323,Roller Coaster,Clean Slate I,1963-05-25,11:17:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.708495,-116.65786,5380,1,Joint US-UK,JOINT_US_UK_ATMOSPHERIC,train
+325,Roller Coaster,Clean Slate II,1963-05-31,10:47:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.761125,-116.614428,5390,1,Joint US-UK,JOINT_US_UK_ATMOSPHERIC,train
+329,Roller Coaster,Clean Slate III,1963-06-09,10:33:00.00,LANL/DoD/UK,NTTR,Surface,surface-tower,Zero,0.0,sub-kiloton,desert-flats,night,desert-flats-night,37.759156,-116.681135,5387,1,Joint US-UK,JOINT_US_UK_ATMOSPHERIC,val

@@ -49,9 +49,9 @@
 
   <!-- Main Navigation Tabs -->
   <nav class="nav-tabs" role="tablist">
-    <button class="nav-tab active" data-tab="generator" id="tab-btn-generator">Interactive Synthesizer</button>
+    <button class="nav-tab" data-tab="generator" id="tab-btn-generator">Interactive Synthesizer</button>
     <button class="nav-tab" data-tab="disentangle" id="tab-btn-disentangle">Disentanglement Matrix</button>
-    <button class="nav-tab" data-tab="historical" id="tab-btn-historical">DOE Historical Archive (206 Shots)</button>
+    <button class="nav-tab" data-tab="historical" id="tab-btn-historical">DOE Historical Archive (220 Shots Reconciled)</button>
     <button class="nav-tab" data-tab="architecture" id="tab-btn-architecture">Model Architecture</button>
   </nav>
 
@@ -60,6 +60,9 @@
     
     <!-- TAB 1: GENERATOR -->
     <section class="tab-pane active" id="pane-generator">
+      <div style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3); border-radius: 6px; padding: 8px 16px; margin-bottom: 16px; font-size: 0.75rem; color: #fde047;">
+        <strong>INTERACTIVE BENCHMARK PREVIEW:</strong> Video displays archival footage samples demonstrating UI parameter interaction. Custom weights are trained on Kaggle GPU.
+      </div>
       <div class="workspace-grid">
         
         <!-- Left Column: Conditioning Control Console -->

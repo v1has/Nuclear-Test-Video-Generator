@@ -50,25 +50,28 @@ graph TD
 
 ## 🎛️ Conditioned Parameter Schema
 
-Every clip is controlled along 6 decoupled axes:
+Every clip is controlled along canonical decoupled axes defined in [`schema.py`](schema.py):
 
 | Parameter | Permitted Categories | Physical / Historical Significance |
 |---|---|---|
 | **Burst Type** | `air-burst`, `surface-tower`, `surface-barge`, `underwater` | Determines ground soil entrainment, stem thickness, or water column & base surge. |
-| **Yield Tier** | `sub-kiloton` (<1 kt), `tactical-yield` (1–20 kt), `intermediate-yield` (20 kt–1 Mt), `megaton-class` (>1 Mt) | Four non-overlapping tiers governing cloud scale, fireball radius, and thermal energy. |
-| **Setting** | `desert-flats`, `tropical-ocean`, `low-mountains` | Nevada Test Site (Yucca / Frenchman Flat) vs. Pacific Proving Grounds (Bikini / Enewetak). |
-| **Phase** | `early-fireball`, `expansion`, `stabilized-cloud` | Temporal stage from initial radiation front to stabilized mushroom cloud. |
-| **Film Look** | `high-contrast-monochrome`, `faded-technicolor`, `colour-restored` | Historical 16mm stock, Technicolor dye-fading, or LLNL digital restoration. |
-| **Diagnostics** | `with diagnostic smoke-trails`, `without smoke-trails` | Sounding rocket tracer smoke lines used to track shockwave propagation. |
+| **Yield Tier** | `sub-kiloton` (<1 kt), `tactical-yield` (1–20 kt), `intermediate-yield` (20 kt–1 Mt), `megaton-class` (≥1 Mt) | Four non-overlapping tiers governing cloud scale, fireball radius, and thermal energy. |
+| **Terrain** | `desert-flats`, `tropical-ocean`, `low-mountains` | Nevada Test Site (Yucca / Frenchman Flat) vs. Pacific Proving Grounds (Bikini / Enewetak). |
+| **Lighting** | `day`, `night`, `dawn` | Solar lighting condition computed from historical detonation timestamps and coordinates. |
+| **Phase** | `early-fireball`, `expansion`, `stabilized-cloud` | Physical evolution phase based on time elapsed since detonation flash onset. |
+| **Film Look** | `black-and-white`, `faded-technicolor`, `colour-restored` | Historical 16mm stock, Technicolor dye-fading, or LLNL digital restoration. |
+| **Diagnostics** | `with smoke-trails`, `without smoke-trails` | Sounding rocket tracer smoke lines used to track shockwave propagation. |
 
 ---
 
 ## 📊 Ground Truth & Data Governance
 
 - **Official Ground Truth:** Extracted directly from official Department of Energy report **DOE/NV-209 Rev 16** (*United States Nuclear Tests, July 1945 through September 1992*).
-- **Audit Findings:** See [`docs/STAGE2_CLASS_AUDIT.md`](docs/STAGE2_CLASS_AUDIT.md).
-- **Stratified Grouping:** The 5 historical underwater shots (*Baker*, *Wigwam*, *Wahoo*, *Umbrella*, *Swordfish*) are split deterministically across train, validation, and test splits to prevent evaluation collapse.
+- **220 Reconciled Tests:** Captures 206 US atmospheric tests, 4 Joint US-UK surface safety dispersal tests, 5 underwater tests, and 5 pre-treaty shallow crater excavations (reconciling the official 216 historical tally). See [`docs/RECONCILIATION_216.md`](docs/RECONCILIATION_216.md).
+- **Audit Findings:** See [`docs/DOE_NV209_AUDIT.md`](docs/DOE_NV209_AUDIT.md).
+- **Stratified Grouping:** The 5 historical underwater shots (*Baker*, *Wigwam*, *Wahoo*, *Umbrella*, *Swordfish*) are split deterministically across train (3), validation (1), and test (1) splits to prevent evaluation collapse.
 - **Physical Confounding:** 100% of underwater and megaton-class shots were conducted in the Pacific Proving Grounds; our evaluation explicitly accounts for this historical entanglement.
+- **Demo Footage Truth-up:** In accordance with non-negotiable project governance, sample footage currently displayed in `web/videos/` and `samples/` represents archival demo reference footage for interface testing until full two-phase model weights are trained on remote GPU hardware.
 
 ---
 
@@ -116,7 +119,7 @@ python -m http.server 8080 --directory web
 Open `http://localhost:8080` to explore:
 - **Interactive Synthesizer:** Real-time parameter switching with telecine CRT playback, frame-by-frame controls, and telemetry readouts.
 - **Disentanglement Matrix:** Side-by-side comparison sweeping single variables while holding other factors constant.
-- **DOE Historical Archive:** Searchable database of all 206 atmospheric tests from DOE/NV-209 Rev 16.
+- **DOE Historical Archive:** Searchable database of 220 historical above-ground detonations (206 US atmospheric + 4 Joint US-UK surface + 5 underwater + 5 pre-treaty crater tests reconciling the official 216 tally) from DOE/NV-209 Rev 16.
 
 ---
 

@@ -307,19 +307,22 @@ function triggerSynthesisAnimation() {
 
 // Master View Update
 function updateView() {
-  // Construct Conditioning Prompt
-  const smokeStr = state.smoke ? 'with diagnostic smoke-trails' : 'without smoke-trails';
-  const prompt = `${state.burst} nuclear detonation, ${state.yieldTier}, ${state.setting}, ${state.phase} phase, ${state.film} archival footage, ${smokeStr}`;
+  // Construct Conditioning Prompt using canonical schema
+  const smokeStr = state.smoke ? 'with smoke-trails' : 'without smoke-trails';
+  const terrain = state.setting && state.setting.includes('ocean') ? 'tropical-ocean' : 'desert-flats';
+  const lighting = state.setting && state.setting.includes('night') ? 'night' : (state.setting && state.setting.includes('dawn') ? 'dawn' : 'day');
+  const prompt = `${state.burst} nuclear detonation, ${state.yieldTier}, ${terrain}, ${lighting}, ${state.phase} phase, ${state.film} archival footage, ${smokeStr}`;
   promptDisplay.textContent = prompt;
 
   // Update CLI Code display
   const cliCommand = `python inference/generate.py \\
   --burst_type ${state.burst} \\
   --yield_tier ${state.yieldTier} \\
-  --setting ${state.setting} \\
+  --terrain ${terrain} \\
+  --lighting ${lighting} \\
   --phase ${state.phase} \\
   --film_look ${state.film} \\
-  ${state.smoke ? '--with_smoke_trails' : '--without_smoke_trails'} \\
+  ${state.smoke ? '--smoke_trails' : ''} \\
   --output samples/${state.burst}_${state.phase}.mp4`;
   document.getElementById('cli-code-display').textContent = cliCommand;
 
@@ -418,14 +421,20 @@ function renderArchiveTable(shots) {
   const tbody = document.getElementById('archive-tbody');
   tbody.innerHTML = '';
   
-  const displayShots = shots.slice(0, 50); // Display top 50 for performance
-  displayShots.forEach(shot => {
+  shots.forEach(shot => {
     const tr = document.createElement('tr');
     
     let typeClass = 'air';
     if (shot.burst_type.includes('tower')) typeClass = 'tower';
     else if (shot.burst_type.includes('barge')) typeClass = 'barge';
     else if (shot.burst_type.includes('underwater')) typeClass = 'uw';
+
+    let splitBadge = `<span class="type-pill" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.4); color: #38bdf8;">${shot.split || 'train'}</span>`;
+    if (shot.split === 'val') {
+      splitBadge = `<span class="type-pill" style="background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.4); color: #eab308;">val</span>`;
+    } else if (shot.split === 'test') {
+      splitBadge = `<span class="type-pill" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.4); color: #ef4444;">test</span>`;
+    }
 
     tr.innerHTML = `
       <td><strong>${shot.shot_name}</strong></td>
@@ -435,7 +444,7 @@ function renderArchiveTable(shots) {
       <td><span class="type-pill ${typeClass}">${shot.burst_type}</span></td>
       <td>${shot.yield_raw}</td>
       <td>${shot.yield_tier}</td>
-      <td><span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">${shot.setting || 'train'}</span></td>
+      <td>${splitBadge}</td>
     `;
     tbody.appendChild(tr);
   });

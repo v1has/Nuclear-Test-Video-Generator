@@ -1,0 +1,221 @@
+test_num,shot_name,operation,raw_type,canonical_burst_type,reconciliation_group,date,yield_raw,location
+1,Trinity,Trinity,Tower,surface-tower,US_ATMOSPHERIC,07/16/1945,21 kt,"near Alamogordo, New Mexico"
+2,Able,Crossroads,Airdrop,air-burst,US_ATMOSPHERIC,06/30/1946,21 kt,Bikini Atoll
+3,Baker,Crossroads,Underwater,underwater,UNDERWATER,07/24/1946,21 kt,Bikini Atoll
+4,X-Ray,Sandstone,Tower,surface-tower,US_ATMOSPHERIC,04/14/1948,37 kt,Enewetak Atoll
+5,Yoke,Sandstone,Tower,surface-tower,US_ATMOSPHERIC,04/30/1948,49 kt,Enewetak Atoll
+6,Zebra,Sandstone,Tower,surface-tower,US_ATMOSPHERIC,05/14/1948,18 kt,Enewetak Atoll
+7,Able,Ranger,Airdrop,air-burst,US_ATMOSPHERIC,01/27/1951,1 kt,NNSS Area 5
+8,Baker,Ranger,Airdrop,air-burst,US_ATMOSPHERIC,01/28/1951,8 kt,NNSS Area 5
+9,Easy,Ranger,Airdrop,air-burst,US_ATMOSPHERIC,02/01/1951,1 kt,NNSS Area 5
+10,Baker-2,Ranger,Airdrop,air-burst,US_ATMOSPHERIC,02/02/1951,8 kt,NNSS Area 5
+11,Fox,Ranger,Airdrop,air-burst,US_ATMOSPHERIC,02/06/1951,22 kt,NNSS Area 5
+12,Dog,Greenhouse,Tower,surface-tower,US_ATMOSPHERIC,04/07/1951,81 kt,Enewetak Atoll
+13,Easy,Greenhouse,Tower,surface-tower,US_ATMOSPHERIC,04/20/1951,47 kt,Enewetak Atoll
+14,George,Greenhouse,Tower,surface-tower,US_ATMOSPHERIC,05/08/1951,225 kt,Enewetak Atoll
+15,Item,Greenhouse,Tower,surface-tower,US_ATMOSPHERIC,05/24/1951,45.5 kt,Enewetak Atoll
+16,Able,Buster,Tower,surface-tower,US_ATMOSPHERIC,10/22/1951,Less than 0.1 kt,NNSS Area 7
+17,Baker,Buster,Airdrop,air-burst,US_ATMOSPHERIC,10/28/1951,3.5 kt,NNSS Area 7
+18,Charlie,Buster,Airdrop,air-burst,US_ATMOSPHERIC,10/30/1951,14 kt,NNSS Area 7
+19,Dog,Buster,Airdrop,air-burst,US_ATMOSPHERIC,11/01/1951,21 kt,NNSS Area 7
+20,Easy,Buster,Airdrop,air-burst,US_ATMOSPHERIC,11/05/1951,31 kt,NNSS Area 7
+21,Sugar,Jangle,Surface,surface-tower,US_ATMOSPHERIC,11/19/1951,1.2 kt,NNSS Area 9
+22,Uncle,Jangle,Crater,surface-tower,PRE_TREATY_CRATER,11/29/1951,1.2 kt,NNSS U10 Uncle
+23,Able,Tumbler-Snapper,Airdrop,air-burst,US_ATMOSPHERIC,04/01/1952,1 kt,NNSS Area 5
+24,Baker,Tumbler-Snapper,Airdrop,air-burst,US_ATMOSPHERIC,04/15/1952,1 kt,NNSS Area 7
+25,Charlie,Tumbler-Snapper,Airdrop,air-burst,US_ATMOSPHERIC,04/22/1952,31 kt,NNSS Area 7
+26,Dog,Tumbler-Snapper,Airdrop,air-burst,US_ATMOSPHERIC,05/01/1952,19 kt,NNSS Area 7
+27,Easy,Tumbler-Snapper,Tower,surface-tower,US_ATMOSPHERIC,05/07/1952,12 kt,NNSS Area 1
+28,Fox,Tumbler-Snapper,Tower,surface-tower,US_ATMOSPHERIC,05/25/1952,11 kt,NNSS Area 4
+29,George,Tumbler-Snapper,Tower,surface-tower,US_ATMOSPHERIC,06/01/1952,15 kt,NNSS Area 3
+30,How,Tumbler-Snapper,Tower,surface-tower,US_ATMOSPHERIC,06/05/1952,14 kt,NNSS Area 2
+31,Mike,Ivy,Surface,surface-tower,US_ATMOSPHERIC,10/31/1952,10.4 Mt,Enewetak Atoll
+32,King,Ivy,Airdrop,air-burst,US_ATMOSPHERIC,11/15/1952,500 kt,Enewetak Atoll
+33,Annie,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,03/17/1953,16 kt,NNSS Area 3
+34,Nancy,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,03/24/1953,24 kt,NNSS Area 4
+35,Ruth,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,03/31/1953,200 tons,NNSS Area 7
+36,Dixie,Upshot-Knothole,Airdrop,air-burst,US_ATMOSPHERIC,04/06/1953,11 kt,NNSS Area 7
+37,Ray,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,04/11/1953,200 tons,NNSS Area 4
+38,Badger,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,04/18/1953,23 kt,NNSS Area 2
+39,Simon,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,04/25/1953,43 kt,NNSS Area 1
+40,Encore,Upshot-Knothole,Airdrop,air-burst,US_ATMOSPHERIC,05/08/1953,27 kt,NNSS Area 5
+41,Harry,Upshot-Knothole,Tower,surface-tower,US_ATMOSPHERIC,05/19/1953,32 kt,NNSS Area 3
+42,Grable,Upshot-Knothole,Airburst,air-burst,US_ATMOSPHERIC,05/25/1953,15 kt,NNSS Area 5
+43,Climax,Upshot-Knothole,Airdrop,air-burst,US_ATMOSPHERIC,06/04/1953,61 kt,NNSS Area 7
+44,Bravo,Castle,Surface,surface-tower,US_ATMOSPHERIC,02/28/1954,15 Mt,Bikini Atoll
+45,Romeo,Castle,Barge,surface-barge,US_ATMOSPHERIC,03/26/1954,11 Mt,Bikini Atoll
+46,Koon,Castle,Surface,surface-tower,US_ATMOSPHERIC,04/06/1954,110 kt,Bikini Atoll
+47,Union,Castle,Barge,surface-barge,US_ATMOSPHERIC,04/25/1954,6.9 Mt,Bikini Atoll
+48,Yankee,Castle,Barge,surface-barge,US_ATMOSPHERIC,05/04/1954,13.5 Mt,Bikini Atoll
+49,Nectar,Castle,Barge,surface-barge,US_ATMOSPHERIC,05/13/1954,1.69 Mt,Enewetak Atoll
+50,Wasp,Teapot,Airdrop,air-burst,US_ATMOSPHERIC,02/18/1955,1 kt,NNSS Area 7
+51,Moth,Teapot,Tower,surface-tower,US_ATMOSPHERIC,02/22/1955,2 kt,NNSS Area 3
+52,Tesla,Teapot,Tower,surface-tower,US_ATMOSPHERIC,03/01/1955,7 kt,NNSS Area 9
+53,Turk,Teapot,Tower,surface-tower,US_ATMOSPHERIC,03/07/1955,43 kt,NNSS Area 2
+54,Hornet,Teapot,Tower,surface-tower,US_ATMOSPHERIC,03/12/1955,4 kt,NNSS Area 3
+55,Bee,Teapot,Tower,surface-tower,US_ATMOSPHERIC,03/22/1955,8 kt,NNSS Area 7
+56,ESS,Teapot,Crater,surface-tower,PRE_TREATY_CRATER,03/23/1955,1 kt,NNSS U10 ESS
+57,Apple-1,Teapot,Tower,surface-tower,US_ATMOSPHERIC,03/29/1955,14 kt,NNSS Area 4
+58,Wasp Prime,Teapot,Airdrop,air-burst,US_ATMOSPHERIC,03/29/1955,3 kt,NNSS Area 7
+59,HA,Teapot,Airdrop,air-burst,US_ATMOSPHERIC,04/06/1955,3 kt,NNSS Area 1
+60,Post,Teapot,Tower,surface-tower,US_ATMOSPHERIC,04/09/1955,2 kt,NNSS Area 9
+61,MET,Teapot,Tower,surface-tower,US_ATMOSPHERIC,04/15/1955,22 kt,NNSS Area 5
+62,Apple-2,Teapot,Tower,surface-tower,US_ATMOSPHERIC,05/05/1955,29 kt,NNSS Area 1
+63,Zucchini,Teapot,Tower,surface-tower,US_ATMOSPHERIC,05/15/1955,28 kt,NNSS Area 7
+64,Wigwam,Wigwam,Underwater,underwater,UNDERWATER,05/14/1955,30 kt,Pacific
+65,Project 56 No. 1,Project 56,Surface,surface-tower,US_ATMOSPHERIC,11/01/1955,Zero,NNSS Area 11a
+66,Project 56 No. 2,Project 56,Surface,surface-tower,US_ATMOSPHERIC,11/03/1955,Zero,NNSS Area 11b
+67,Project 56 No. 3,Project 56,Surface,surface-tower,US_ATMOSPHERIC,11/05/1955,36 grams,NNSS Area 11c
+68,Project 56 No. 4,Project 56,Surface,surface-tower,US_ATMOSPHERIC,01/18/1956,1 ton,NNSS Area 11d
+69,Lacrosse,Redwing,Surface,surface-tower,US_ATMOSPHERIC,05/04/1956,40 kt,Enewetak Atoll
+70,Cherokee,Redwing,Airdrop,air-burst,US_ATMOSPHERIC,05/20/1956,3.8 Mt,Bikini Atoll
+71,Zuni,Redwing,Surface,surface-tower,US_ATMOSPHERIC,05/27/1956,3.5 Mt,Bikini Atoll
+72,Yuma,Redwing,Tower,surface-tower,US_ATMOSPHERIC,05/27/1956,190 tons,Enewetak Atoll
+73,Erie,Redwing,Tower,surface-tower,US_ATMOSPHERIC,05/30/1956,14.9 kt,Enewetak Atoll
+74,Seminole,Redwing,Surface,surface-tower,US_ATMOSPHERIC,06/06/1956,13.7 kt,Enewetak Atoll
+75,Flathead,Redwing,Barge,surface-barge,US_ATMOSPHERIC,06/12/1956,365 kt,Bikini Atoll
+76,Blackfoot,Redwing,Tower,surface-tower,US_ATMOSPHERIC,06/12/1956,8 kt,Enewetak Atoll
+77,Kickapoo,Redwing,Tower,surface-tower,US_ATMOSPHERIC,06/13/1956,1.49 kt,Enewetak Atoll
+78,Osage,Redwing,Airdrop,air-burst,US_ATMOSPHERIC,06/16/1956,1.7 kt,Enewetak Atoll
+79,Inca,Redwing,Tower,surface-tower,US_ATMOSPHERIC,06/21/1956,15.2 kt,Enewetak Atoll
+80,Dakota,Redwing,Barge,surface-barge,US_ATMOSPHERIC,06/25/1956,1.1 Mt,Bikini Atoll
+81,Mohawk,Redwing,Tower,surface-tower,US_ATMOSPHERIC,07/02/1956,360 kt,Enewetak Atoll
+82,Apache,Redwing,Barge,surface-barge,US_ATMOSPHERIC,07/08/1956,1.85 Mt,Enewetak Atoll
+83,Navajo,Redwing,Barge,surface-barge,US_ATMOSPHERIC,07/10/1956,4.5 Mt,Bikini Atoll
+84,Tewa,Redwing,Barge,surface-barge,US_ATMOSPHERIC,07/20/1956,5 Mt,Bikini Atoll
+85,Huron,Redwing,Barge,surface-barge,US_ATMOSPHERIC,07/21/1956,250 kt,Enewetak Atoll
+86,Project 57 No. 1,Project 57,Surface,surface-tower,US_ATMOSPHERIC,04/24/1957,Zero,NTTR
+87,Boltzmann,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,05/28/1957,12 kt,NNSS Area 7
+88,Franklin,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,06/02/1957,140 tons,NNSS Area 3
+89,Lassen,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,06/05/1957,0.5 tons,NNSS Area 9
+90,Wilson,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,06/18/1957,10 kt,NNSS Area 9
+91,Priscilla,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,06/24/1957,37 kt,NNSS Area 5
+92,Coulomb-A,Plumbbob,Surface,surface-tower,US_ATMOSPHERIC,07/01/1957,Zero,NNSS Area 3
+93,Hood,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,07/05/1957,74 kt,NNSS Area 9
+94,Diablo,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,07/15/1957,17 kt,NNSS Area 2
+95,John,Plumbbob,Rocket,air-burst,US_ATMOSPHERIC,07/19/1957,About 2 kt,NNSS Area 10
+96,Kepler,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,07/24/1957,10 kt,NNSS Area 4
+97,Owens,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,07/25/1957,9.7 kt,NNSS Area 9
+99,Stokes,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,08/07/1957,19 kt,NNSS Area 7
+101,Shasta,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,08/18/1957,17 kt,NNSS Area 2
+102,Doppler,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,08/23/1957,11 kt,NNSS Area 7
+104,Franklin Prime,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,08/30/1957,4.7 kt,NNSS Area 7
+105,Smoky,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,08/31/1957,44 kt,NNSS Area 8
+106,Galileo,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,09/02/1957,11 kt,NNSS Area 1
+107,Wheeler,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,09/06/1957,197 tons,NNSS Area 9
+108,Coulomb-B,Plumbbob,Surface,surface-tower,US_ATMOSPHERIC,09/06/1957,300 tons,NNSS S3g
+109,Laplace,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,09/08/1957,1 kt,NNSS Area 7
+110,Fizeau,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,09/14/1957,11 kt,NNSS Area 3
+111,Newton,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,09/16/1957,12 kt,NNSS Area 7
+113,Whitney,Plumbbob,Tower,surface-tower,US_ATMOSPHERIC,09/23/1957,19 kt,NNSS Area 2
+114,Charleston,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,09/28/1957,12 kt,NNSS Area 9
+115,Morgan,Plumbbob,Balloon,air-burst,US_ATMOSPHERIC,10/07/1957,8 kt,NNSS Area 9
+117,Coulomb-C,Project 58,Surface,surface-tower,US_ATMOSPHERIC,12/09/1957,500 tons,NNSS S3i
+120,Yucca,Hardtack I,Balloon,air-burst,US_ATMOSPHERIC,04/28/1958,1.7 kt,Pacific
+121,Cactus,Hardtack I,Surface,surface-tower,US_ATMOSPHERIC,05/05/1958,18 kt,Enewetak Atoll
+122,Fir,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/11/1958,1.36 Mt,Bikini Atoll
+123,Butternut,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/11/1958,81 kt,Enewetak Atoll
+124,Koa,Hardtack I,Surface,surface-tower,US_ATMOSPHERIC,05/12/1958,1.37 Mt,Enewetak Atoll
+125,Wahoo,Hardtack I,Underwater,underwater,UNDERWATER,05/16/1958,9 kt,Enewetak Atoll
+126,Holly,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/20/1958,5.9 kt,Enewetak Atoll
+127,Nutmeg,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/21/1958,25.1 kt,Bikini Atoll
+128,Yellowwood,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/26/1958,330 kt,Enewetak Atoll
+129,Magnolia,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/26/1958,57 kt,Enewetak Atoll
+130,Tobacco,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/30/1958,11.6 kt,Enewetak Atoll
+131,Sycamore,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,05/31/1958,92 kt,Bikini Atoll
+132,Rose,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/02/1958,15 kt,Enewetak Atoll
+133,Umbrella,Hardtack I,Underwater,underwater,UNDERWATER,06/09/1958,8 kt,Enewetak Atoll
+134,Maple,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/10/1958,213 kt,Bikini Atoll
+135,Aspen,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/14/1958,319 kt,Bikini Atoll
+136,Walnut,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/14/1958,1.45 Mt,Enewetak Atoll
+137,Linden,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/18/1958,11 kt,Enewetak Atoll
+138,Redwood,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/27/1958,412 kt,Bikini Atoll
+139,Elder,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/27/1958,880 kt,Enewetak Atoll
+140,Oak,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/28/1958,8.9 Mt,Enewetak Atoll
+141,Hickory,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,06/29/1958,14 kt,Bikini Atoll
+142,Sequoia,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/01/1958,5.2 kt,Enewetak Atoll
+143,Cedar,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/02/1958,220 kt,Bikini Atoll
+144,Dogwood,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/05/1958,397 kt,Enewetak Atoll
+145,Poplar,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/12/1958,9.3 Mt,Bikini Atoll
+146,Scaevola,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/14/1958,Zero,Enewetak Atoll
+147,Pisonia,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/17/1958,255 kt,Enewetak Atoll
+148,Juniper,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/22/1958,65 kt,Bikini Atoll
+149,Olive,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/22/1958,202 kt,Enewetak Atoll
+150,Pine,Hardtack I,Barge,surface-barge,US_ATMOSPHERIC,07/26/1958,2 Mt,Enewetak Atoll
+151,Teak,Hardtack I,Rocket,air-burst,US_ATMOSPHERIC,08/01/1958,3.8 Mt,Johnston Island area
+152,Quince,Hardtack I,Surface,surface-tower,US_ATMOSPHERIC,08/06/1958,Zero,Enewetak Atoll
+153,Orange,Hardtack I,Rocket,air-burst,US_ATMOSPHERIC,08/12/1958,3.8 Mt,Johnston Island area
+154,Fig,Hardtack I,Surface,surface-tower,US_ATMOSPHERIC,08/18/1958,20 tons,Enewetak Atoll
+155,Argus I,Argus,Rocket,air-burst,US_ATMOSPHERIC,08/27/1958,1.7 kt,South Atlantic
+156,Argus II,Argus,Rocket,air-burst,US_ATMOSPHERIC,08/30/1958,1.7 kt,South Atlantic
+157,Argus III,Argus,Rocket,air-burst,US_ATMOSPHERIC,09/06/1958,1.7 kt,South Atlantic
+160,Eddy,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,09/19/1958,83 tons,NNSS Area 7
+165,Mora,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,09/29/1958,2 kt,NNSS Area 7
+166,Hidalgo,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/05/1958,77 tons,NNSS Area 7
+169,Quay,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/10/1958,79 tons,NNSS Area 7
+170,Lea,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/13/1958,1.4 kt,NNSS Area 7
+172,Hamilton,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/15/1958,1.2 tons,NNSS Area 5
+174,Dona Ana,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/16/1958,37 tons,NNSS Area 7
+175,Vesta,Hardtack II,Surface,surface-tower,US_ATMOSPHERIC,10/17/1958,24 tons,NNSS S9e
+176,Rio Arriba,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/18/1958,90 tons,NNSS Area 3
+178,Socorro,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/22/1958,6 kt,NNSS Area 7
+179,Wrangell,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/22/1958,115 tons,NNSS Area 5
+180,Oberon,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/22/1958,Zero,NNSS Area 8
+181,Rushmore,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/22/1958,188 tons,NNSS Area 9
+182,Catron,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/24/1958,21 tons,NNSS Area 3
+183,Juno,Hardtack II,Surface,surface-tower,US_ATMOSPHERIC,10/24/1958,1.7 tons,NNSS S9f
+184,Ceres,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/26/1958,0.7 tons,NNSS Area 8
+185,Sanford,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/26/1958,4.9 kt,NNSS Area 5
+186,De Baca,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/26/1958,2.2 kt,NNSS Area 7
+187,Chaves,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/27/1958,0.6 tons,NNSS Area 3
+189,Mazama,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/29/1958,Zero,NNSS Area 9
+190,Humboldt,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/29/1958,7.8 tons,NNSS Area 3
+191,Santa Fe,Hardtack II,Balloon,air-burst,US_ATMOSPHERIC,10/30/1958,1.3 kt,NNSS Area 7
+192,Ganymede,Hardtack II,Surface,surface-tower,US_ATMOSPHERIC,10/30/1958,Zero,NNSS S9g
+194,Titania,Hardtack II,Tower,surface-tower,US_ATMOSPHERIC,10/30/1958,0.2 tons,NNSS Area 8
+216,Danny Boy,Nougat,Crater,surface-tower,PRE_TREATY_CRATER,03/05/1962,430 tons,NNSS U18a
+227,Adobe,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,04/25/1962,190 kt,Christmas Island area
+228,Aztec,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,04/27/1962,410 kt,Christmas Island area
+230,Arkansas,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/02/1962,1.09 Mt,Christmas Island area
+231,Questa,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/04/1962,670 kt,Christmas Island area
+232,Frigate Bird,Dominic,Rocket,air-burst,US_ATMOSPHERIC,05/06/1962,"200 to 1,000 kt",Pacific
+234,Yukon,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/08/1962,100 kt,Christmas Island area
+235,Mesilla,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/09/1962,100 kt,Christmas Island area
+237,Muskegon,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/11/1962,50 kt,Christmas Island area
+238,Swordfish,Dominic,Underwater,underwater,UNDERWATER,05/11/1962,Low,Pacific
+239,Encino,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/12/1962,500 kt,Christmas Island area
+241,Swanee,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/14/1962,97 kt,Christmas Island area
+243,Chetco,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/19/1962,73 kt,Christmas Island area
+245,Tanana,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/25/1962,2.6 kt,Christmas Island area
+246,Nambe,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,05/27/1962,43 kt,Christmas Island area
+249,Alma,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/08/1962,782 kt,Christmas Island area
+250,Truckee,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/09/1962,210 kt,Christmas Island area
+251,Yeso,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/10/1962,3 Mt,Christmas Island area
+252,Harlem,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/12/1962,1.2 Mt,Christmas Island area
+254,Rinconada,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/15/1962,800 kt,Christmas Island area
+255,Dulce,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/17/1962,52 kt,Christmas Island area
+256,Petit,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/19/1962,2.2 kt,Christmas Island area
+258,Otowi,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/22/1962,81.5 kt,Christmas Island area
+259,Bighorn,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/27/1962,7.65 Mt,Christmas Island area
+262,Bluestone,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,06/30/1962,1.27 Mt,Christmas Island area
+264,Sedan,Storax,Crater,surface-tower,PRE_TREATY_CRATER,07/06/1962,104 kt,NNSS U10h
+265,Little Feller II,Sunbeam,Surface,surface-tower,US_ATMOSPHERIC,07/07/1962,Low,NNSS Area 18
+266,Starfish Prime,Fishbowl,Rocket,air-burst,US_ATMOSPHERIC,07/09/1962,1.4 Mt,Johnston Island area
+267,Sunset,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,07/10/1962,1 Mt,Christmas Island area
+268,Pamlico,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,07/11/1962,3.88 Mt,Christmas Island area
+269,Johnnie Boy,Sunbeam,Crater,surface-tower,PRE_TREATY_CRATER,07/11/1962,500 tons,NNSS U18j2
+271,Small Boy,Sunbeam,Tower,surface-tower,US_ATMOSPHERIC,07/14/1962,Low,NNSS Area 5
+272,Little Feller I,Sunbeam,Surface,surface-tower,US_ATMOSPHERIC,07/17/1962,Low,NNSS Area 18
+280,Androscoggin,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,10/02/1962,75 kt,Johnston Island area
+282,Bumping,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,10/06/1962,11.3 kt,Johnston Island area
+286,Chama,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,10/18/1962,1.59 Mt,Johnston Island area
+288,Checkmate,Fishbowl,Rocket,air-burst,US_ATMOSPHERIC,10/20/1962,Low,Johnston Island area
+289,Bluegill 3 Prime,Fishbowl,Rocket,air-burst,US_ATMOSPHERIC,10/26/1962,Submegaton,Johnston Island area
+291,Calamity,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,10/27/1962,800 kt,Johnston Island area
+292,Housatonic,Dominic,Airdrop,air-burst,US_ATMOSPHERIC,10/30/1962,8.3 Mt,Johnston Island area
+293,Kingfish,Fishbowl,Rocket,air-burst,US_ATMOSPHERIC,11/01/1962,Submegaton,Johnston Island area
+294,Tightrope,Fishbowl,Rocket,air-burst,US_ATMOSPHERIC,11/04/1962,Low,Johnston Island area
+319,Double Tracks,Roller Coaster,Surface,surface-tower,JOINT_US_UK_ATMOSPHERIC,05/15/1963,Zero,NTTR
+323,Clean Slate I,Roller Coaster,Surface,surface-tower,JOINT_US_UK_ATMOSPHERIC,05/25/1963,Zero,NTTR
+325,Clean Slate II,Roller Coaster,Surface,surface-tower,JOINT_US_UK_ATMOSPHERIC,05/31/1963,Zero,NTTR
+329,Clean Slate III,Roller Coaster,Surface,surface-tower,JOINT_US_UK_ATMOSPHERIC,06/09/1963,Zero,NTTR

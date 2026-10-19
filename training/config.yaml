@@ -56,12 +56,12 @@ phase1_spatial:
 phase2_motion:
   lora_rank: 16
   lora_alpha: 16
-  # Motion module temporal self-attention projections
+  # Motion module temporal self-attention projections (AGENTS.md P0.7)
   target_modules:
-    - "attn1.to_q"
-    - "attn1.to_k"
-    - "attn1.to_v"
-    - "attn1.to_out.0"
+    - ".*motion_modules.*attn1.to_q"
+    - ".*motion_modules.*attn1.to_k"
+    - ".*motion_modules.*attn1.to_v"
+    - ".*motion_modules.*attn1.to_out.0"
   learning_rate: 3.5e-5
   lr_scheduler: "cosine"
   lr_warmup_steps: 150
@@ -74,14 +74,14 @@ phase2_motion:
   validation_steps: 250
 
 # ========================================================
-# Evaluation and Verification Prompts
+# Evaluation and Verification Prompts (Canonical Schema)
 # ========================================================
 evaluation:
   fixed_seed: 19450716
   num_inference_steps: 25
   guidance_scale: 7.5
   test_prompts:
-    - "air-burst nuclear detonation, tactical-yield, desert-flats, early-fireball phase, high-contrast-monochrome archival footage, with diagnostic smoke-trails"
-    - "surface-tower nuclear detonation, intermediate-yield, desert-flats, expansion phase, high-contrast-monochrome archival footage, without smoke-trails"
-    - "underwater nuclear detonation, tactical-yield, tropical-ocean, expansion phase, colour-restored archival footage, without smoke-trails"
-    - "air-burst nuclear detonation, megaton-class, tropical-ocean, stabilized-cloud phase, colour-restored archival footage, without smoke-trails"
+    - "air-burst nuclear detonation, tactical-yield, desert-flats, day, early-fireball phase, black-and-white archival footage, with smoke-trails"
+    - "surface-tower nuclear detonation, intermediate-yield, desert-flats, dawn, expansion phase, black-and-white archival footage, without smoke-trails"
+    - "underwater nuclear detonation, tactical-yield, tropical-ocean, day, expansion phase, colour-restored archival footage, without smoke-trails"
+    - "surface-barge nuclear detonation, megaton-class, tropical-ocean, dawn, stabilized-cloud phase, colour-restored archival footage, without smoke-trails"
