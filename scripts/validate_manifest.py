@@ -29,7 +29,7 @@ if str(REPO_ROOT) not in sys.path:
 import schema
 
 
-def validate_manifest(manifest_path: str = "data/manifest.csv", require_latents: bool = False) -> bool:
+def validate_manifest(manifest_path: str = "data/manifest.csv", require_latents: bool = False, enforce_gate: bool = False) -> bool:
     full_path = REPO_ROOT / manifest_path
     if not full_path.exists():
         print(f"[FAIL] Manifest file does not exist: {full_path}")
@@ -155,6 +155,33 @@ def validate_manifest(manifest_path: str = "data/manifest.csv", require_latents:
     print(f"Valid Prompts (Schema):    {num_valid_prompts} / {total_rows}")
     print(f"Cached Latents (.pt):      {cached_latents} / {total_rows} ({cached_latents/max(1, total_rows):.1%})")
 
+    distinct_shots = df.groupby(['operation', 'shot_name']).ngroups
+    split_counts = df['split'].value_counts().to_dict()
+    val_count = split_counts.get('val', 0)
+    test_count = split_counts.get('test', 0)
+    latent_coverage = cached_latents / max(1, total_rows)
+
+    # Data Readiness Gate (AGENTS.md §4)
+    gate_failures = []
+    if distinct_shots < 30:
+        gate_failures.append(f"Distinct shots: {distinct_shots} / 30 required (AGENTS.md P0.1)")
+    if val_count == 0:
+        gate_failures.append("Validation split has 0 clips (AGENTS.md P0.4)")
+    if test_count == 0:
+        gate_failures.append("Test split has 0 clips (AGENTS.md P0.4)")
+    if cached_latents < total_rows:
+        gate_failures.append(f"Latent coverage: {cached_latents}/{total_rows} ({latent_coverage:.1%}) < 100% (AGENTS.md P0.3)")
+
+    gate_passed = len(gate_failures) == 0
+
+    print("\n--- Training Readiness Gate Audit (AGENTS.md §4) ---")
+    if gate_passed:
+        print("  [DATA GATE: PASSED] Ready for Phase 1/2 LoRA training.")
+    else:
+        print("  [DATA GATE: FAILED - Phase 1/2 LoRA training must remain BLOCKED]")
+        for gf in gate_failures:
+            print(f"    x {gf}")
+
     if errors:
         print(f"\n[FAIL] {len(errors)} validation error(s) detected:")
         for err in errors[:25]:
@@ -163,10 +190,16 @@ def validate_manifest(manifest_path: str = "data/manifest.csv", require_latents:
             print(f"  ... and {len(errors) - 25} more errors.")
         return False
 
-    print("\n[SUCCESS] Manifest validation passed completely!")
+    if enforce_gate and not gate_passed:
+        print("\n[FAIL] Manifest failed training readiness gate checks (--gate enforced).")
+        return False
+
+    print("\n[SUCCESS] Manifest schema & file integrity validated.")
     print("  + All prompt tokens strictly conform to schema.py")
     print("  + All paths use POSIX '/' formatting")
     print("  + Video files exist and match manifest entries")
+    if not gate_passed:
+        print("  ! NOTE: Data gate remains FAILED pending remote multi-reel download (1 shot currently).")
     return True
 
 
@@ -174,7 +207,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate manifest schema and integrity.")
     parser.add_argument("--manifest", default="data/manifest.csv", help="Path to manifest CSV")
     parser.add_argument("--require-latents", action="store_true", help="Enforce 100% latent coverage")
+    parser.add_argument("--gate", action="store_true", help="Enforce Stage 4 data readiness gate (>=30 shots, non-empty val/test, 100% latents)")
     args = parser.parse_args()
 
-    success = validate_manifest(args.manifest, require_latents=args.require_latents)
+    success = validate_manifest(args.manifest, require_latents=args.require_latents, enforce_gate=args.gate)
     sys.exit(0 if success else 1)

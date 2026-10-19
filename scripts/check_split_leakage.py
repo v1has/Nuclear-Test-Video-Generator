@@ -78,7 +78,8 @@ def check_splits_table(splits_path: str = "data/doe_nv209_atmospheric_splits.csv
 
 def check_manifest_splits(
     manifest_path: str = "data/manifest.csv",
-    splits_path: str = "data/doe_nv209_atmospheric_splits.csv"
+    splits_path: str = "data/doe_nv209_atmospheric_splits.csv",
+    enforce_gate: bool = False
 ) -> bool:
     full_manifest = REPO_ROOT / manifest_path
     if not full_manifest.exists():
@@ -127,8 +128,19 @@ def check_manifest_splits(
         if mismatch_count == 0:
             print("  [PASS] All manifest shots perfectly match their authoritative historical split.")
 
+    gate_failed = False
+    if len(val_shots) == 0 or len(test_shots) == 0:
+        print("  [DATA GATE: FAILED] Manifest has 0 val and/or 0 test shots (AGENTS.md P0.1, P0.4).")
+        gate_failed = True
+
     if not leaked:
-        print("  [PASS] Manifest split disjointness verified: Zero leakage across splits.")
+        if gate_failed:
+            print("  ! NOTE: Split disjointness is vacuously true because only 1 split exists in manifest.")
+        else:
+            print("  [PASS] Manifest split disjointness verified: Zero leakage across active splits.")
+            
+    if enforce_gate and gate_failed:
+        return False
     return not leaked
 
 
@@ -136,14 +148,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Check split disjointness and data leakage.")
     parser.add_argument("--splits", default="data/doe_nv209_atmospheric_splits.csv")
     parser.add_argument("--manifest", default="data/manifest.csv")
+    parser.add_argument("--gate", action="store_true", help="Enforce Stage 4 data readiness gate (non-empty val and test)")
     args = parser.parse_args()
 
     s1 = check_splits_table(args.splits)
-    s2 = check_manifest_splits(args.manifest, args.splits)
+    s2 = check_manifest_splits(args.manifest, args.splits, enforce_gate=args.gate)
 
     if s1 and s2:
         print("\n[SUCCESS] Split leakage audit passed: 0 leakage detected.")
         sys.exit(0)
     else:
-        print("\n[FAIL] Split leakage audit failed with errors.")
+        print("\n[FAIL] Split leakage audit failed or data gate not met.")
         sys.exit(1)

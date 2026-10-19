@@ -48,17 +48,17 @@ def ensure_pdf_downloaded():
         print("Download complete.")
 
 
-def calculate_lighting_and_terrain(location: str, lat: float, lon: float, time_gmt_str: str):
+def calculate_lighting_and_terrain(location: str, lat: float, lon: float, time_gmt_str: str, elevation_ft: int = 0):
     """
     Determine canonical terrain ('desert-flats', 'tropical-ocean', 'low-mountains')
-    and lighting ('day', 'night', 'dawn') from geographical coordinates and time.
+    and lighting ('day', 'night', 'dawn') from geographical coordinates, elevation, and time.
     """
     loc_lower = str(location).lower()
     
     # Terrain determination
-    if any(k in loc_lower for k in ["atoll", "island", "ocean", "epg", "bikini", "enewetak", "christmas", "johnston"]):
+    if any(k in loc_lower for k in ["atoll", "island", "ocean", "epg", "bikini", "enewetak", "christmas", "johnston", "pacific", "atlantic"]):
         terrain = "tropical-ocean"
-    elif any(k in loc_lower for k in ["mesa", "mountain"]):
+    elif any(k in loc_lower for k in ["mesa", "mountain", "ridge", "area 18", "area 8", "nttr", "alamogordo"]) or elevation_ft >= 4300:
         terrain = "low-mountains"
     else:
         terrain = "desert-flats"
@@ -171,9 +171,12 @@ def parse_doe_nv209():
 
             # Yield parsing
             approx_kt, yield_tier = schema.parse_raw_yield_to_tier(yield_raw)
-            
+
+            # Elevation parsing
+            elevation_ft = int(elev_str) if elev_str.lstrip("-").isdigit() else 0
+
             # Terrain and lighting
-            terrain, lighting = calculate_lighting_and_terrain(location, lat, lon, time_gmt)
+            terrain, lighting = calculate_lighting_and_terrain(location, lat, lon, time_gmt, elevation_ft)
             
             # Validate complete record against schema rules
             record = {
@@ -191,10 +194,9 @@ def parse_doe_nv209():
                 "yield_tier": yield_tier,
                 "terrain": terrain,
                 "lighting": lighting,
-                "setting": f"{terrain}-{lighting}" if terrain == "desert-flats" else terrain,
                 "latitude": lat,
                 "longitude": lon,
-                "elevation_ft": int(elev_str) if elev_str.lstrip("-").isdigit() else 0,
+                "elevation_ft": elevation_ft,
                 "burst_height_ft": burst_height,
                 "purpose": purpose,
                 "reconciliation_group": reconciliation_group

@@ -1,6 +1,6 @@
 # Stage 2: Atmospheric Shot Class-Count & Split Audit Report
 
-**Date Generated:** 2026-10-19 21:11:12  
+**Date Generated:** 2026-10-19 22:19:05  
 **Source Dataset:** [`data/doe_nv209_atmospheric_shots.csv`](file:///D:/Projects/Nuclear Test video generator/Nuclear-Test-Video-Generator/data/doe_nv209_atmospheric_shots.csv)  
 **Official Reference:** U.S. Department of Energy Report DOE/NV-209 Rev 16 (*United States Nuclear Tests: July 1945 through September 1992*)
 
@@ -71,8 +71,9 @@ tactical-yield        10     66    9
 ```text
 split           test  train  val
 terrain                         
-desert-flats      13     93   12
-tropical-ocean    11     79   12
+desert-flats       9     71    8
+low-mountains      4     17    2
+tropical-ocean    11     84   14
 ```
 
 ### 3.5 Lighting Distribution Across Stratified Splits

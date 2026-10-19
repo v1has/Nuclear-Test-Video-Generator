@@ -136,4 +136,6 @@ Audit reports are automatically saved to `data/synthetic_control_report.json`.
 
 ## 📜 License & Citation
 
-This codebase is licensed under the [MIT License](LICENSE). All historical video footage sourced from the public domain (US Department of Energy, National Nuclear Security Administration, Lawrence Livermore National Laboratory, and US National Archives).
+This codebase is licensed under the [MIT License](LICENSE). All historical video footage is sourced from official US Government agencies (US Department of Energy, National Nuclear Security Administration, Lawrence Livermore National Laboratory, and US National Archives) and is in the public domain under **17 U.S.C. § 105**.
+
+For an exhaustive legal analysis reconciling historical footage provenance against third-party platform licensing tags (e.g. Internet Archive CC BY-NC-ND uploads), see [`docs/LICENSING_RECONCILIATION.md`](docs/LICENSING_RECONCILIATION.md).

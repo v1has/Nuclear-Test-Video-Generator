@@ -16,6 +16,7 @@ import os
 import sys
 import numpy as np
 import pandas as pd
+import json
 
 # Ensure repository root is on sys.path
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -226,6 +227,13 @@ def run_audit():
     # Save stratified splits CSV
     df_strat.to_csv(SPLITS_CSV, index=False)
     print(f"[SUCCESS] Stratified splits saved to {SPLITS_CSV}")
+
+    # Update web/historical_shots.json with split column
+    web_json_path = os.path.join(REPO_ROOT, "web", "historical_shots.json")
+    records = df_strat.to_dict(orient="records")
+    with open(web_json_path, "w", encoding="utf-8") as f:
+        json.dump(records, f, indent=2)
+    print(f"[SUCCESS] Updated {web_json_path} with split assignments.")
 
     print("\n[3/3] Generating audit report...")
     generate_audit_report(df, df_naive, df_strat)

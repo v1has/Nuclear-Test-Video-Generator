@@ -238,7 +238,7 @@ function setupActionButtons() {
     const yields = ['sub-kiloton', 'tactical-yield', 'intermediate-yield', 'megaton-class'];
     const settings = ['desert-flats', 'tropical-ocean', 'low-mountains'];
     const phases = ['early-fireball', 'expansion', 'stabilized-cloud'];
-    const films = ['colour-restored', 'high-contrast-monochrome', 'faded-technicolor'];
+    const films = ['colour-restored', 'black-and-white', 'faded-technicolor'];
 
     state.burst = bursts[Math.floor(Math.random() * bursts.length)];
     state.yieldTier = yields[Math.floor(Math.random() * yields.length)];
@@ -309,8 +309,13 @@ function triggerSynthesisAnimation() {
 function updateView() {
   // Construct Conditioning Prompt using canonical schema
   const smokeStr = state.smoke ? 'with smoke-trails' : 'without smoke-trails';
-  const terrain = state.setting && state.setting.includes('ocean') ? 'tropical-ocean' : 'desert-flats';
-  const lighting = state.setting && state.setting.includes('night') ? 'night' : (state.setting && state.setting.includes('dawn') ? 'dawn' : 'day');
+  let terrain = 'desert-flats';
+  if (state.setting === 'tropical-ocean') {
+    terrain = 'tropical-ocean';
+  } else if (state.setting === 'low-mountains') {
+    terrain = 'low-mountains';
+  }
+  const lighting = state.lighting || (state.setting && state.setting.includes('night') ? 'night' : (state.setting && state.setting.includes('dawn') ? 'dawn' : 'day'));
   const prompt = `${state.burst} nuclear detonation, ${state.yieldTier}, ${terrain}, ${lighting}, ${state.phase} phase, ${state.film} archival footage, ${smokeStr}`;
   promptDisplay.textContent = prompt;
 

@@ -358,15 +358,15 @@ def evaluate_test_split(args):
     model.eval()
     
     df = pd.read_csv(MANIFEST_CSV)
-    test_df = df[df["split"] == "test"]
+    test_df = df[df["split"] == "test"].copy()
     if len(test_df) == 0:
-        print("Notice: No test split clips found in current manifest.csv. Evaluating on validation split.")
-        test_df = df[df["split"] == "val"]
-    if len(test_df) == 0:
-        print("Notice: No validation clips either. Using full manifest for smoke evaluation.")
-        test_df = df
+        raise ValueError(
+            "Test split has 0 clips in manifest.csv. "
+            "Fallback to validation or full manifest is strictly forbidden (AGENTS.md §1 Rule 1, P0.4). "
+            "Ingest and segment reels across splits before evaluating test performance."
+        )
         
-    print(f"Evaluating classifier on {len(test_df)} samples...")
+    print(f"Evaluating classifier on {len(test_df)} test samples...")
     test_ds = VideoClipDataset(test_df, target_size=112, is_train=False)
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False)
     

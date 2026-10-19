@@ -13,6 +13,9 @@ Fixes P0.3, P1 items, and Non-Negotiable Rules:
 """
 
 import os
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
 import sys
 import time
 import argparse
@@ -143,6 +146,8 @@ def main():
     parser.add_argument("--model", type=str, default="runwayml/stable-diffusion-v1-5", help="Hugging Face model ID for VAE")
     parser.add_argument("--device", type=str, default=None, help="Device to use ('cuda' or 'cpu')")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of clips to encode")
+    parser.add_argument("--all", action="store_true", default=True, help="Encode all clips in manifest (default)")
+    parser.add_argument("--assert-100", "--assert_100", action="store_true", help="Assert 100% latent coverage before completing")
     args = parser.parse_args()
     
     if not os.path.exists(MANIFEST_CSV):
@@ -169,6 +174,12 @@ def main():
     # Coverage check
     covered = updated_df["latent_path"].notna().sum()
     print(f"Latent Coverage: {covered} / {len(updated_df)} ({covered/len(updated_df)*100:.1f}%)")
+    
+    if args.assert_100 and covered < len(updated_df):
+        raise RuntimeError(
+            f"Latent coverage assertion failed: {covered}/{len(updated_df)} clips cached. "
+            f"100% coverage is required before training (AGENTS.md P0.3)."
+        )
 
 
 if __name__ == "__main__":

@@ -132,24 +132,43 @@ def crop_and_resize(frame, target_size=512):
 
 
 def match_source_to_shot(video_filename, shot_df, segments_df):
-    """Match video file to official shot record without fallback to iloc[0]."""
+    """
+    Match video file to official shot record without fallback to iloc[0].
+    Enforces segment confidence >= 0.8 and strictly rejects compilation reels
+    lacking verified shot boundaries in shot_segments.csv.
+    """
     fname_clean = os.path.basename(video_filename)
     
-    # 1. Match via segments_df
+    # 1. Match via segments_df with confidence check
     if not segments_df.empty:
         for _, s_row in segments_df.iterrows():
             aid = str(s_row.get("archive_id", "")).lower()
-            if aid and aid in fname_clean.lower():
+            conf = float(s_row.get("confidence", 0.0))
+            if conf >= 0.8 and aid and aid in fname_clean.lower():
                 op = s_row["operation"]
                 shot = s_row["shot_name"]
                 m = shot_df[(shot_df["operation"] == op) & (shot_df["shot_name"] == shot)]
                 if not m.empty:
                     return m.iloc[0], float(s_row.get("detonation_start_sec", 0.0))
 
+    # Reject compilation reels lacking explicit verified segments
+    compilation_markers = ["compilation", "tests", "nuclear test film", "operation plumbbob", "operation hardtack", "composite"]
+    if any(marker in fname_clean.lower() for marker in compilation_markers):
+        # Unless a specific shot name is uniquely present in the filename
+        matched_shots = []
+        for _, row in shot_df.iterrows():
+            s_name = str(row["shot_name"]).lower()
+            if len(s_name) > 3 and s_name in fname_clean.lower():
+                matched_shots.append(row)
+        if len(matched_shots) != 1:
+            print(f"Rejecting compilation reel '{fname_clean}': lacks verified shot segments in shot_segments.csv.")
+            return None, None
+        return matched_shots[0], None
+
     # 2. Match directly by shot name
     for _, row in shot_df.iterrows():
         s_name = str(row["shot_name"]).lower()
-        if len(s_name) > 2 and s_name in fname_clean.lower():
+        if len(s_name) > 3 and s_name in fname_clean.lower():
             return row, None
             
     # 3. Match by operation + unique match

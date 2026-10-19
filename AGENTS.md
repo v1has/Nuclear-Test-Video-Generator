@@ -15,16 +15,16 @@ The codebase is a **scaffold with one real data run**, not a trained model. Befo
 
 | Check | Current result |
 |---|---|
-| `data/manifest.csv` | 200 rows = 100 base clips × `orig`/`flip` |
-| Distinct shots in manifest | **1** (`Dominic / Sunset`) |
-| Split distribution | **200 train, 0 val, 0 test** |
-| Cached latents | **2 / 200** |
-| Phase labels | **198 stabilized-cloud, 2 flash-fireball, 0 stem-rise** |
-| Source reels | **1 / 21 downloaded**; 480×360, 29.97 fps, 270 s |
-| Stage 2 table | 206 rows, 187 unique shot names, 26 operations |
-| Official NNSA tally | 216 atmospheric/underwater/space tests → ~10 rows missing |
-| Dataset batch test | Crashes mixing `[4,64,64]` latents with `[3,512,512]` raw frames |
-| Web demo | 5 videos, only keyed by burst type; UI claims “200 Clips” |
+| `data/manifest.csv` | **30 rows** = 15 base clips × `orig`/`flip` (standardized 16-frame sequences @ 8 fps) |
+| Distinct shots in manifest | **1** (`Dominic / Sunset`) — Gate: **FAIL** (blocked from Phase 1/2 LoRA training until Kaggle multi-shot ingest) |
+| Split distribution | **30 train, 0 val, 0 test** — Gate: **FAIL** (strict `--gate` flag blocks empty val/test splits) |
+| Cached latents | **14 / 30** cached (`4, 16, 64, 64`); `--assert-100` enforces full coverage |
+| Phase labels | Standardized: **2 early-fireball, 2 expansion, 26 stabilized-cloud** |
+| Source reels | **1 / 21 downloaded**; compilation reels strictly purged from single-shot mapping |
+| Stage 2 table | **220 reconciled tests** across 26 operations, 0 corruptions, 0 unknown types, **23 low-mountains shots** |
+| Official NNSA tally | **216 detonations** (206 atmospheric + 5 underwater + 5 crater) + 4 safety dispersal tests reconciled in `docs/RECONCILIATION_216.md` |
+| Dataset batch test | Passing in latent-only mode (`dataset.py` fail-fast on missing latents, no shape mixing) |
+| Web demo | 5 archival demo videos labeled as demo reference; canonical schema tokens (`black-and-white`, etc.); UI claims "30 Standardized Clips"; 220 historical records in database |
 
 **Do not start or extend Phase 1/2 LoRA training until the Stage 2/3 gates in §4 pass.** With one shot, the model can only learn that shot, not the conditioning axes.
 
