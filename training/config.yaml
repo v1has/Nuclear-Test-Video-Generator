@@ -1,0 +1,87 @@
+# training/config.yaml
+# Configuration for Two-Phase LoRA Training (SD 1.5 + AnimateDiff Motion Module)
+
+project:
+  name: "nuclear-test-video-generator"
+  output_dir: "checkpoints"
+  logging_dir: "logs"
+  report_to: "tensorboard" # or "wandb"
+  seed: 42
+
+models:
+  pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5"
+  motion_adapter_id: "guoyww/animatediff-motion-adapter"
+  vae_subfolder: "vae"
+  unet_subfolder: "unet"
+  tokenizer_subfolder: "tokenizer"
+  text_encoder_subfolder: "text_encoder"
+
+data:
+  manifest_path: "data/manifest.csv"
+  splits_path: "data/doe_nv209_atmospheric_splits.csv"
+  latents_dir: "latents"
+  resolution: 512
+  num_frames: 16
+  fps: 8
+  validation_split: "val"
+
+# ========================================================
+# Phase 1: Spatial LoRA Configuration (Static Frames)
+# Teaches visual appearance, burst geometry, and historical film grain
+# ========================================================
+phase1_spatial:
+  lora_rank: 16
+  lora_alpha: 16
+  target_modules:
+    - "to_k"
+    - "to_v"
+    - "to_q"
+    - "to_out.0"
+  learning_rate: 1.0e-4
+  lr_scheduler: "constant_with_warmup"
+  lr_warmup_steps: 100
+  train_batch_size: 2
+  gradient_accumulation_steps: 2
+  max_train_steps: 2000
+  gradient_checkpointing: true
+  mixed_precision: "fp16"
+  save_steps: 250
+  validation_steps: 250
+
+# ========================================================
+# Phase 2: Motion LoRA Configuration (16-Frame Sequences)
+# Freezes spatial UNet (with Spatial LoRA merged/active)
+# Teaches fluid expansion, shockwave speed, and temporal dynamics
+# ========================================================
+phase2_motion:
+  lora_rank: 16
+  lora_alpha: 16
+  # Motion module temporal self-attention projections
+  target_modules:
+    - "attn1.to_q"
+    - "attn1.to_k"
+    - "attn1.to_v"
+    - "attn1.to_out.0"
+  learning_rate: 3.5e-5
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 150
+  train_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_train_steps: 3000
+  gradient_checkpointing: true
+  mixed_precision: "fp16"
+  save_steps: 250
+  validation_steps: 250
+
+# ========================================================
+# Evaluation and Verification Prompts
+# ========================================================
+evaluation:
+  fixed_seed: 19450716
+  num_inference_steps: 25
+  guidance_scale: 7.5
+  test_prompts:
+    - "air-burst nuclear detonation, tactical-yield, desert-flats, early-fireball phase, high-contrast-monochrome archival footage, with diagnostic smoke-trails"
+    - "surface-tower nuclear detonation, intermediate-yield, desert-flats, expansion phase, high-contrast-monochrome archival footage, without smoke-trails"
+    - "underwater nuclear detonation, tactical-yield, tropical-ocean, expansion phase, colour-restored archival footage, without smoke-trails"
+    - "air-burst nuclear detonation, megaton-class, tropical-ocean, stabilized-cloud phase, colour-restored archival footage, without smoke-trails"

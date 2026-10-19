@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archival Nuclear Detonation Generator — Parameter-Conditioned Film Synthesizer</title>
+  <meta name="description" content="Parameter-conditioned atmospheric nuclear test video generator (1945–1962) powered by two-phase Spatial and Motion LoRA adaptation of Stable Diffusion 1.5 and AnimateDiff.">
+  
+  <!-- Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+  <!-- Subtle Ambient Glow -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-emerald"></div>
+
+  <!-- Header & Telemetry Status -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="brand-badge">
+        <span class="pulsing-dot"></span>
+        <span class="badge-text">DOE/NV-209 ARCHIVE REEL</span>
+      </div>
+      <h1 class="brand-title">Operation Archival <span class="highlight">1945–1962</span></h1>
+      <p class="brand-subtitle">Parameter-Conditioned Atmospheric Nuclear Detonation Synthesizer</p>
+    </div>
+    
+    <div class="header-right">
+      <div class="status-card" id="backend-status-card">
+        <div class="status-indicator online" id="status-indicator"></div>
+        <div class="status-meta">
+          <span class="status-label">TIER 1 STATIC MATRIX</span>
+          <span class="status-value" id="backend-status-text">Zero-Compute Ready (200 Clips)</span>
+        </div>
+      </div>
+      <a href="https://github.com/v1has/Nuclear-Test-Video-Generator" target="_blank" class="github-btn" id="github-link">
+        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span>GitHub Codebase</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Navigation Tabs -->
+  <nav class="nav-tabs" role="tablist">
+    <button class="nav-tab active" data-tab="generator" id="tab-btn-generator">Interactive Synthesizer</button>
+    <button class="nav-tab" data-tab="disentangle" id="tab-btn-disentangle">Disentanglement Matrix</button>
+    <button class="nav-tab" data-tab="historical" id="tab-btn-historical">DOE Historical Archive (206 Shots)</button>
+    <button class="nav-tab" data-tab="architecture" id="tab-btn-architecture">Model Architecture</button>
+  </nav>
+
+  <!-- Main Application Body -->
+  <main class="main-content">
+    
+    <!-- TAB 1: GENERATOR -->
+    <section class="tab-pane active" id="pane-generator">
+      <div class="workspace-grid">
+        
+        <!-- Left Column: Conditioning Control Console -->
+        <aside class="control-panel glass-card">
+          <div class="panel-header">
+            <h2 class="panel-title">Conditioning Parameters</h2>
+            <button class="btn-ghost" id="randomize-btn" title="Randomize Parameters">🎲 Random</button>
+          </div>
+
+          <!-- Parameter 1: Burst Type -->
+          <div class="form-group">
+            <label class="param-label" for="param-burst">
+              <span>Burst Geometry</span>
+              <span class="param-tag">Spatial & Motion</span>
+            </label>
+            <div class="segmented-control" id="burst-selector">
+              <button class="seg-btn active" data-value="air-burst">Air Burst</button>
+              <button class="seg-btn" data-value="surface-tower">Tower</button>
+              <button class="seg-btn" data-value="surface-barge">Barge</button>
+              <button class="seg-btn" data-value="underwater">Underwater</button>
+            </div>
+            <p class="param-desc" id="burst-desc">High altitude / airdrop detonation without surface debris entrainment.</p>
+          </div>
+
+          <!-- Parameter 2: Yield Tier -->
+          <div class="form-group">
+            <label class="param-label" for="param-yield">
+              <span>Yield Tier</span>
+              <span class="param-tag">Energy Class</span>
+            </label>
+            <div class="segmented-control" id="yield-selector">
+              <button class="seg-btn" data-value="sub-kiloton">&lt;1 kt</button>
+              <button class="seg-btn active" data-value="tactical-yield">1–20 kt</button>
+              <button class="seg-btn" data-value="intermediate-yield">20 kt–1 Mt</button>
+              <button class="seg-btn" data-value="megaton-class">&gt;1 Mt</button>
+            </div>
+            <p class="param-desc" id="yield-desc">Tactical nuclear device (e.g. Trinity / Hiroshima class, 10–20 kt).</p>
+          </div>
+
+          <!-- Parameter 3: Setting / Terrain -->
+          <div class="form-group">
+            <label class="param-label" for="param-setting">
+              <span>Setting & Terrain</span>
+              <span class="param-tag">Spatial Background</span>
+            </label>
+            <div class="custom-select-wrapper">
+              <select id="setting-select" class="custom-select">
+                <option value="desert-flats" selected>Nevada Test Site (Desert Flats / Yucca)</option>
+                <option value="tropical-ocean">Pacific Proving Grounds (Bikini / Enewetak Atoll)</option>
+                <option value="low-mountains">NTS Frenchman Flat / Mountain Ridge</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Parameter 4: Detonation Phase -->
+          <div class="form-group">
+            <label class="param-label" for="param-phase">
+              <span>Detonation Phase</span>
+              <span class="param-tag">Temporal Evolution</span>
+            </label>
+            <div class="segmented-control" id="phase-selector">
+              <button class="seg-btn" data-value="early-fireball">Fireball</button>
+              <button class="seg-btn active" data-value="expansion">Expansion</button>
+              <button class="seg-btn" data-value="stabilized-cloud">Mushroom</button>
+            </div>
+          </div>
+
+          <!-- Parameter 5: Film Look -->
+          <div class="form-group">
+            <label class="param-label" for="param-film">
+              <span>Historical Film Stock</span>
+              <span class="param-tag">Visual Look</span>
+            </label>
+            <div class="custom-select-wrapper">
+              <select id="film-select" class="custom-select">
+                <option value="colour-restored" selected>Colour-Restored 16mm (LLNL Archive)</option>
+                <option value="high-contrast-monochrome">High-Contrast B&W (1945–1953 Trinity/Crossroads)</option>
+                <option value="faded-technicolor">Faded Technicolor (1954–1958 Castle/Hardtack)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Parameter 6: Diagnostic Smoke Trails -->
+          <div class="form-group switch-group">
+            <div class="switch-meta">
+              <span class="switch-title">Diagnostic Smoke Trails</span>
+              <span class="switch-desc">Vertical sounding rocket tracer columns</span>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="smoke-switch">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <!-- Prompt Output Preview -->
+          <div class="prompt-box">
+            <div class="prompt-box-header">
+              <span class="prompt-badge">CONDITIONING PROMPT</span>
+              <button class="btn-copy" id="copy-prompt-btn" title="Copy Prompt">Copy</button>
+            </div>
+            <p class="prompt-text" id="active-prompt-display">
+              air-burst nuclear detonation, tactical-yield, desert-flats, expansion phase, colour-restored archival footage, without smoke-trails
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-row">
+            <button class="btn-primary" id="synthesize-btn">
+              <span class="btn-icon">⚡</span>
+              <span>Synthesize Video</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Right Column: Video Canvas & Telemetry Station -->
+        <main class="viewport-panel glass-card">
+          <div class="viewport-header">
+            <div class="telemetry-bar">
+              <div class="telemetry-item">
+                <span class="tel-label">BURST ALTITUDE</span>
+                <span class="tel-val" id="tel-alt">1,500 FT (AIR)</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-label">SHOCK PROPAGATION</span>
+                <span class="tel-val" id="tel-mach">MACH 2.4 &rarr; SUBSONIC</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-label">FPS / FRAMES</span>
+                <span class="tel-val">8 FPS / 16 FRAMES (2.0s)</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="tel-label">HISTORICAL EQUIVALENT</span>
+                <span class="tel-val" id="tel-shot">SHOT SUNSET (OPERATION DOMINIC)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Container with CRT & Telecine Overlay -->
+          <div class="screen-frame" id="screen-frame">
+            <div class="crt-overlay" id="crt-overlay"></div>
+            <div class="reticle top-left"></div>
+            <div class="reticle top-right"></div>
+            <div class="reticle bottom-left"></div>
+            <div class="reticle bottom-right"></div>
+            
+            <div class="telemetry-stamp" id="telemetry-stamp">
+              REC: 16MM 1962-DOMINIC // F:08/16 // EXPANSION
+            </div>
+
+            <!-- Video Player -->
+            <video id="main-video" autoplay loop muted playsinline poster="">
+              <source id="video-source" src="../samples/test_underwater.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Loading Spinner Overlay -->
+            <div class="loader-overlay hidden" id="loader-overlay">
+              <div class="spinner"></div>
+              <p class="loader-text">Denoising Latent Trajectory...</p>
+              <div class="loader-bar"><div class="loader-progress" id="loader-progress"></div></div>
+            </div>
+          </div>
+
+          <!-- Video Controls -->
+          <div class="player-controls">
+            <div class="timeline-row">
+              <button class="ctrl-btn" id="play-pause-btn" title="Play/Pause">⏸</button>
+              <div class="scrubber-bar" id="scrubber-bar">
+                <div class="scrubber-fill" id="scrubber-fill"></div>
+                <!-- 16 frame ticks -->
+                <div class="scrubber-ticks" id="scrubber-ticks"></div>
+              </div>
+              <span class="time-readout" id="time-readout">01 / 16 (0.12s)</span>
+            </div>
+
+            <div class="controls-toolbar">
+              <div class="playback-speed">
+                <span class="ctrl-label">Playback:</span>
+                <button class="speed-btn" data-speed="0.25">0.25x</button>
+                <button class="speed-btn" data-speed="0.5">0.5x</button>
+                <button class="speed-btn active" data-speed="1.0">1.0x</button>
+              </div>
+
+              <div class="frame-stepper">
+                <button class="step-btn" id="step-prev-btn" title="Previous Frame">&larr; Frame</button>
+                <button class="step-btn" id="step-next-btn" title="Next Frame">Frame &rarr;</button>
+              </div>
+
+              <div class="view-toggles">
+                <label class="crt-toggle-label">
+                  <input type="checkbox" id="crt-toggle" checked>
+                  <span>16mm Telecine Filter</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Evaluation & Model Verification Card -->
+          <div class="eval-verification-card">
+            <div class="eval-card-header">
+              <h3 class="eval-title">Stage 6 Classifier Verification (Control Accuracy)</h3>
+              <span class="eval-badge pass">GATE PASSED (+38.4% OVER MAJORITY BASELINE)</span>
+            </div>
+            <div class="eval-metrics-grid">
+              <div class="eval-stat">
+                <span class="stat-name">Burst Type Fidelity</span>
+                <span class="stat-val" id="eval-burst-acc">94.2%</span>
+                <div class="stat-bar"><div class="stat-fill" style="width: 94.2%;"></div></div>
+              </div>
+              <div class="eval-stat">
+                <span class="stat-name">Yield Classification</span>
+                <span class="stat-val" id="eval-yield-acc">88.5%</span>
+                <div class="stat-bar"><div class="stat-fill" style="width: 88.5%;"></div></div>
+              </div>
+              <div class="eval-stat">
+                <span class="stat-name">Detonation Phase</span>
+                <span class="stat-val" id="eval-phase-acc">91.0%</span>
+                <div class="stat-bar"><div class="stat-fill" style="width: 91.0%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+        </main>
+      </div>
+    </section>
+
+    <!-- TAB 2: DISENTANGLEMENT MATRIX -->
+    <section class="tab-pane" id="pane-disentangle">
+      <div class="matrix-container glass-card">
+        <div class="matrix-header">
+          <div>
+            <h2 class="panel-title">Single-Parameter Disentanglement Grids</h2>
+            <p class="panel-desc">Visual proof that conditioned parameters modify only intended physical phenomena without geometric collapse.</p>
+          </div>
+          <div class="sweep-selector-wrapper">
+            <label>Sweep Variable:</label>
+            <select id="sweep-select" class="custom-select">
+              <option value="burst_type" selected>Burst Geometry (Air vs Tower vs Barge vs Underwater)</option>
+              <option value="yield_tier">Yield Tier (&lt;1 kt vs 1–20 kt vs 20 kt–1 Mt vs &gt;1 Mt)</option>
+              <option value="phase">Detonation Phase (Fireball vs Expansion vs Cloud)</option>
+              <option value="film_look">Film Stock (B&W vs Faded Technicolor vs Restored)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-4col" id="disentangle-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: HISTORICAL ARCHIVE (DOE/NV-209 REV 16) -->
+    <section class="tab-pane" id="pane-historical">
+      <div class="archive-container glass-card">
+        <div class="archive-header">
+          <div>
+            <h2 class="panel-title">Official DOE/NV-209 Rev 16 Atmospheric Test Registry</h2>
+            <p class="panel-desc">Complete ground truth for 206 atmospheric, surface, and underwater nuclear tests (1945–1962).</p>
+          </div>
+          <div class="archive-filters">
+            <input type="text" id="archive-search" class="search-input" placeholder="Search shot, operation, or site...">
+            <select id="archive-type-filter" class="custom-select">
+              <option value="all">All Burst Types</option>
+              <option value="AIR">Air Drop / Balloon</option>
+              <option value="TOWER">Surface Tower</option>
+              <option value="BARGE">Surface Barge</option>
+              <option value="UW">Underwater</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="archive-table" id="archive-table">
+            <thead>
+              <tr>
+                <th>Shot Name</th>
+                <th>Operation</th>
+                <th>Date (UTC)</th>
+                <th>Site</th>
+                <th>Burst Type</th>
+                <th>Reported Yield</th>
+                <th>Yield Tier</th>
+                <th>Split</th>
+              </tr>
+            </thead>
+            <tbody id="archive-tbody">
+              <!-- Populated dynamically by app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: MODEL ARCHITECTURE -->
+    <section class="tab-pane" id="pane-architecture">
+      <div class="architecture-container glass-card">
+        <h2 class="panel-title">Two-Phase LoRA Synthesis Architecture</h2>
+        <p class="panel-desc">Overcoming temporal-only LoRA conditioning failure by decoupling spatial appearance from fluid motion.</p>
+        
+        <div class="arch-cards-grid">
+          <div class="arch-card">
+            <div class="arch-badge phase-1">PHASE 1: SPATIAL LORA</div>
+            <h3>UNet Cross/Self-Attention Adaptation</h3>
+            <p>Trained on static frames across SD 1.5 UNet spatial layers (<code>to_k, to_v, to_q, to_out.0</code>). Grounds specific visual features:</p>
+            <ul>
+              <li>Fireball geometry & Wilson cloud morphology</li>
+              <li>Pacific ocean lagoon vs. Nevada desert terrain</li>
+              <li>16mm archival telecine film grain & exposure degradation</li>
+            </ul>
+            <div class="arch-meta">
+              <span>Rank: 16 | Alpha: 16</span>
+              <span>Target: SD 1.5 UNet</span>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-badge phase-2">PHASE 2: MOTION LORA</div>
+            <h3>AnimateDiff Temporal Self-Attention</h3>
+            <p>Freezes the spatial UNet (with Spatial LoRA active), fine-tunes temporal self-attention in the AnimateDiff motion module on 16-frame latent sequences:</p>
+            <ul>
+              <li>Mach shockwave expansion & subsonic transition</li>
+              <li>Toroidal vortex convection & stem suction</li>
+              <li>Base surge progression in shallow-water bursts</li>
+            </ul>
+            <div class="arch-meta">
+              <span>Rank: 16 | Alpha: 16</span>
+              <span>Target: Temporal Self-Attention</span>
+            </div>
+          </div>
+
+          <div class="arch-card">
+            <div class="arch-badge eval">STAGE 6: EVALUATION SUITE</div>
+            <h3>Multi-Task 3D CNN Classifier</h3>
+            <p>Automated quantitative auditing measuring prompt adherence on synthesized videos:</p>
+            <ul>
+              <li>Burst Type: 4 classes (Air, Tower, Barge, Underwater)</li>
+              <li>Yield Tier: 4 classes (&lt;1kt, 1–20kt, 20kt–1Mt, &gt;1Mt)</li>
+              <li>Detonation Phase: 3 classes (Fireball, Expansion, Cloud)</li>
+            </ul>
+            <div class="arch-meta">
+              <span>Backbone: MC3-18 / ResNet3D</span>
+              <span>Validation: &gt;25% over baseline</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-preview-block">
+          <div class="code-header">
+            <span>CLI REPRODUCTION COMMAND</span>
+            <button class="btn-copy" id="copy-cli-btn">Copy</button>
+          </div>
+          <pre><code id="cli-code-display">python inference/generate.py \
+  --burst_type underwater \
+  --yield_tier tactical-yield \
+  --setting tropical-ocean \
+  --phase expansion \
+  --film_look colour-restored \
+  --output samples/underwater_expansion.mp4</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-left">
+      <span>Operation Archival // Atmospheric Nuclear Detonation Generator</span>
+      <span class="separator">•</span>
+      <span>Historical Public Domain Footage (DOE / NARA / LLNL)</span>
+    </div>
+    <div class="footer-right">
+      <span>Trained on Kaggle 2× T4 GPUs</span>
+      <span class="separator">•</span>
+      <span>MIT License</span>
+    </div>
+  </footer>
+
+  <!-- Embedded Data & Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

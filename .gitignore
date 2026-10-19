@@ -216,3 +216,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific: Video assets, weights, latents, and raw PDFs
+raw_videos/
+processed_clips/
+latents/
+samples/
+checkpoints/
+models/
+web/videos/
+data/*.pdf
+*.pt
+*.pth
+*.npy
+*.safetensors
+*.bin
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.webm
+web/matrix/*.mp4
+web/matrix/*.webm
+web/matrix/*.gif
