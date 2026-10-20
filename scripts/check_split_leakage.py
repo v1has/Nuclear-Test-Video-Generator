@@ -11,7 +11,7 @@ Audits:
      Train ∩ Val = ∅
      Train ∩ Test = ∅
      Val ∩ Test = ∅
-   - Checks that all 220 tests have valid, unique split assignments.
+   - Checks that all 211 training tests have valid, unique split assignments.
    - Audits per-class distribution across splits.
 2. Clip Manifest (data/manifest.csv):
    - Asserts clip-to-shot consistency and disjointness across splits in the manifest.
@@ -148,7 +148,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Check split disjointness and data leakage.")
     parser.add_argument("--splits", default="data/doe_nv209_atmospheric_splits.csv")
     parser.add_argument("--manifest", default="data/manifest.csv")
-    parser.add_argument("--gate", action="store_true", help="Enforce Stage 4 data readiness gate (non-empty val and test)")
+    parser.add_argument("--gate", dest="gate", action="store_true", default=True,
+                        help="Enforce Stage 4 data readiness gate (non-empty val and test). Default: ON.")
+    parser.add_argument("--no-gate", dest="gate", action="store_false",
+                        help="Check leakage only; do not fail on empty val/test.")
     args = parser.parse_args()
 
     s1 = check_splits_table(args.splits)

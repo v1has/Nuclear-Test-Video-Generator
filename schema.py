@@ -30,8 +30,7 @@ YIELD_TIERS = [
 
 TERRAINS = [
     "desert-flats",
-    "tropical-ocean",
-    "low-mountains"
+    "tropical-ocean"
 ]
 
 LIGHTINGS = [

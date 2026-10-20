@@ -68,7 +68,7 @@ def detect_scenes(video_path, threshold=27.0):
         video = open_video(video_path)
         scene_manager = SceneManager()
         scene_manager.add_detector(ContentDetector(threshold=threshold, min_scene_len=15))
-        scene_manager.detect_scenes(video)
+        scene_manager.detect_scenes(video, frame_skip=3)
         scenes = scene_manager.get_scene_list()
         if not scenes:
             cap = cv2.VideoCapture(video_path)
@@ -76,7 +76,7 @@ def detect_scenes(video_path, threshold=27.0):
             total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
             cap.release()
             return [(0.0, total_frames / fps)]
-        return [(s[0].get_seconds(), s[1].get_seconds()) for s in scenes]
+        return [(getattr(s[0], 'seconds', s[0].get_seconds()), getattr(s[1], 'seconds', s[1].get_seconds())) for s in scenes]
     except Exception as e:
         print(f"Warning: Scene detection failed for {video_path}: {e}")
         cap = cv2.VideoCapture(video_path)
@@ -184,12 +184,47 @@ def match_source_to_shot(video_filename, shot_df, segments_df):
     return None, None
 
 
+def find_segments_for_video(video_filename, segments_df, shot_df):
+    """Find all verified segments in shot_segments.csv for a given video reel."""
+    fname_clean = os.path.basename(video_filename).lower()
+    matches = []
+    if not segments_df.empty:
+        for _, s_row in segments_df.iterrows():
+            aid = str(s_row.get("archive_id", "")).lower()
+            conf = float(s_row.get("confidence", 0.0))
+            if conf >= 0.8 and aid and aid in fname_clean:
+                op = s_row["operation"]
+                shot = s_row["shot_name"]
+                m = shot_df[(shot_df["operation"] == op) & (shot_df["shot_name"] == shot)]
+                if not m.empty:
+                    matches.append({
+                        "shot_match": m.iloc[0],
+                        "start_sec": float(s_row.get("start_sec", 0.0)),
+                        "end_sec": float(s_row.get("end_sec", 999999.0)),
+                        "detonation_start_sec": float(s_row.get("detonation_start_sec", 0.0)),
+                    })
+    return matches
+
+
 def process_video_file(video_path, output_dir, shot_df, segments_df, resolution=512, augment=True):
-    """Process an archival video file into standardized 16-frame clips."""
-    shot_match, detonation_sec_known = match_source_to_shot(video_path, shot_df, segments_df)
-    if shot_match is None:
-        print(f"Skipping {video_path}: No matching historical shot in database.")
-        return []
+    """Process an archival video file into standardized 16-frame clips across all verified segments."""
+    video_basename = os.path.basename(video_path)
+    
+    # 1. Check for verified multi-shot segments in shot_segments.csv
+    verified_segments = find_segments_for_video(video_path, segments_df, shot_df)
+    
+    # 2. Fall back to single-shot reel matching if no explicit segments
+    if not verified_segments:
+        shot_match, detonation_sec_known = match_source_to_shot(video_path, shot_df, segments_df)
+        if shot_match is None:
+            print(f"Skipping {video_basename}: No verified segments or single-shot match in registry.")
+            return []
+        verified_segments = [{
+            "shot_match": shot_match,
+            "start_sec": 0.0,
+            "end_sec": 999999.0,
+            "detonation_start_sec": detonation_sec_known or 0.0
+        }]
 
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -198,175 +233,190 @@ def process_video_file(video_path, output_dir, shot_df, segments_df, resolution=
 
     src_fps = cap.get(cv2.CAP_PROP_FPS) or 29.97
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    video_basename = os.path.basename(video_path)
 
     if total_frames < 30:
         cap.release()
         return []
 
-    detonation_start_sec = detonation_sec_known
-    if detonation_start_sec is None or detonation_start_sec <= 0.0:
-        detonation_start_sec = find_detonation_flash_sec(video_path)
-
-    operation = shot_match["operation"]
-    shot_name = shot_match["shot_name"]
-    burst_type = shot_match["burst_type"]
-    yield_tier = shot_match["yield_tier"]
-    terrain = shot_match["terrain"]
-    lighting = shot_match["lighting"]
-    split = shot_match.get("split", "train")
-
     scenes = detect_scenes(video_path)
     frame_step = max(1, int(round(src_fps / TARGET_FPS)))
+    all_clip_records = []
 
-    clip_records = []
-    phase_counts = {"early-fireball": 0, "expansion": 0, "stabilized-cloud": 0}
-    clip_counter = 0
+    for seg_idx, seg in enumerate(verified_segments):
+        shot_match = seg["shot_match"]
+        seg_start = seg["start_sec"]
+        seg_end = seg["end_sec"]
+        detonation_start_sec = seg["detonation_start_sec"]
 
-    for scene_idx, (s_start, s_end) in enumerate(scenes):
-        scene_dur = s_end - s_start
-        if scene_dur < 2.0:
-            continue
+        if detonation_start_sec <= 0.0:
+            detonation_start_sec = find_detonation_flash_sec(video_path)
 
-        cap.set(cv2.CAP_PROP_POS_FRAMES, int(s_start * src_fps))
-        raw_frames = []
-        for _ in range(int(scene_dur * src_fps)):
-            ret, frame = cap.read()
-            if not ret or frame is None:
-                break
-            raw_frames.append(frame)
+        operation = shot_match["operation"]
+        shot_name = shot_match["shot_name"]
+        burst_type = shot_match["burst_type"]
+        yield_tier = shot_match["yield_tier"]
+        terrain = shot_match["terrain"]
+        lighting = shot_match["lighting"]
+        split = shot_match.get("split", "train")
 
-        if len(raw_frames) < frame_step * CLIP_FRAMES:
-            continue
+        clip_records = []
+        phase_counts = {"early-fireball": 0, "expansion": 0, "stabilized-cloud": 0}
+        clip_counter = 0
 
-        subsampled = raw_frames[::frame_step]
-        window_idx = 0
+        print(f"Processing segment {seg_idx+1}/{len(verified_segments)}: {operation}/{shot_name} [{seg_start:.1f}s - {seg_end:.1f}s], det_flash: {detonation_start_sec:.1f}s")
 
-        while window_idx + CLIP_FRAMES <= len(subsampled):
-            window_frames = subsampled[window_idx:window_idx + CLIP_FRAMES]
-            clip_time_sec = s_start + (window_idx * frame_step) / src_fps
-            offset_sec = clip_time_sec - detonation_start_sec
-
-            # Skip pre-detonation countdown footage
-            if detonation_start_sec > 0.0 and offset_sec < -0.5:
-                window_idx += CLIP_FRAMES // 2
+        for scene_idx, (s_start, s_end) in enumerate(scenes):
+            # Restrict scenes to this segment window
+            if s_end <= seg_start or s_start >= seg_end:
+                continue
+            bounded_start = max(s_start, seg_start)
+            bounded_end = min(s_end, seg_end)
+            scene_dur = bounded_end - bounded_start
+            if scene_dur < 2.0:
                 continue
 
-            # Assign physical detonation phase by elapsed time (AGENTS.md P0.6)
-            if offset_sec <= 0.5:
-                phase = "early-fireball"
-            elif offset_sec <= 2.5:
-                phase = "expansion"
-            else:
-                phase = "stabilized-cloud"
+            cap.set(cv2.CAP_PROP_POS_FRAMES, int(bounded_start * src_fps))
+            raw_frames = []
+            for _ in range(int(scene_dur * src_fps)):
+                ret, frame = cap.read()
+                if not ret or frame is None:
+                    break
+                raw_frames.append(frame)
 
-            # Check phase cap to ensure class balance
-            if phase_counts[phase] >= MAX_CLIPS_PER_PHASE:
-                window_idx += CLIP_FRAMES // 2
+            if len(raw_frames) < frame_step * CLIP_FRAMES:
                 continue
 
-            processed_frames = []
-            is_color_votes = []
-            motion_deltas = []
+            subsampled = raw_frames[::frame_step]
+            window_idx = 0
 
-            for f in window_frames:
-                proc = crop_and_resize(f, resolution)
-                processed_frames.append(proc)
-                b, g, r = cv2.split(proc)
-                channel_var = (np.mean(np.abs(r.astype(np.float32) - g.astype(np.float32))) +
-                               np.mean(np.abs(r.astype(np.float32) - b.astype(np.float32)))) / 2.0
-                is_color_votes.append(channel_var > 7.0)
+            while window_idx + CLIP_FRAMES <= len(subsampled):
+                window_frames = subsampled[window_idx:window_idx + CLIP_FRAMES]
+                clip_time_sec = bounded_start + (window_idx * frame_step) / src_fps
+                offset_sec = clip_time_sec - detonation_start_sec
 
-            for i in range(len(processed_frames) - 1):
-                g1 = cv2.cvtColor(processed_frames[i], cv2.COLOR_BGR2GRAY)
-                g2 = cv2.cvtColor(processed_frames[i+1], cv2.COLOR_BGR2GRAY)
-                motion_deltas.append(float(np.mean(cv2.absdiff(g1, g2))))
+                # Skip pre-detonation countdown footage
+                if detonation_start_sec > 0.0 and offset_sec < -0.5:
+                    window_idx += CLIP_FRAMES // 2
+                    continue
 
-            avg_motion = float(np.mean(motion_deltas))
-            if avg_motion < 0.6:  # Skip static frames
+                # Assign physical detonation phase by elapsed time (AGENTS.md P0.6)
+                if offset_sec <= 0.5:
+                    phase = "early-fireball"
+                elif offset_sec <= 2.5:
+                    phase = "expansion"
+                else:
+                    phase = "stabilized-cloud"
+
+                # Check phase cap to ensure class balance
+                if phase_counts[phase] >= MAX_CLIPS_PER_PHASE:
+                    window_idx += CLIP_FRAMES // 2
+                    continue
+
+                processed_frames = []
+                is_color_votes = []
+                motion_deltas = []
+
+                for f in window_frames:
+                    proc = crop_and_resize(f, resolution)
+                    processed_frames.append(proc)
+                    b, g, r = cv2.split(proc)
+                    channel_var = (np.mean(np.abs(r.astype(np.float32) - g.astype(np.float32))) +
+                                   np.mean(np.abs(r.astype(np.float32) - b.astype(np.float32)))) / 2.0
+                    is_color_votes.append(channel_var > 7.0)
+
+                for i in range(len(processed_frames) - 1):
+                    g1 = cv2.cvtColor(processed_frames[i], cv2.COLOR_BGR2GRAY)
+                    g2 = cv2.cvtColor(processed_frames[i+1], cv2.COLOR_BGR2GRAY)
+                    motion_deltas.append(float(np.mean(cv2.absdiff(g1, g2))))
+
+                avg_motion = float(np.mean(motion_deltas))
+                if avg_motion < 0.6:  # Skip static frames
+                    window_idx += CLIP_FRAMES // 2
+                    continue
+
+                film_look = "colour-restored" if (sum(is_color_votes) / len(is_color_votes)) > 0.6 else "black-and-white"
+
+                # Smoke trails detection (vertical diagnostic lines in initial frame)
+                edges = cv2.Canny(cv2.cvtColor(processed_frames[0], cv2.COLOR_BGR2GRAY), 50, 150)
+                lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=40, minLineLength=30, maxLineGap=10)
+                has_smoke_trails = False
+                if lines is not None:
+                    vert_count = sum(
+                        1 for l in lines if len(l.flatten()) >= 4 and
+                        75.0 <= np.abs(np.arctan2(l.flatten()[3] - l.flatten()[1], l.flatten()[2] - l.flatten()[0]) * 180.0 / np.pi) <= 105.0
+                    )
+                    has_smoke_trails = vert_count >= 3
+
+                clip_counter += 1
+                phase_counts[phase] += 1
+                
+                # Unique clip prefix incorporating source video identity
+                source_id = os.path.splitext(video_basename)[0][:20].replace(" ", "_")
+                base_clip_id = f"{operation}_{shot_name}_{source_id}_c{clip_counter:04d}"
+
+                variants = [("orig", processed_frames)]
+                if augment:
+                    flipped = [cv2.flip(f, 1) for f in processed_frames]
+                    variants.append(("flip", flipped))
+
+                for var_name, var_frames in variants:
+                    clip_id = f"{base_clip_id}_{var_name}"
+                    out_filename = f"{clip_id}.mp4"
+                    out_path = os.path.join(output_dir, out_filename)
+                    rel_clip_path = f"processed_clips/{out_filename}"  # Strict POSIX '/'
+
+                    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+                    writer = cv2.VideoWriter(out_path, fourcc, TARGET_FPS, (resolution, resolution))
+                    for frame in var_frames:
+                        writer.write(frame)
+                    writer.release()
+
+                    # Format standardized prompt using canonical schema
+                    prompt = schema.format_prompt(
+                        burst_type=burst_type,
+                        yield_tier=yield_tier,
+                        terrain=terrain,
+                        lighting=lighting,
+                        phase=phase,
+                        film_look=film_look,
+                        smoke_trails=has_smoke_trails
+                    )
+                    schema.validate_prompt(prompt)
+
+                    clip_records.append({
+                        "clip_id": clip_id,
+                        "operation": operation,
+                        "shot_name": shot_name,
+                        "split": split,
+                        "burst_type": burst_type,
+                        "yield_tier": yield_tier,
+                        "terrain": terrain,
+                        "lighting": lighting,
+                        "setting": f"{terrain}-{lighting}" if terrain == "desert-flats" else terrain,
+                        "phase": phase,
+                        "film_look": film_look,
+                        "smoke_trails": has_smoke_trails,
+                        "prompt": prompt,
+                        "clip_path": rel_clip_path,
+                        "latent_path": None,
+                        "start_sec": round(clip_time_sec, 2),
+                        "duration_sec": 2.0,
+                        "detonation_start_sec": round(detonation_start_sec, 2),
+                        "offset_sec": round(offset_sec, 2),
+                        "resolution": resolution,
+                        "fps": TARGET_FPS,
+                        "variant": var_name,
+                        "source_reel": video_basename
+                    })
+
                 window_idx += CLIP_FRAMES // 2
-                continue
 
-            film_look = "colour-restored" if (sum(is_color_votes) / len(is_color_votes)) > 0.6 else "black-and-white"
-
-            # Smoke trails detection (vertical diagnostic lines in initial frame)
-            edges = cv2.Canny(cv2.cvtColor(processed_frames[0], cv2.COLOR_BGR2GRAY), 50, 150)
-            lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=40, minLineLength=30, maxLineGap=10)
-            has_smoke_trails = False
-            if lines is not None:
-                vert_count = sum(
-                    1 for l in lines if len(l.flatten()) >= 4 and
-                    75.0 <= np.abs(np.arctan2(l.flatten()[3] - l.flatten()[1], l.flatten()[2] - l.flatten()[0]) * 180.0 / np.pi) <= 105.0
-                )
-                has_smoke_trails = vert_count >= 3
-
-            clip_counter += 1
-            phase_counts[phase] += 1
-            
-            # Unique clip prefix incorporating source video identity
-            source_id = os.path.splitext(video_basename)[0][:20].replace(" ", "_")
-            base_clip_id = f"{operation}_{shot_name}_{source_id}_c{clip_counter:04d}"
-
-            variants = [("orig", processed_frames)]
-            if augment:
-                flipped = [cv2.flip(f, 1) for f in processed_frames]
-                variants.append(("flip", flipped))
-
-            for var_name, var_frames in variants:
-                clip_id = f"{base_clip_id}_{var_name}"
-                out_filename = f"{clip_id}.mp4"
-                out_path = os.path.join(output_dir, out_filename)
-                rel_clip_path = f"processed_clips/{out_filename}"  # Strict POSIX '/'
-
-                fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-                writer = cv2.VideoWriter(out_path, fourcc, TARGET_FPS, (resolution, resolution))
-                for frame in var_frames:
-                    writer.write(frame)
-                writer.release()
-
-                # Format standardized prompt using canonical schema
-                prompt = schema.format_prompt(
-                    burst_type=burst_type,
-                    yield_tier=yield_tier,
-                    terrain=terrain,
-                    lighting=lighting,
-                    phase=phase,
-                    film_look=film_look,
-                    smoke_trails=has_smoke_trails
-                )
-                schema.validate_prompt(prompt)
-
-                clip_records.append({
-                    "clip_id": clip_id,
-                    "operation": operation,
-                    "shot_name": shot_name,
-                    "split": split,
-                    "burst_type": burst_type,
-                    "yield_tier": yield_tier,
-                    "terrain": terrain,
-                    "lighting": lighting,
-                    "setting": f"{terrain}-{lighting}" if terrain == "desert-flats" else terrain,
-                    "phase": phase,
-                    "film_look": film_look,
-                    "smoke_trails": has_smoke_trails,
-                    "prompt": prompt,
-                    "clip_path": rel_clip_path,
-                    "latent_path": None,
-                    "start_sec": round(clip_time_sec, 2),
-                    "duration_sec": 2.0,
-                    "detonation_start_sec": round(detonation_start_sec, 2),
-                    "offset_sec": round(offset_sec, 2),
-                    "resolution": resolution,
-                    "fps": TARGET_FPS,
-                    "variant": var_name,
-                    "source_reel": video_basename
-                })
-
-            window_idx += CLIP_FRAMES // 2
+        all_clip_records.extend(clip_records)
+        print(f"  -> Segment yielded {len(clip_records)} clips (Phases: {phase_counts})")
 
     cap.release()
-    print(f"Extracted {len(clip_records)} clips from {video_basename} (Phases: {phase_counts})")
-    return clip_records
+    print(f"Total extracted {len(all_clip_records)} clips from {video_basename}")
+    return all_clip_records
 
 
 def run_preprocessing(input_dir, output_dir, resolution=512, single_file=None, rebuild=False):

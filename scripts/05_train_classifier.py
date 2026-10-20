@@ -276,12 +276,14 @@ def train_classifier(args):
     if len(train_df) == 0:
         raise ValueError("Train split has 0 rows in manifest.csv. Refusing to proceed.")
         
-    # If val split is empty, check if test exists, or fail fast
+    # A held-out validation split is mandatory. Never self-validate on a train
+    # tail or borrow the test split: both leak evaluation signal (AGENTS.md P0.4).
     if len(val_df) == 0:
-        val_df = df[df["split"] == "test"]
-    if len(val_df) == 0:
-        print("Notice: Manifest currently has only 'train' split clips. Using train subset for self-validation smoke testing.")
-        val_df = train_df.tail(max(2, len(train_df) // 4))
+        raise ValueError(
+            "Validation split has 0 rows in manifest.csv. "
+            "Falling back to test or a train tail is strictly forbidden (AGENTS.md §1 Rule 1, P0.4). "
+            "Ingest and segment additional shots before training."
+        )
         
     print(f"Train samples: {len(train_df)} | Validation samples: {len(val_df)}")
     

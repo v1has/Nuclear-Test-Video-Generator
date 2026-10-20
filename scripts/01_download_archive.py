@@ -292,10 +292,106 @@ def download_file(url, target_path):
     return True
 
 
+def download_sources(df=None, ids=None, limit=None, force=False, verify_only=False):
+    """Download video sources recorded in data/sources.csv."""
+    os.makedirs(RAW_VIDEOS_DIR, exist_ok=True)
+    if df is None:
+        if not os.path.exists(SOURCES_CSV):
+            print(f"Sources manifest {SOURCES_CSV} not found. Syncing metadata first...")
+            df = sync_sources_metadata()
+        else:
+            df = pd.read_csv(SOURCES_CSV)
+
+    targets = df.copy()
+    if ids:
+        if isinstance(ids, str):
+            id_list = [i.strip() for i in ids.split(",") if i.strip()]
+        else:
+            id_list = list(ids)
+        targets = targets[targets["archive_id"].isin(id_list)]
+        print(f"Filtered to {len(targets)} requested archive IDs: {id_list}")
+    else:
+        print(f"Processing {len(targets)} sources from {SOURCES_CSV}...")
+
+    if limit:
+        targets = targets.head(limit)
+        print(f"Limiting to first {limit} targets.")
+
+    if len(targets) == 0:
+        print("No matching sources found to download.")
+        return df
+
+    success_count = 0
+    for idx, row in targets.iterrows():
+        archive_id = row["archive_id"]
+        title = row.get("title", archive_id)
+        download_url = row["download_url"]
+        local_rel_path = row["local_path"]
+        full_local_path = os.path.join(PROJECT_ROOT, local_rel_path) if not os.path.isabs(local_rel_path) else local_rel_path
+        size_mb = row.get("size_mb", 0)
+
+        print(f"\n[{archive_id}] {title}")
+        print(f"  Target: {local_rel_path} ({size_mb} MB)")
+
+        already_downloaded = False
+        if os.path.exists(full_local_path) and os.path.getsize(full_local_path) > 1024:
+            cap = cv2.VideoCapture(full_local_path)
+            if cap.isOpened() and cap.get(cv2.CAP_PROP_FRAME_COUNT) > 0:
+                already_downloaded = True
+            cap.release()
+
+        if already_downloaded and not force:
+            print(f"  [OK] Already downloaded and verified: {local_rel_path}")
+            df.loc[df["archive_id"] == archive_id, "downloaded"] = True
+            success_count += 1
+            continue
+
+        if verify_only:
+            print(f"  [MISSING/INVALID] Not downloaded or corrupted: {local_rel_path}")
+            df.loc[df["archive_id"] == archive_id, "downloaded"] = False
+            continue
+
+        print(f"  Downloading from: {download_url}")
+        ok = download_file(download_url, full_local_path)
+        if ok:
+            print(f"  [SUCCESS] Successfully downloaded to {local_rel_path}")
+            df.loc[df["archive_id"] == archive_id, "downloaded"] = True
+            success_count += 1
+        else:
+            print(f"  [FAIL] Download failed for {archive_id}")
+            df.loc[df["archive_id"] == archive_id, "downloaded"] = False
+
+    # Ensure all local paths are POSIX '/'
+    df["local_path"] = df["local_path"].apply(lambda p: str(p).replace("\\", "/") if pd.notna(p) else p)
+    df.to_csv(SOURCES_CSV, index=False)
+    print("\n" + "=" * 65)
+    print(f"Download complete: {success_count}/{len(targets)} verified.")
+    print(f"Total downloaded in manifest: {df['downloaded'].sum()} / {len(df)}")
+    print(f"Updated {SOURCES_CSV}")
+    print("=" * 65)
+    return df
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Stage 1: Archival Video Cataloguer and Downloader")
-    parser.add_argument("--sync-metadata", action="store_true", help="Sync metadata from archive.org")
+    parser.add_argument("--sync-metadata", action="store_true", help="Sync metadata from archive.org to data/sources.csv")
+    parser.add_argument("--download", action="store_true", help="Download videos specified in data/sources.csv")
+    parser.add_argument("--all", action="store_true", help="Download all sources listed in data/sources.csv")
+    parser.add_argument("--ids", type=str, default=None, help="Comma-separated archive IDs to download")
+    parser.add_argument("--limit", type=int, default=None, help="Maximum number of videos to download")
+    parser.add_argument("--force", action="store_true", help="Force re-download even if local file exists")
+    parser.add_argument("--verify", action="store_true", help="Verify integrity of existing downloaded files")
     args = parser.parse_args()
-    
-    if args.sync_metadata or len(sys.argv) == 1:
+
+    if args.sync_metadata:
         sync_sources_metadata()
+
+    if args.download or args.all or args.ids or args.verify:
+        download_sources(
+            ids=args.ids,
+            limit=args.limit,
+            force=args.force,
+            verify_only=args.verify,
+        )
+    elif not args.sync_metadata:
+        parser.print_help()

@@ -207,7 +207,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate manifest schema and integrity.")
     parser.add_argument("--manifest", default="data/manifest.csv", help="Path to manifest CSV")
     parser.add_argument("--require-latents", action="store_true", help="Enforce 100% latent coverage")
-    parser.add_argument("--gate", action="store_true", help="Enforce Stage 4 data readiness gate (>=30 shots, non-empty val/test, 100% latents)")
+    parser.add_argument("--gate", dest="gate", action="store_true", default=True,
+                        help="Enforce Stage 4 data readiness gate (>=30 shots, non-empty val/test, 100%% latents). Default: ON.")
+    parser.add_argument("--no-gate", dest="gate", action="store_false",
+                        help="Report the data gate but do not fail the process (schema/integrity checks only).")
     args = parser.parse_args()
 
     success = validate_manifest(args.manifest, require_latents=args.require_latents, enforce_gate=args.gate)

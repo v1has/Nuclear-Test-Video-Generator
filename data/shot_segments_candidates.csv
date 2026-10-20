@@ -1,0 +1,3 @@
+archive_id,operation,shot_name,start_sec,end_sec,detonation_start_sec,confidence,label_source,reviewer
+gov.doe.0800002,Crossroads,Able,20.15,237.93,117.93,1.0,PySceneDetect+OCR_exact_token,auto_segmenter
+gov.doe.0800002,Crossroads,Baker,1646.38,1887.85,1767.85,1.0,PySceneDetect+OCR_exact_token,auto_segmenter

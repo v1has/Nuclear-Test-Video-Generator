@@ -54,11 +54,20 @@ $$206 \text{ (US Atmospheric)} + 4 \text{ (Joint US-UK Atmospheric)} + 5 \text{ 
 
 ## 3. Dataset Coverage in this Repository
 
-Rather than arbitrarily excluding borderline events, our Stage 2 pipeline parses and includes **all 220** above-ground, surface, atmospheric, underwater, and crater tests:
+The alias registry in `data/doe_shot_aliases.csv` tracks all **220** events so the historical reconciliation remains auditable:
 
 - **206** US Atmospheric Tests (`reconciliation_group = US_ATMOSPHERIC`)
 - **5** Underwater Tests (`reconciliation_group = UNDERWATER`)
 - **5** Pre-LTBT Crater Tests (`reconciliation_group = PRE_TREATY_CRATER`)
 - **4** Joint US-UK Surface Tests (`reconciliation_group = JOINT_US_UK_ATMOSPHERIC`)
 
-Each row in `data/doe_shot_aliases.csv` and `data/doe_nv209_atmospheric_shots.csv` is cross-referenced with official test numbers (1 through 329), ensuring exact metadata fidelity and zero corruption.
+The **training corpus** (`data/doe_nv209_atmospheric_shots.csv`) is restricted to the **211** events that map cleanly onto the four canonical visual burst types (`air-burst`, `surface-tower`, `surface-barge`, `underwater`):
+
+- 206 US atmospheric + 5 underwater = **211 training-eligible detonations**.
+
+Excluded from training (but retained in the registry and audit trail):
+
+1. **5 pre-treaty crater events** (`Jangle Uncle`, `Teapot ESS`, `Nougat Danny Boy`, `Storax Sedan`, `Sunbeam Johnnie Boy`). These are nuclear detonations and are part of the official 216 tally, but they are crater/ejecta events, not one of the four burst types. They must not be relabeled as `surface-tower`.
+2. **4 Roller Coaster events** (`Double Tracks`, `Clean Slate I/II/III`). These were high-explosive plutonium-dispersal safety tests with **no nuclear yield**; they are not nuclear detonations and are excluded entirely.
+
+Each row in the alias registry is cross-referenced with official test numbers (1 through 329), ensuring exact metadata fidelity and zero corruption.

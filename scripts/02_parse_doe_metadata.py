@@ -12,7 +12,8 @@ Fixes all P0.2 and P0.5 blockers:
 - Strips footnote / note text cleanly
 - Maps operations strictly by official test-number ranges (no footnote pollution)
 - Canonical burst types without collapsing barge into surface-tower (surface-barge preserved)
-- Includes Trinity (#1) and reconciles against the official 216 tally
+- Includes Trinity (#1), reconciles against the official 216 tally, and emits the
+  211 training-eligible detonations (206 atmospheric + 5 underwater)
 - Validates all generated records against schema.py
 """
 
@@ -39,6 +40,14 @@ WEB_JSON = os.path.join(REPO_ROOT, "web", "historical_shots.json")
 
 PDF_URL = "https://www.nnss.gov/docs/docs_libraryhrc/DOE_NV-209_Rev16.pdf"
 
+# Training corpus eligibility. The official 216 tally includes 5 pre-treaty crater
+# events, but they are not one of the four canonical visual burst types. The 4
+# Joint US-UK Roller Coaster events were high-explosive plutonium-dispersal safety
+# tests, not nuclear detonations. Both groups stay in the alias registry for
+# provenance but are excluded from the training corpus (documented in docs/).
+TRAINING_GROUPS = {"US_ATMOSPHERIC", "UNDERWATER"}
+EXCLUDED_GROUPS = {"PRE_TREATY_CRATER", "JOINT_US_UK_ATMOSPHERIC"}
+
 
 def ensure_pdf_downloaded():
     """Ensure the official DOE NV-209 Rev 16 PDF is present."""
@@ -50,16 +59,19 @@ def ensure_pdf_downloaded():
 
 def calculate_lighting_and_terrain(location: str, lat: float, lon: float, time_gmt_str: str, elevation_ft: int = 0):
     """
-    Determine canonical terrain ('desert-flats', 'tropical-ocean', 'low-mountains')
-    and lighting ('day', 'night', 'dawn') from geographical coordinates, elevation, and time.
+    Determine canonical terrain ('desert-flats', 'tropical-ocean')
+    and lighting ('day', 'night', 'dawn') from geographical coordinates and time.
+
+    Note: every atmospheric/underwater test in DOE/NV-209 was conducted either at
+    the Nevada desert test sites or over a Pacific atoll. There is no verified
+    "low-mountains" atmospheric footage in the official registry, so the class was
+    removed from schema.py rather than filled with heuristic desert relabels.
     """
     loc_lower = str(location).lower()
     
     # Terrain determination
     if any(k in loc_lower for k in ["atoll", "island", "ocean", "epg", "bikini", "enewetak", "christmas", "johnston", "pacific", "atlantic"]):
         terrain = "tropical-ocean"
-    elif any(k in loc_lower for k in ["mesa", "mountain", "ridge", "area 18", "area 8", "nttr", "alamogordo"]) or elevation_ft >= 4300:
-        terrain = "low-mountains"
     else:
         terrain = "desert-flats"
 
@@ -135,6 +147,11 @@ def parse_doe_nv209():
                 continue
                 
             alias_info = alias_dict[test_num]
+            
+            # Exclude non-training groups: crater events (not a canonical burst
+            # type) and Roller Coaster (HE dispersal tests, no nuclear yield).
+            if str(alias_info["reconciliation_group"]) not in TRAINING_GROUPS:
+                continue
             
             time_gmt = m_r.group(1)
             lat = float(m_r.group(2).replace("--", "-"))

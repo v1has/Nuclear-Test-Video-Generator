@@ -36,8 +36,12 @@ from training.dataset import NuclearTestDataset
 
 def test_empty_split_fail_fast(manifest_path="data/manifest.csv"):
     print("\n--- Test 1: Empty-Split Fail-Fast Assertion (P0.4) ---")
-    # Manifest currently only has 'train' clips
-    for empty_split in ["val", "test"]:
+    import pandas as pd
+    df = pd.read_csv(REPO_ROOT / manifest_path)
+    empty_splits = [s for s in ["train", "val", "test"] if s not in df["split"].values]
+    if not empty_splits:
+        empty_splits = ["test_empty_split"]
+    for empty_split in empty_splits:
         try:
             ds = NuclearTestDataset(manifest_path=manifest_path, split=empty_split, load_latents=False)
             print(f"  [FAIL] Expected ValueError for empty split '{empty_split}', but dataset initialized with {len(ds)} items!")
@@ -51,25 +55,30 @@ def test_empty_split_fail_fast(manifest_path="data/manifest.csv"):
 def test_raw_frames_batching(manifest_path="data/manifest.csv", batch_size=2):
     print("\n--- Test 2: Raw Frames Batching (load_latents=False) ---")
 
-    # Spatial mode
-    print("  Testing Spatial Mode...")
-    ds_spatial = NuclearTestDataset(manifest_path=manifest_path, split="train", mode="spatial", load_latents=False)
-    loader_spatial = DataLoader(ds_spatial, batch_size=batch_size, shuffle=False)
-    batch_spatial = next(iter(loader_spatial))
-    spatial_data = batch_spatial["data"]
-    spatial_tokens = batch_spatial["input_ids"]
+    # Spatial mode across active splits
+    import pandas as pd
+    df = pd.read_csv(REPO_ROOT / manifest_path)
+    active_splits = [s for s in ["train", "val"] if s in df["split"].values]
 
-    expected_spatial = (batch_size, 3, 512, 512)
-    if tuple(spatial_data.shape) != expected_spatial:
-        print(f"  [FAIL] Spatial shape {tuple(spatial_data.shape)} != expected {expected_spatial}")
-        return False
-    if tuple(spatial_tokens.shape) != (batch_size, 77):
-        print(f"  [FAIL] Token shape {tuple(spatial_tokens.shape)} != expected ({batch_size}, 77)")
-        return False
-    print(f"  [PASS] Spatial raw batch shape: {tuple(spatial_data.shape)}, Tokens: {tuple(spatial_tokens.shape)}")
+    for split in active_splits:
+        print(f"  Testing Spatial Mode ({split} split)...")
+        ds_spatial = NuclearTestDataset(manifest_path=manifest_path, split=split, mode="spatial", load_latents=False)
+        loader_spatial = DataLoader(ds_spatial, batch_size=batch_size, shuffle=False)
+        batch_spatial = next(iter(loader_spatial))
+        spatial_data = batch_spatial["data"]
+        spatial_tokens = batch_spatial["input_ids"]
 
-    # Motion mode
-    print("  Testing Motion Mode...")
+        expected_spatial = (batch_size, 3, 512, 512)
+        if tuple(spatial_data.shape) != expected_spatial:
+            print(f"  [FAIL] Spatial shape {tuple(spatial_data.shape)} != expected {expected_spatial}")
+            return False
+        if tuple(spatial_tokens.shape) != (batch_size, 77):
+            print(f"  [FAIL] Token shape {tuple(spatial_tokens.shape)} != expected ({batch_size}, 77)")
+            return False
+        print(f"  [PASS] Spatial raw batch shape ({split}): {tuple(spatial_data.shape)}, Tokens: {tuple(spatial_tokens.shape)}")
+
+    # Motion mode (train split)
+    print("  Testing Motion Mode (train split)...")
     ds_motion = NuclearTestDataset(manifest_path=manifest_path, split="train", mode="motion", load_latents=False)
     loader_motion = DataLoader(ds_motion, batch_size=batch_size, shuffle=False)
     batch_motion = next(iter(loader_motion))

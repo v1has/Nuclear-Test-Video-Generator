@@ -236,7 +236,7 @@ function setupActionButtons() {
   document.getElementById('randomize-btn').addEventListener('click', () => {
     const bursts = ['air-burst', 'surface-tower', 'surface-barge', 'underwater'];
     const yields = ['sub-kiloton', 'tactical-yield', 'intermediate-yield', 'megaton-class'];
-    const settings = ['desert-flats', 'tropical-ocean', 'low-mountains'];
+    const settings = ['desert-flats', 'tropical-ocean'];
     const phases = ['early-fireball', 'expansion', 'stabilized-cloud'];
     const films = ['colour-restored', 'black-and-white', 'faded-technicolor'];
 
@@ -312,8 +312,6 @@ function updateView() {
   let terrain = 'desert-flats';
   if (state.setting === 'tropical-ocean') {
     terrain = 'tropical-ocean';
-  } else if (state.setting === 'low-mountains') {
-    terrain = 'low-mountains';
   }
   const lighting = state.lighting || (state.setting && state.setting.includes('night') ? 'night' : (state.setting && state.setting.includes('dawn') ? 'dawn' : 'day'));
   const prompt = `${state.burst} nuclear detonation, ${state.yieldTier}, ${terrain}, ${lighting}, ${state.phase} phase, ${state.film} archival footage, ${smokeStr}`;

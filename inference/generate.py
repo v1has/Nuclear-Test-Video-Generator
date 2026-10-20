@@ -5,7 +5,7 @@ Inference generation engine for parameter-controlled archival nuclear test video
 Synthesizes 16-frame, 512x512 historical video clips conditioned on:
 - burst_type (air-burst, surface-tower, surface-barge, underwater)
 - yield_tier (sub-kiloton, tactical-yield, intermediate-yield, megaton-class)
-- terrain (desert-flats, tropical-ocean, low-mountains)
+- terrain (desert-flats, tropical-ocean)
 - lighting (day, night, dawn)
 - phase (early-fireball, expansion, stabilized-cloud)
 - film_look (black-and-white, faded-technicolor, colour-restored)

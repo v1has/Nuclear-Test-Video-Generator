@@ -11,20 +11,21 @@ Project: parameter-controlled archival nuclear-test video generator (SD 1.5 + An
 
 The codebase is a **scaffold with one real data run**, not a trained model. Before changing architecture or claiming results, verify the data stage.
 
-### Verified state (2026-10-19)
+### Verified state (2026-10-20)
 
 | Check | Current result |
 |---|---|
 | `data/manifest.csv` | **30 rows** = 15 base clips × `orig`/`flip` (standardized 16-frame sequences @ 8 fps) |
-| Distinct shots in manifest | **1** (`Dominic / Sunset`) — Gate: **FAIL** (blocked from Phase 1/2 LoRA training until Kaggle multi-shot ingest) |
-| Split distribution | **30 train, 0 val, 0 test** — Gate: **FAIL** (strict `--gate` flag blocks empty val/test splits) |
-| Cached latents | **14 / 30** cached (`4, 16, 64, 64`); `--assert-100` enforces full coverage |
-| Phase labels | Standardized: **2 early-fireball, 2 expansion, 26 stabilized-cloud** |
-| Source reels | **1 / 21 downloaded**; compilation reels strictly purged from single-shot mapping |
-| Stage 2 table | **220 reconciled tests** across 26 operations, 0 corruptions, 0 unknown types, **23 low-mountains shots** |
-| Official NNSA tally | **216 detonations** (206 atmospheric + 5 underwater + 5 crater) + 4 safety dispersal tests reconciled in `docs/RECONCILIATION_216.md` |
-| Dataset batch test | Passing in latent-only mode (`dataset.py` fail-fast on missing latents, no shape mixing) |
-| Web demo | 5 archival demo videos labeled as demo reference; canonical schema tokens (`black-and-white`, etc.); UI claims "30 Standardized Clips"; 220 historical records in database |
+| Distinct shots in manifest | **1** (`Dominic / Sunset`) — Gate: **FAIL** (blocked from Phase 1/2 LoRA training until multi-shot ingest) |
+| Split distribution | **30 train, 0 val, 0 test** — Gate: **FAIL** (`validate_manifest.py` and `check_split_leakage.py` enforce the gate by default) |
+| Cached latents | **14 / 30** cached (`4, 16, 64, 64`); `04 --assert-100` is now the default and fails on partial coverage |
+| Phase labels | **2 early-fireball, 4 expansion, 24 stabilized-cloud** |
+| Source reels | **1 downloaded of 27 registry rows**; compilation reels are rejected unless a verified `shot_segments.csv` row exists |
+| Stage 2 table | **211 training-eligible detonations** (206 atmospheric + 5 underwater) across 24 operations; the 220-row alias registry also tracks 5 craters + 4 Roller Coaster safety tests, which are excluded from training |
+| Official NNSA tally | **216 detonations** (206 atmospheric + 5 underwater + 5 crater); dataset corpus = **211** because crater events are not one of the four canonical burst types. Roller Coaster (4) are non-nuclear HE dispersal tests and are excluded entirely. |
+| Terrain classes | **2 only**: `desert-flats`, `tropical-ocean`. `low-mountains` was removed because no atmospheric test in the registry is at a mountain site (all are NTS/NTTR desert or Pacific atolls). |
+| Dataset batch test | Raw-frame and synthetic multi-split smoke tests pass; latent-only mode correctly fails while coverage is 14/30 (no shape mixing) |
+| Web demo | 5 archival demo videos labeled as demo reference; canonical schema tokens (`black-and-white`, etc.); UI claims "30 Standardized Clips"; 211 training records in the archive database |
 
 **Do not start or extend Phase 1/2 LoRA training until the Stage 2/3 gates in §4 pass.** With one shot, the model can only learn that shot, not the conditioning axes.
 
@@ -101,7 +102,7 @@ Training therefore uses tokens inference cannot request. Also, `02:154–171` co
 Recommended canonical schema (confirm before a breaking migration):
 - `burst_type`: `air-burst`, `surface-tower`, `surface-barge`, `underwater`
 - `yield_tier`: `sub-kiloton`, `tactical-yield`, `intermediate-yield`, `megaton-class`
-- `terrain`: `desert-flats`, `tropical-ocean`, `low-mountains`
+- `terrain`: `desert-flats`, `tropical-ocean` (low-mountains removed: no supporting footage)
 - `lighting`: `day`, `night`, `dawn`
 - `phase`: `early-fireball`, `expansion`, `stabilized-cloud`
 - `film_look`: `black-and-white`, `faded-technicolor`, `colour-restored`
@@ -264,19 +265,16 @@ File: `scripts/01_download_archive.py:225–254`
 
 ## 6. P1 items
 
-- `training/01_train_spatial_lora.py` and `02_train_motion_lora.py` do not implement config’s gradient accumulation, mixed precision, gradient checkpointing, validation, or resumable optimizer/scheduler/RNG state.
-- Non-PEFT Phase 1 checkpointing calls `unet.save_pretrained`, which can save a full UNet instead of only LoRA weights.
+- `training/01_train_spatial_lora.py` and `02_train_motion_lora.py` implement gradient accumulation, mixed precision, and gradient checkpointing, but still lack a validation loop and resumable optimizer/scheduler/RNG state.
 - Phase 2’s temporal-difference loss is applied to predicted noise; noise is independent across frames, so this can encourage over-smoothing. Evaluate on predicted x0 or ablate it.
-- `scripts/02b_audit_class_counts.py`: the `n == 5 and underwater` branch is dead because groups are keyed by `burst_type × yield_tier`; some rare combinations get no test shot. Use iterative/grouped stratification.
-- `scripts/03_cut_and_filter.py`: base clip IDs omit the source reel, so the same shot from two angles can collide; manifest concatenation keeps stale rows. Add `source_id` and a rebuild mode.
-- `scripts/04_preencode_latents.py` calls `latent_dist.sample()`; consider `mode()` for deterministic evaluation caches.
-- `training/dataset.py` ignores `splits_path`; either use it or remove it.
-- `scripts/05_train_classifier.py` has no class weighting; underwater recall will likely be zero.
-- `web/app.js`: `videoMap` only varies by burst (`21–26`), ignores yield/setting/phase/film/smoke, shows only 50 archive rows (`421`), and prints `shot.setting || 'train'` in the split column (`438`). Update after schema and manifest repair.
-- `web/historical_shots.json` has no split column and was generated from the corrupted Stage 2 CSV.
-- `inference/generate.py` hardcodes 512 output and does not validate prompt tokens.
+- `scripts/02b_audit_class_counts.py`: `n == 1` groups go to train only and `n == 2` groups receive either val or test (not both), so a few rare `burst_type × yield_tier` cells lack coverage in one partition. Use iterative/grouped stratification if stricter coverage is required.
+- `scripts/03_cut_and_filter.py`: compilation reels are now safely rejected, but `shot_segments.csv` still has only the `Sunset` segment. Every other reel must be segmented before it can contribute clips.
+- `web/app.js`: `videoMap` still only varies by burst type, so the demo playback does not change with yield/terrain/lighting/phase/film/smoke.
+- `web/app.js`: `state.lighting` is never assigned and there is no lighting control, so the UI always requests `day` even though `night`/`dawn` exist in the schema.
+- `scripts/05_train_classifier.py` evaluates only `burst_type`, `yield_tier`, and `phase`; terrain, lighting, and film-look control are advertised but not audited by the Stage 6 gate.
+- `scripts/04_preencode_latents.py`: `--all` is `store_true` with `default=True` (a no-op); keep it for CLI compatibility or remove it.
 - `requirements.txt` omits `tensorboard` (used by config), and the notebook installs unpinned `imageio`/`imageio-ffmpeg`.
-- `README.md` claims 206 atmospheric tests and a 200-clip matrix; correct after Stage 2 and Stage 7 are real.
+- `data/sources.csv` still carries raw Internet Archive CC BY-NC-ND tags on several rows; `docs/LICENSING_RECONCILIATION.md` documents the public-domain determination, but each row should keep an explicit reviewer sign-off.
 
 ---
 
@@ -286,14 +284,16 @@ File: `scripts/01_download_archive.py:225–254`
 # 1. Manifest sanity
 python -c "import pandas as pd; m=pd.read_csv('data/manifest.csv'); print(len(m), m.groupby(['operation','shot_name']).ngroups, m['split'].value_counts().to_dict()); print('latents', m['latent_path'].notna().sum())"
 
-# 2. Schema validation (after schema.py exists)
+# 2. Schema + data gate validation (fails if <30 shots, empty val/test, or <100% latents)
 python scripts/validate_manifest.py
 
 # 3. Batch smoke test: one batch per split and mode
 python scripts/smoke_test_dataset.py
 
-# 4. Split disjointness
+# 4. Split disjointness + non-empty val/test gate
 python scripts/check_split_leakage.py
 ```
+
+These gates are enforced by default; use `--no-gate` only when intentionally inspecting a partial dataset. The current tree is expected to **fail** steps 2 and 4 (1 shot, 0 val/test, 14/30 latents).
 
 If these scripts do not exist yet, create them as part of the corresponding fix. Report actual numbers, not intended ones.

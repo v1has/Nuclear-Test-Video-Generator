@@ -12,7 +12,7 @@
     "yield_raw": "21 kt",
     "yield_kt": 21.0,
     "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "dawn",
     "latitude": 33.67728,
     "longitude": -106.475378,
@@ -365,7 +365,7 @@
     "burst_height_ft": "100",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "val"
   },
   {
     "test_number": 17,
@@ -480,30 +480,7 @@
     "burst_height_ft": "4",
     "purpose": "Weapons Effects",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
-  },
-  {
-    "test_number": 22,
-    "operation": "Jangle",
-    "shot_name": "Uncle",
-    "date": "1951-11-29",
-    "time_gmt": "20:00:00.00",
-    "sponsor": "LANL/DoD",
-    "location": "NNSS U10 Uncle",
-    "raw_type": "Crater",
-    "burst_type": "surface-tower",
-    "yield_raw": "1.2 kt",
-    "yield_kt": 1.2,
-    "yield_tier": "tactical-yield",
-    "terrain": "desert-flats",
-    "lighting": "day",
-    "latitude": 37.169792,
-    "longitude": -116.043312,
-    "elevation_ft": 4299,
-    "burst_height_ft": "-17",
-    "purpose": "Weapons Effects",
-    "reconciliation_group": "PRE_TREATY_CRATER",
-    "split": "train"
+    "split": "val"
   },
   {
     "test_number": 23,
@@ -610,7 +587,7 @@
     "yield_raw": "12 kt",
     "yield_kt": 12.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.05304,
     "longitude": -116.103504,
@@ -633,7 +610,7 @@
     "yield_raw": "11 kt",
     "yield_kt": 11.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.095488,
     "longitude": -116.103616,
@@ -664,7 +641,7 @@
     "burst_height_ft": "300",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 30,
@@ -710,7 +687,7 @@
     "burst_height_ft": "7",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "val"
   },
   {
     "test_number": 32,
@@ -756,7 +733,7 @@
     "burst_height_ft": "300",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "test"
   },
   {
     "test_number": 34,
@@ -771,7 +748,7 @@
     "yield_raw": "24 kt",
     "yield_kt": 24.0,
     "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "dawn",
     "latitude": 37.095488,
     "longitude": -116.103616,
@@ -863,7 +840,7 @@
     "yield_raw": "23 kt",
     "yield_kt": 23.0,
     "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.138372,
     "longitude": -116.118258,
@@ -1009,7 +986,7 @@
     "burst_height_ft": "7",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "test"
   },
   {
     "test_number": 45,
@@ -1208,7 +1185,7 @@
     "yield_raw": "43 kt",
     "yield_kt": 43.0,
     "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "dawn",
     "latitude": 37.138372,
     "longitude": -116.118258,
@@ -1265,29 +1242,6 @@
     "split": "train"
   },
   {
-    "test_number": 56,
-    "operation": "Teapot",
-    "shot_name": "ESS",
-    "date": "1955-03-23",
-    "time_gmt": "20:30:00.00",
-    "sponsor": "LANL",
-    "location": "NNSS U10 ESS",
-    "raw_type": "Crater",
-    "burst_type": "surface-tower",
-    "yield_raw": "1 kt",
-    "yield_kt": 1.0,
-    "yield_tier": "tactical-yield",
-    "terrain": "desert-flats",
-    "lighting": "day",
-    "latitude": 37.168412,
-    "longitude": -116.044669,
-    "elevation_ft": 4288,
-    "burst_height_ft": "-67",
-    "purpose": "Weapons Effects",
-    "reconciliation_group": "PRE_TREATY_CRATER",
-    "split": "train"
-  },
-  {
     "test_number": 57,
     "operation": "Teapot",
     "shot_name": "Apple-1",
@@ -1300,7 +1254,7 @@
     "yield_raw": "14 kt",
     "yield_kt": 14.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "dawn",
     "latitude": 37.095488,
     "longitude": -116.103616,
@@ -1377,7 +1331,7 @@
     "burst_height_ft": "300",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "val"
   },
   {
     "test_number": 61,
@@ -1630,7 +1584,7 @@
     "burst_height_ft": "0",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 72,
@@ -1768,7 +1722,7 @@
     "burst_height_ft": "300",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 78,
@@ -1967,7 +1921,7 @@
     "yield_raw": "Zero",
     "yield_kt": 0.0,
     "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "dawn",
     "latitude": 37.319302,
     "longitude": -115.906141,
@@ -1975,7 +1929,7 @@
     "burst_height_ft": "0",
     "purpose": "Safety Experiment",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 87,
@@ -2113,7 +2067,7 @@
     "burst_height_ft": "0",
     "purpose": "Safety Experiment",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "val"
+    "split": "train"
   },
   {
     "test_number": 93,
@@ -2205,7 +2159,7 @@
     "burst_height_ft": "09 500",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "test"
   },
   {
     "test_number": 97,
@@ -2266,7 +2220,7 @@
     "yield_raw": "17 kt",
     "yield_kt": 17.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.12788,
     "longitude": -116.10728,
@@ -2335,7 +2289,7 @@
     "yield_raw": "44 kt",
     "yield_kt": 44.0,
     "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.1872,
     "longitude": -116.06867,
@@ -2366,7 +2320,7 @@
     "burst_height_ft": "500",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "val"
+    "split": "train"
   },
   {
     "test_number": 107,
@@ -2496,7 +2450,7 @@
     "yield_raw": "19 kt",
     "yield_kt": 19.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.138372,
     "longitude": -116.118258,
@@ -2504,7 +2458,7 @@
     "burst_height_ft": "500",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 114,
@@ -2688,7 +2642,7 @@
     "burst_height_ft": "3",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "val"
+    "split": "train"
   },
   {
     "test_number": 125,
@@ -3378,7 +3332,7 @@
     "burst_height_ft": "2",
     "purpose": "Weapons Related",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "val"
+    "split": "test"
   },
   {
     "test_number": 155,
@@ -3715,7 +3669,7 @@
     "yield_raw": "Zero",
     "yield_kt": 0.0,
     "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "day",
     "latitude": 37.182847,
     "longitude": -116.06927,
@@ -3723,7 +3677,7 @@
     "burst_height_ft": "25",
     "purpose": "Safety Experiment",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
+    "split": "test"
   },
   {
     "test_number": 181,
@@ -3792,7 +3746,7 @@
     "burst_height_ft": "0",
     "purpose": "Safety Experiment",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "val"
+    "split": "train"
   },
   {
     "test_number": 184,
@@ -3807,7 +3761,7 @@
     "yield_raw": "0.7 tons",
     "yield_kt": 0.7,
     "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "night",
     "latitude": 37.181329,
     "longitude": -116.069535,
@@ -3991,7 +3945,7 @@
     "yield_raw": "0.2 tons",
     "yield_kt": 0.2,
     "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "day",
     "latitude": 37.1772,
     "longitude": -116.07005,
@@ -3999,29 +3953,6 @@
     "burst_height_ft": "25",
     "purpose": "Safety Experiment",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "train"
-  },
-  {
-    "test_number": 216,
-    "operation": "Nougat",
-    "shot_name": "Danny Boy",
-    "date": "1962-03-05",
-    "time_gmt": "18:15:00.12",
-    "sponsor": "LLNL/DoD",
-    "location": "NNSS U18a",
-    "raw_type": "Crater",
-    "burst_type": "surface-tower",
-    "yield_raw": "430 tons",
-    "yield_kt": 430.0,
-    "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
-    "lighting": "day",
-    "latitude": 37.111003,
-    "longitude": -116.365835,
-    "elevation_ft": 5384,
-    "burst_height_ft": "-110",
-    "purpose": "Weapons Effects",
-    "reconciliation_group": "PRE_TREATY_CRATER",
     "split": "train"
   },
   {
@@ -4577,29 +4508,6 @@
     "split": "train"
   },
   {
-    "test_number": 264,
-    "operation": "Storax",
-    "shot_name": "Sedan",
-    "date": "1962-07-06",
-    "time_gmt": "17:00:00.15",
-    "sponsor": "LLNL",
-    "location": "NNSS U10h",
-    "raw_type": "Crater",
-    "burst_type": "surface-tower",
-    "yield_raw": "104 kt",
-    "yield_kt": 104.0,
-    "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
-    "lighting": "day",
-    "latitude": 37.17696,
-    "longitude": -116.046256,
-    "elevation_ft": 4317,
-    "burst_height_ft": "-635",
-    "purpose": "Plowshare",
-    "reconciliation_group": "PRE_TREATY_CRATER",
-    "split": "train"
-  },
-  {
     "test_number": 265,
     "operation": "Sunbeam",
     "shot_name": "Little Feller II",
@@ -4612,7 +4520,7 @@
     "yield_raw": "Low",
     "yield_kt": 5.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "day",
     "latitude": 37.119142,
     "longitude": -116.303697,
@@ -4692,29 +4600,6 @@
     "split": "train"
   },
   {
-    "test_number": 269,
-    "operation": "Sunbeam",
-    "shot_name": "Johnnie Boy",
-    "date": "1962-07-11",
-    "time_gmt": "16:45:00.09",
-    "sponsor": "LLNL/DoD",
-    "location": "NNSS U18j2",
-    "raw_type": "Crater",
-    "burst_type": "surface-tower",
-    "yield_raw": "500 tons",
-    "yield_kt": 500.0,
-    "yield_tier": "intermediate-yield",
-    "terrain": "low-mountains",
-    "lighting": "day",
-    "latitude": 37.12215,
-    "longitude": -116.333947,
-    "elevation_ft": 5066,
-    "burst_height_ft": "-23",
-    "purpose": "Weapons Effects",
-    "reconciliation_group": "PRE_TREATY_CRATER",
-    "split": "train"
-  },
-  {
     "test_number": 271,
     "operation": "Sunbeam",
     "shot_name": "Small Boy",
@@ -4735,7 +4620,7 @@
     "burst_height_ft": "10",
     "purpose": "Weapons Effects",
     "reconciliation_group": "US_ATMOSPHERIC",
-    "split": "test"
+    "split": "train"
   },
   {
     "test_number": 272,
@@ -4750,7 +4635,7 @@
     "yield_raw": "Low",
     "yield_kt": 5.0,
     "yield_tier": "tactical-yield",
-    "terrain": "low-mountains",
+    "terrain": "desert-flats",
     "lighting": "day",
     "latitude": 37.109551,
     "longitude": -116.318154,
@@ -4966,97 +4851,5 @@
     "purpose": "Weapons Effects",
     "reconciliation_group": "US_ATMOSPHERIC",
     "split": "train"
-  },
-  {
-    "test_number": 319,
-    "operation": "Roller Coaster",
-    "shot_name": "Double Tracks",
-    "date": "1963-05-15",
-    "time_gmt": "09:55:00.00",
-    "sponsor": "LANL/DoD/UK",
-    "location": "NTTR",
-    "raw_type": "Surface",
-    "burst_type": "surface-tower",
-    "yield_raw": "Zero",
-    "yield_kt": 0.0,
-    "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
-    "lighting": "night",
-    "latitude": 37.706091,
-    "longitude": -116.988191,
-    "elevation_ft": 4972,
-    "burst_height_ft": "1",
-    "purpose": "Joint US-UK",
-    "reconciliation_group": "JOINT_US_UK_ATMOSPHERIC",
-    "split": "test"
-  },
-  {
-    "test_number": 323,
-    "operation": "Roller Coaster",
-    "shot_name": "Clean Slate I",
-    "date": "1963-05-25",
-    "time_gmt": "11:17:00.00",
-    "sponsor": "LANL/DoD/UK",
-    "location": "NTTR",
-    "raw_type": "Surface",
-    "burst_type": "surface-tower",
-    "yield_raw": "Zero",
-    "yield_kt": 0.0,
-    "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
-    "lighting": "night",
-    "latitude": 37.708495,
-    "longitude": -116.65786,
-    "elevation_ft": 5380,
-    "burst_height_ft": "1",
-    "purpose": "Joint US-UK",
-    "reconciliation_group": "JOINT_US_UK_ATMOSPHERIC",
-    "split": "train"
-  },
-  {
-    "test_number": 325,
-    "operation": "Roller Coaster",
-    "shot_name": "Clean Slate II",
-    "date": "1963-05-31",
-    "time_gmt": "10:47:00.00",
-    "sponsor": "LANL/DoD/UK",
-    "location": "NTTR",
-    "raw_type": "Surface",
-    "burst_type": "surface-tower",
-    "yield_raw": "Zero",
-    "yield_kt": 0.0,
-    "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
-    "lighting": "night",
-    "latitude": 37.761125,
-    "longitude": -116.614428,
-    "elevation_ft": 5390,
-    "burst_height_ft": "1",
-    "purpose": "Joint US-UK",
-    "reconciliation_group": "JOINT_US_UK_ATMOSPHERIC",
-    "split": "train"
-  },
-  {
-    "test_number": 329,
-    "operation": "Roller Coaster",
-    "shot_name": "Clean Slate III",
-    "date": "1963-06-09",
-    "time_gmt": "10:33:00.00",
-    "sponsor": "LANL/DoD/UK",
-    "location": "NTTR",
-    "raw_type": "Surface",
-    "burst_type": "surface-tower",
-    "yield_raw": "Zero",
-    "yield_kt": 0.0,
-    "yield_tier": "sub-kiloton",
-    "terrain": "low-mountains",
-    "lighting": "night",
-    "latitude": 37.759156,
-    "longitude": -116.681135,
-    "elevation_ft": 5387,
-    "burst_height_ft": "1",
-    "purpose": "Joint US-UK",
-    "reconciliation_group": "JOINT_US_UK_ATMOSPHERIC",
-    "split": "val"
   }
 ]

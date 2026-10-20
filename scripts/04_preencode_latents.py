@@ -147,7 +147,10 @@ def main():
     parser.add_argument("--device", type=str, default=None, help="Device to use ('cuda' or 'cpu')")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of clips to encode")
     parser.add_argument("--all", action="store_true", default=True, help="Encode all clips in manifest (default)")
-    parser.add_argument("--assert-100", "--assert_100", action="store_true", help="Assert 100% latent coverage before completing")
+    parser.add_argument("--assert-100", "--assert_100", dest="assert_100", action="store_true", default=True,
+                        help="Fail if latent coverage is not 100%% (default: ON, AGENTS.md P0.3).")
+    parser.add_argument("--allow-partial", dest="assert_100", action="store_false",
+                        help="Allow partial latent coverage (cache-building only; never for training).")
     args = parser.parse_args()
     
     if not os.path.exists(MANIFEST_CSV):
