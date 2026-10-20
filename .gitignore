@@ -239,3 +239,5 @@ data/*.pdf
 web/matrix/*.mp4
 web/matrix/*.webm
 web/matrix/*.gif
+scratch/
+

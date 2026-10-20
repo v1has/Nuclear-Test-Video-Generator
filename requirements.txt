@@ -15,3 +15,6 @@ pypdf>=3.17.0
 tensorboard>=2.14.0
 imageio>=2.31.0
 imageio-ffmpeg>=0.4.8
+easyocr>=1.7.0
+pytesseract>=0.3.10
+rapidfuzz>=3.0.0

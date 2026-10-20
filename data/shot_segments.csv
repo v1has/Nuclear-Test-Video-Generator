@@ -1,4 +1,4 @@
-archive_id,operation,shot_name,start_sec,end_sec,detonation_start_sec,confidence,label_source,reviewer
-DominicSunset,Dominic,Sunset,25.0,265.0,31.0,1.0,DOE_NV209_FlashDetect,critic_auditor
-gov.doe.0800002,Crossroads,Able,20.15,237.93,117.93,1.0,PySceneDetect+OCR_exact_token,auto_segmenter
-gov.doe.0800002,Crossroads,Baker,1646.38,1887.85,1767.85,1.0,PySceneDetect+OCR_exact_token,auto_segmenter
+archive_id,operation,shot_name,start_sec,end_sec,detonation_start_sec,confidence,label_source,reviewer,ocr_confidence,boundary_confidence,review_status,film_look_override,smoke_trails_override
+DominicSunset,Dominic,Sunset,25.0,265.0,31.0,1.0,DOE_NV209_FlashDetect,critic_auditor,1.0,1.0,verified,colour-restored,True
+gov.doe.0800002,Crossroads,Able,590.0,712.6,592.63,1.0,manual_luminance_inspection,critic_auditor,1.0,1.0,verified,black-and-white,False
+gov.doe.0800002,Crossroads,Baker,1666.0,1788.8,1668.77,1.0,manual_luminance_inspection,critic_auditor,1.0,1.0,verified,black-and-white,False

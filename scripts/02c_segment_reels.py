@@ -184,19 +184,24 @@ def detect_scene_cuts(video_path, threshold=27.0, min_scene_len_sec=1.5):
     return scenes
 
 
-def find_detonation_flash_in_range(video_path, start_sec, end_sec):
+def find_detonation_flash_sustained(video_path, start_sec, end_sec, min_sustained_sec=1.0):
     """
-    Detect sudden luminance spike in video between start_sec and end_sec.
-    Returns exact timestamp (float seconds) of detonation flash onset.
+    Detect detonation flash onset characterized by:
+    1. A sharp luminance rise (jump >= 20.0).
+    2. A sustained bright plateau over at least min_sustained_sec (e.g. 1.0 - 1.5s),
+       distinguishing genuine nuclear fireballs from momentary scene cuts or bright sky.
+    Returns (onset_sec, boundary_confidence).
     """
     cap = cv2.VideoCapture(str(video_path))
     if not cap.isOpened():
-        return start_sec
+        return start_sec, 0.0
 
     fps = cap.get(cv2.CAP_PROP_FPS) or 24.0
     start_frame = int(start_sec * fps)
     end_frame = int(end_sec * fps)
 
+    # Sample every 2-3 frames for speed and precision
+    step = max(1, int(fps / 15.0))
     cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
     lums = []
     times = []
@@ -206,25 +211,50 @@ def find_detonation_flash_in_range(video_path, start_sec, end_sec):
         ret, frame = cap.read()
         if not ret or frame is None:
             break
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        lums.append(float(np.mean(gray)))
-        times.append(curr_frame / fps)
+        if (curr_frame - start_frame) % step == 0:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            lums.append(float(np.mean(gray)))
+            times.append(curr_frame / fps)
         curr_frame += 1
 
     cap.release()
-    if len(lums) < 3:
-        return start_sec
+    if len(lums) < 5:
+        return start_sec, 0.0
 
+    lums = np.array(lums)
+    times = np.array(times)
     diffs = np.diff(lums)
-    max_idx = int(np.argmax(diffs))
-    if diffs[max_idx] >= 18.0:  # Noticeable brightness surge
-        return float(times[max_idx])
-    return start_sec
+
+    best_onset = start_sec
+    best_conf = 0.0
+    spike_indices = np.where(diffs >= 20.0)[0]
+    sustained_samples = max(2, int(min_sustained_sec * (fps / step)))
+
+    for s_idx in spike_indices:
+        t_onset = times[s_idx + 1]
+        pre_lum = lums[max(0, s_idx - 2):s_idx + 1].mean()
+        post_lums = lums[s_idx + 1:min(len(lums), s_idx + 1 + sustained_samples)]
+
+        if len(post_lums) < 2:
+            continue
+
+        mean_post = float(np.mean(post_lums))
+        min_post = float(np.min(post_lums))
+
+        # Sustained check: post brightness is high, elevated over pre, and does not drop immediately
+        if mean_post >= 60.0 and (mean_post - pre_lum) >= 25.0 and min_post >= (pre_lum + 10.0):
+            conf = min(1.0, float((mean_post - pre_lum) / 70.0) * 0.7 + (float(diffs[s_idx]) / 100.0) * 0.3)
+            if conf > best_conf:
+                best_conf = conf
+                best_onset = float(t_onset)
+
+    return best_onset, best_conf
 
 
 def match_text_to_shot(text, operation_hint, registry_df):
     """
     Match OCR text against candidate shots in DOE registry.
+    Supports compound operation hints (e.g. 'Ranger / Buster-Jangle').
     Returns (matched_row, confidence, match_type).
     """
     if not text or len(text.strip()) < 2:
@@ -234,8 +264,12 @@ def match_text_to_shot(text, operation_hint, registry_df):
 
     # Filter candidate shots: prefer operation_hint if provided
     candidates = registry_df
+    sub_hints = []
     if operation_hint and operation_hint.lower() != "compilation":
-        op_candidates = registry_df[registry_df["operation"].str.lower() == operation_hint.lower()]
+        sub_hints = [h.strip().lower() for h in re.split(r"[/,]", operation_hint) if h.strip()]
+        op_candidates = registry_df[
+            registry_df["operation"].str.lower().apply(lambda op: any(h in op or op in h for h in sub_hints))
+        ]
         if not op_candidates.empty:
             candidates = op_candidates
 
@@ -252,7 +286,7 @@ def match_text_to_shot(text, operation_hint, registry_df):
         pattern = rf"\b{re.escape(shot_lower)}\b"
         if re.search(pattern, clean.lower()):
             score = 0.95
-            if op_name in clean.lower():
+            if any(h in clean.lower() for h in [op_name] + sub_hints):
                 score = 1.0
             if score > best_score:
                 best_score = score
@@ -276,11 +310,11 @@ def segment_video_reel(video_path, archive_id, operation_hint, registry_df, min_
     - Finds scene cuts
     - Samples frames for OCR
     - Identifies shot name from slates/title cards
-    - Detects detonation flash
+    - Detects detonation flash using sustained-luminance analysis
     """
-    print(f"\n--- Segmenting Reel: {video_path.name} (Op: {operation_hint}, ID: {archive_id}) ---")
+    print(f"\n--- Segmenting Reel: {video_path.name} (Op: {operation_hint}, ID: {archive_id}) ---", flush=True)
     scenes = detect_scene_cuts(video_path)
-    print(f"Detected {len(scenes)} distinct scene cuts.")
+    print(f"Detected {len(scenes)} distinct scene cuts.", flush=True)
 
     cap = cv2.VideoCapture(str(video_path))
     fps = cap.get(cv2.CAP_PROP_FPS) or 24.0
@@ -304,24 +338,30 @@ def segment_video_reel(video_path, archive_id, operation_hint, registry_df, min_
         if not combined_text:
             continue
 
-        matched_shot, confidence, mtype = match_text_to_shot(combined_text, operation_hint, registry_df)
-        if matched_shot is not None and confidence >= min_confidence:
+        matched_shot, ocr_conf, mtype = match_text_to_shot(combined_text, operation_hint, registry_df)
+        if matched_shot is not None and ocr_conf >= min_confidence:
             shot_name = matched_shot["shot_name"]
             shot_op = matched_shot["operation"]
-            print(f"  [Scene {i:02d} @ {s_start:6.1f}s - {s_end:6.1f}s] Matched '{shot_op} / {shot_name}' (conf: {confidence:.2f}, text: '{combined_text[:60]}...')")
+            burst_type = matched_shot.get("burst_type", "")
+            print(f"  [Scene {i:02d} @ {s_start:6.1f}s - {s_end:6.1f}s] Matched '{shot_op} / {shot_name}' (OCR conf: {ocr_conf:.2f}, text: '{combined_text[:60]}...')", flush=True)
 
-            # Search up to 180 seconds forward for detonation flash
-            search_window_end = min(s_start + 180.0, scenes[-1][1])
-            flash_sec = find_detonation_flash_in_range(video_path, s_start, search_window_end)
-            if flash_sec > s_start:
-                print(f"    -> Flash detected at {flash_sec:.2f}s (offset: {flash_sec - s_start:.2f}s from slate)")
-                # Give at least 120s of post-detonation coverage for cloud stabilization
+            # Search forward through reel until next slate or end
+            search_window_end = scenes[-1][1]
+            if i + 1 < len(scenes):
+                # Search up to next 500s or end
+                search_window_end = min(s_start + 600.0, scenes[-1][1])
+
+            flash_sec, bnd_conf = find_detonation_flash_sustained(video_path, s_start, search_window_end)
+            if bnd_conf > 0.0:
+                print(f"    -> Sustained flash detected at {flash_sec:.2f}s (offset: {flash_sec - s_start:.2f}s from slate, bnd_conf: {bnd_conf:.2f})", flush=True)
                 seg_end = min(flash_sec + 120.0, scenes[-1][1])
+                seg_start = max(0.0, flash_sec - 5.0)
             else:
                 flash_sec = s_start
                 seg_end = min(s_end + 90.0, scenes[-1][1])
+                seg_start = s_start
 
-            seg_start = s_start
+            combined_conf = round(ocr_conf * 0.6 + bnd_conf * 0.4, 3)
 
             detected_segments.append({
                 "archive_id": archive_id,
@@ -330,10 +370,18 @@ def segment_video_reel(video_path, archive_id, operation_hint, registry_df, min_
                 "start_sec": round(seg_start, 2),
                 "end_sec": round(seg_end, 2),
                 "detonation_start_sec": round(flash_sec, 2),
-                "confidence": round(confidence, 3),
-                "label_source": f"PySceneDetect+OCR_{mtype}",
-                "reviewer": "auto_segmenter"
+                "confidence": combined_conf,
+                "ocr_confidence": round(ocr_conf, 3),
+                "boundary_confidence": round(bnd_conf, 3),
+                "review_status": "draft",
+                "label_source": f"PySceneDetect+OCR_{mtype}+SustainedFlash",
+                "reviewer": "auto_segmenter",
+                "film_look_override": None,
+                "smoke_trails_override": False if burst_type == "underwater" else None
             })
+
+    cap.release()
+    return detected_segments
 
     cap.release()
     return detected_segments
@@ -413,19 +461,35 @@ def run_segmentation(archive_ids=None, video_file=None, min_confidence=0.75, app
     candidates_df.to_csv(CANDIDATES_CSV, index=False)
     print(f"\n[OUTPUT] Saved {len(candidates_df)} candidate segment(s) to {CANDIDATES_CSV}")
 
-    # Merge into data/shot_segments.csv if requested
+    # Merge into data/shot_segments.csv if requested (preserving all verified entries)
     if apply_to_manifest:
         high_conf = candidates_df[candidates_df["confidence"] >= min_confidence]
         if not high_conf.empty:
             if SEGMENTS_CSV.exists():
                 existing = pd.read_csv(SEGMENTS_CSV)
-                combined = pd.concat([existing, high_conf], ignore_index=True)
-                combined = combined.drop_duplicates(subset=["archive_id", "operation", "shot_name"], keep="last")
+                # Preserve all verified / reviewed entries unconditionally
+                verified_mask = existing["review_status"].isin(["verified", "reviewed"]) if "review_status" in existing.columns else pd.Series([False]*len(existing))
+                verified_keys = set(zip(
+                    existing[verified_mask]["archive_id"],
+                    existing[verified_mask]["operation"],
+                    existing[verified_mask]["shot_name"]
+                ))
+                
+                new_rows = []
+                for _, r in high_conf.iterrows():
+                    key = (r["archive_id"], r["operation"], r["shot_name"])
+                    if key not in verified_keys:
+                        new_rows.append(r)
+                if new_rows:
+                    combined = pd.concat([existing, pd.DataFrame(new_rows)], ignore_index=True)
+                    combined = combined.drop_duplicates(subset=["archive_id", "operation", "shot_name"], keep="first")
+                else:
+                    combined = existing
+                    print("  Note: All candidate shots already have verified entries; preserved verified rows.")
             else:
                 combined = high_conf
             combined.to_csv(SEGMENTS_CSV, index=False)
-            print(f"[APPLIED] Merged {len(high_conf)} high-confidence segment(s) into {SEGMENTS_CSV}")
-            print(f"Total verified segments in {SEGMENTS_CSV}: {len(combined)}")
+            print(f"[APPLIED] Maintained verified segments in {SEGMENTS_CSV}. Total: {len(combined)}")
 
     return all_candidates
 

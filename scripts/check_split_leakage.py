@@ -133,11 +133,13 @@ def check_manifest_splits(
         print("  [DATA GATE: FAILED] Manifest has 0 val and/or 0 test shots (AGENTS.md P0.1, P0.4).")
         gate_failed = True
 
-    if not leaked:
-        if gate_failed:
+        active_splits = sum([len(train_shots) > 0, len(val_shots) > 0, len(test_shots) > 0])
+        if active_splits < 2:
             print("  ! NOTE: Split disjointness is vacuously true because only 1 split exists in manifest.")
         else:
-            print("  [PASS] Manifest split disjointness verified: Zero leakage across active splits.")
+            print(f"  [PASS] Manifest split disjointness verified: Zero leakage across {active_splits} active splits.")
+        if gate_failed:
+            print("  [DATA GATE: BLOCKED] Gate requires >=30 distinct shots and non-empty train, val, and test splits.")
             
     if enforce_gate and gate_failed:
         return False

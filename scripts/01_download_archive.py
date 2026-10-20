@@ -279,6 +279,11 @@ def download_file(url, target_path):
                 f.write(chunk)
                 bar.update(len(chunk))
                 
+    actual_size = os.path.getsize(temp_path)
+    if total_size > 0 and actual_size < total_size:
+        print(f"Warning: Download incomplete ({actual_size}/{total_size} bytes): {url}")
+        return False
+        
     os.replace(temp_path, target_path)
     
     # Verify file integrity with OpenCV
@@ -356,6 +361,7 @@ def download_sources(df=None, ids=None, limit=None, force=False, verify_only=Fal
         if ok:
             print(f"  [SUCCESS] Successfully downloaded to {local_rel_path}")
             df.loc[df["archive_id"] == archive_id, "downloaded"] = True
+            df.loc[df["archive_id"] == archive_id, "access_date"] = pd.Timestamp.now().strftime("%Y-%m-%d")
             success_count += 1
         else:
             print(f"  [FAIL] Download failed for {archive_id}")

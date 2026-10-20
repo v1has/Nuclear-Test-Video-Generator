@@ -15,19 +15,20 @@ The codebase is a **scaffold with one real data run**, not a trained model. Befo
 
 | Check | Current result |
 |---|---|
-| `data/manifest.csv` | **30 rows** = 15 base clips × `orig`/`flip` (standardized 16-frame sequences @ 8 fps) |
-| Distinct shots in manifest | **1** (`Dominic / Sunset`) — Gate: **FAIL** (blocked from Phase 1/2 LoRA training until multi-shot ingest) |
-| Split distribution | **30 train, 0 val, 0 test** — Gate: **FAIL** (`validate_manifest.py` and `check_split_leakage.py` enforce the gate by default) |
-| Cached latents | **14 / 30** cached (`4, 16, 64, 64`); `04 --assert-100` is now the default and fails on partial coverage |
-| Phase labels | **2 early-fireball, 4 expansion, 24 stabilized-cloud** |
-| Source reels | **1 downloaded of 27 registry rows**; compilation reels are rejected unless a verified `shot_segments.csv` row exists |
+| `data/manifest.csv` | **100 rows** = 50 base clips × `orig`/`flip` (standardized 16-frame sequences @ 8 fps across 3 verified shots) |
+| Distinct shots in manifest | **3** (`Dominic / Sunset`, `Crossroads / Able`, `Crossroads / Baker`) — Gate: **FAIL** (blocked from Phase 1/2 LoRA training until multi-shot ingest reaches ≥30 distinct shots) |
+| Split distribution | **66 train, 34 val, 0 test** — Gate: **FAIL** (`validate_manifest.py` and `check_split_leakage.py` enforce the gate by default: requires test split and ≥30 shots) |
+| Cached latents | **14 / 100** cached (`4, 16, 64, 64`); `04 --assert-100` is now the default and fails on partial coverage |
+| Phase labels | **12 early-fireball, 18 expansion, 70 stabilized-cloud** (stabilized sampled across 8–118 s post-detonation) |
+| Source reels | **4 downloaded of 27 registry rows** (`Dominic Sunset`, `Crossroads`, `Castle`, `Redwing`); compilation reels are rejected unless a verified `shot_segments.csv` row exists |
 | Stage 2 table | **211 training-eligible detonations** (206 atmospheric + 5 underwater) across 24 operations; the 220-row alias registry also tracks 5 craters + 4 Roller Coaster safety tests, which are excluded from training |
 | Official NNSA tally | **216 detonations** (206 atmospheric + 5 underwater + 5 crater); dataset corpus = **211** because crater events are not one of the four canonical burst types. Roller Coaster (4) are non-nuclear HE dispersal tests and are excluded entirely. |
 | Terrain classes | **2 only**: `desert-flats`, `tropical-ocean`. `low-mountains` was removed because no atmospheric test in the registry is at a mountain site (all are NTS/NTTR desert or Pacific atolls). |
-| Dataset batch test | Raw-frame and synthetic multi-split smoke tests pass; latent-only mode correctly fails while coverage is 14/30 (no shape mixing) |
-| Web demo | 5 archival demo videos labeled as demo reference; canonical schema tokens (`black-and-white`, etc.); UI claims "30 Standardized Clips"; 211 training records in the archive database |
+| Dataset batch test | Raw-frame and synthetic multi-split smoke tests pass; latent-only mode correctly fails while coverage is 14/100 (no shape mixing) |
+| Web demo | 5 archival demo videos labeled as demo reference; canonical schema tokens (`black-and-white`, etc.); UI claims "100 Standardized Clips"; 211 training records in the archive database |
 
-**Do not start or extend Phase 1/2 LoRA training until the Stage 2/3 gates in §4 pass.** With one shot, the model can only learn that shot, not the conditioning axes.
+**Do not start or extend Phase 1/2 LoRA training until the Stage 2/3 gates in §4 pass.** With 3 shots (and 0 test shots), the model cannot learn the conditioning axes or generalize.
+
 
 ---
 
@@ -45,10 +46,11 @@ The codebase is a **scaffold with one real data run**, not a trained model. Befo
 
 ## 2. P0 blockers
 
-### P0.1 — Only one shot in the manifest
-The manifest is entirely `Dominic Sunset`. Conditioning cannot be learned from one camera/shot.
+### P0.1 — Insufficient shots in manifest (3 of 30 required)
+The manifest contains only 3 verified shots (`Dominic Sunset`, `Crossroads Able`, `Crossroads Baker`) across 2 operations. Multi-axis conditioning cannot be learned from 3 shots.
 
-**Required:** ingest and segment enough reels to reach ≥30 distinct shots before training. See §3.
+**Required:** ingest and segment enough reels to reach ≥30 distinct shots before Phase 1/2 LoRA training. See §3.
+
 
 ### P0.2 — Stage 2 parser corrupts operations and shot names
 File: `scripts/02_parse_doe_metadata.py`
